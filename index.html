@@ -1,75 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SWA – Gestão e Finanças Inteligentes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWA – Gestão e Finanças Inteligentes</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0b132b;
-      color: #ffffff;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b132b;
+  color: #ffffff;
+}
 
-    header {
-      padding: 60px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #0b132b, #1c2541);
-    }
+nav {
+  background: #050a1f;
+  padding: 15px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
 
-    header h1 {
-      color: #f5c518;
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-    }
+nav a {
+  color: #f5c518;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    header p {
-      max-width: 700px;
-      margin: auto;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #dcdcdc;
-    }
+nav a:hover {
+  text-decoration: underline;
+}
 
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+header {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #0b132b, #1c2541);
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+header h1 {
+  color: #f5c518;
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
 
-    .card {
-      background: #1c2541;
-      padding: 25px;
-      border-radius: 8px;
-      border-left: 4px solid #f5c518;
-    }
+header p {
+  max-width: 800px;
+  margin: auto;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #dddddd;
+}
 
-    .card h3 {
-      color: #f5c518;
-      margin-bottom: 10px;
-    }
+section {
+  padding: 70px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
 
-    footer {
-      background: #050a1f;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-  </style>
+section h2 {
+  color: #f5c518;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #1c2541;
+  padding: 30px;
+  border-radius: 8px;
+  border-left: 4px solid #f5c518;
+}
+
+.card h3 {
+  color: #f5c518;
+  margin-bottom: 10px;
+}
+
+footer {
+  background: #050a1f;
+  text-align: center;
+  padding: 25px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.whatsapp {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #25d366;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+}
+</style>
 </head>
 
 <body>
 
-<header>
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#atuacao">Atuação</a>
+  <a href="#contato">Contato</a>
+</nav>
+
+<header id="inicio">
   <h1>SWA – Gestão e Finanças Inteligentes</h1>
   <p>
     Gestão completa em administração, finanças, manutenção predial e pessoas
@@ -77,27 +120,52 @@
   </p>
 </header>
 
-<section>
+<section id="servicos">
+  <h2>Serviços</h2>
+
   <div class="cards">
     <div class="card">
       <h3>Administração</h3>
-      <p>Organização administrativa, processos, contratos e rotinas operacionais.</p>
+      <p>Organização administrativa, contratos, processos e rotinas operacionais.</p>
     </div>
 
     <div class="card">
-      <h3>Finanças</h3>
-      <p>Controle financeiro, prestação de contas, relatórios e planejamento.</p>
+      <h3>Gestão Financeira</h3>
+      <p>Controle financeiro, relatórios, planejamento e transparência.</p>
     </div>
 
     <div class="card">
       <h3>Gestão de Pessoas</h3>
-      <p>Gestão de funcionários, escalas, apoio administrativo e acompanhamento.</p>
+      <p>Administração de funcionários, escalas, apoio e acompanhamento.</p>
     </div>
 
     <div class="card">
       <h3>Manutenção Predial</h3>
       <p>Organização de manutenções, fornecedores e suporte operacional.</p>
     </div>
+  </div>
+</section>
+
+<section id="atuacao">
+  <h2>Atuação</h2>
+  <p style="text-align:center; max-width:800px; margin:auto; font-size:1.1rem;">
+    Atuamos com gestão completa para condomínios e empresas, assumindo
+    administração, finanças, pessoas e manutenção predial com organização,
+    controle e responsabilidade.
+  </p>
+</section>
+
+<section id="contato">
+  <h2>Contato</h2>
+  <p style="text-align:center; font-size:1.1rem;">
+    📍 Vila Velha – ES<br><br>
+    📱 WhatsApp: +55 27 98846-2445
+  </p>
+
+  <div style="text-align:center;">
+    <a class="whatsapp" href="https://wa.me/5527988462445" target="_blank">
+      Falar no WhatsApp
+    </a>
   </div>
 </section>
 
