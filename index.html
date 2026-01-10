@@ -1,61 +1,128 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>SWA – Gestão & Finanças Inteligentes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SWA – Gestão e Finanças Inteligentes</title>
 
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
-      background: #0b0f2a;
+    }
+
+    body {
+      background: linear-gradient(180deg, #070b2b, #020318);
       color: #ffffff;
     }
 
+    /* HEADER */
     header {
       display: flex;
       align-items: center;
-      padding: 20px 30px;
-      background: #070a1f;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(6px);
     }
 
-    header img {
-      height: 70px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    main {
-      padding: 60px 30px;
+    .logo img {
+      height: 48px;
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    .logo span {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #f2c94c;
     }
 
-    p {
+    nav a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    nav a:hover {
+      color: #f2c94c;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 120px 60px;
+      max-width: 1100px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
       font-size: 18px;
       max-width: 700px;
       line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      nav a {
+        margin: 0 12px;
+      }
+
+      .hero {
+        padding: 80px 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- LOGO -->
   <header>
-    <img src="assets/swa1.jpeg" alt="SWA Gestão e Finanças Inteligentes">
+    <div class="logo">
+      <img src="swa1.jpeg" alt="SWA Logo">
+      <span>SWA</span>
+    </div>
+
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Serviços</a>
+      <a href="#">Atuação</a>
+      <a href="#">Contato</a>
+      <a href="https://www.instagram.com/swa.gestaointeligente/" target="_blank">Instagram</a>
+    </nav>
   </header>
 
-  <!-- CONTEÚDO INICIAL -->
-  <main>
+  <section class="hero">
     <h1>Gestão completa para condomínios e empresas</h1>
     <p>
-      Administração, finanças, gestão de pessoas e manutenção predial
-      com inteligência, organização e transparência.
+      Administração, finanças, gestão de pessoas e manutenção predial com inteligência,
+      organização, controle e transparência.
     </p>
-  </main>
+  </section>
 
 </body>
 </html>
