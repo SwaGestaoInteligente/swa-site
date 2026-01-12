@@ -4,30 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SWA – Gestão & Finanças Inteligentes</title>
+<title>SWA | Plataforma de Gestão Inteligente</title>
 
-<meta name="description" content="SWA Gestão & Finanças Inteligentes. Administração condominial, financeira, pessoas e manutenção predial com transparência e inteligência.">
+<meta name="description" content="SWA – Plataforma de Gestão Inteligente para condomínios e empresas. Administração, finanças, pessoas e manutenção predial.">
 <meta name="theme-color" content="#0b1a3a">
 
 <style>
 :root{
-  --azul:#0b1a3a;
-  --azul-claro:#1f3b73;
-  --dourado:#f2c94c;
-  --cinza:#f4f6fb;
-  --texto:#2b2b2b;
+  --primary:#0b1a3a;
+  --secondary:#1f3b73;
+  --accent:#f2c94c;
+  --bg:#f5f7fb;
+  --white:#ffffff;
+  --text:#2b2b2b;
+  --muted:#6b7280;
 }
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body{
-  background:var(--cinza);
-  color:var(--texto);
+  background:var(--bg);
+  color:var(--text);
 }
 
 /* ===== HEADER ===== */
@@ -35,15 +37,15 @@ header{
   position:fixed;
   top:0;
   width:100%;
-  background:#fff;
-  border-bottom:1px solid #e6e8f0;
+  background:var(--white);
+  border-bottom:1px solid #e5e7eb;
   z-index:1000;
 }
 
 .header{
   max-width:1200px;
   margin:auto;
-  padding:16px 24px;
+  padding:14px 24px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -56,26 +58,35 @@ header{
 }
 
 .logo img{
-  height:52px;
+  height:44px;
 }
 
 nav a{
-  margin-left:24px;
+  margin-left:22px;
   text-decoration:none;
-  color:#333;
+  font-size:14px;
   font-weight:600;
-  font-size:15px;
+  color:#374151;
 }
 
 nav a:hover{
-  color:var(--azul-claro);
+  color:var(--primary);
+}
+
+.btn-login{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 18px;
+  border-radius:6px;
+  font-size:14px;
+  text-decoration:none;
+  font-weight:700;
 }
 
 /* ===== HERO ===== */
 .hero{
-  margin-top:90px;
-  background:#fff;
-  padding:100px 24px;
+  padding:140px 24px 90px;
+  background:linear-gradient(180deg,#ffffff 0%,#f5f7fb 100%);
 }
 
 .hero-content{
@@ -88,30 +99,57 @@ nav a:hover{
 }
 
 .hero h1{
-  font-size:44px;
-  color:var(--azul);
+  font-size:48px;
+  line-height:1.15;
+  color:var(--primary);
   margin-bottom:20px;
 }
 
 .hero p{
   font-size:18px;
-  line-height:1.7;
-  margin-bottom:30px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:32px;
 }
 
-.btn{
+.hero-actions a{
   display:inline-block;
-  padding:14px 32px;
-  background:var(--azul);
-  color:#fff;
+  margin-right:16px;
+  padding:14px 28px;
+  border-radius:8px;
   text-decoration:none;
   font-weight:700;
-  border-radius:6px;
 }
 
-.hero img{
-  width:100%;
-  max-width:420px;
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+}
+
+.btn-outline{
+  border:2px solid var(--primary);
+  color:var(--primary);
+}
+
+.hero-panel{
+  background:var(--white);
+  border-radius:16px;
+  padding:32px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+
+.hero-panel h3{
+  color:var(--primary);
+  margin-bottom:16px;
+}
+
+.hero-panel ul{
+  list-style:none;
+}
+
+.hero-panel li{
+  margin-bottom:12px;
+  color:#374151;
 }
 
 /* ===== SECTIONS ===== */
@@ -122,59 +160,74 @@ section{
 }
 
 section h2{
-  font-size:34px;
-  color:var(--azul);
-  margin-bottom:28px;
+  font-size:36px;
+  color:var(--primary);
+  margin-bottom:24px;
 }
 
-/* ===== GRID / CARDS ===== */
+/* ===== GRID ===== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:26px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
 }
 
 .card{
-  background:#fff;
-  padding:32px;
-  border-radius:12px;
-  border:1px solid #e6e8f0;
+  background:var(--white);
+  padding:28px;
+  border-radius:14px;
+  border:1px solid #e5e7eb;
 }
 
 .card strong{
   display:block;
   margin-bottom:10px;
-  color:var(--azul);
+  color:var(--primary);
 }
 
-/* ===== CONTATO ===== */
-.contact{
-  background:#fff;
+/* ===== CTA ===== */
+.cta{
+  background:var(--primary);
+  color:#fff;
   padding:70px 24px;
 }
 
-.contact .grid{
+.cta-content{
   max-width:1200px;
   margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.cta a{
+  background:var(--accent);
+  color:#000;
+  padding:14px 28px;
+  border-radius:8px;
+  font-weight:800;
+  text-decoration:none;
 }
 
 /* ===== FOOTER ===== */
 footer{
-  background:var(--azul);
-  color:#fff;
-  padding:40px 24px;
+  background:#020617;
+  color:#e5e7eb;
+  padding:50px 24px;
 }
 
 .footer{
   max-width:1200px;
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
 }
 
 footer a{
-  color:var(--dourado);
+  color:var(--accent);
   text-decoration:none;
 }
 
@@ -185,9 +238,9 @@ footer a{
   bottom:20px;
   background:#25d366;
   color:#fff;
-  padding:14px 24px;
+  padding:14px 22px;
   border-radius:40px;
-  font-weight:700;
+  font-weight:800;
   text-decoration:none;
   box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
@@ -195,7 +248,8 @@ footer a{
 /* ===== MOBILE ===== */
 @media(max-width:900px){
   nav{display:none;}
-  .hero-content{grid-template-columns:1fr;text-align:center;}
+  .hero-content{grid-template-columns:1fr;}
+  .hero h1{font-size:36px;}
 }
 </style>
 </head>
@@ -208,11 +262,12 @@ footer a{
       <img src="swa1.jpeg" alt="SWA">
     </div>
     <nav>
-      <a href="#sobre">Sobre</a>
+      <a href="#plataforma">Plataforma</a>
       <a href="#servicos">Serviços</a>
       <a href="#atuacao">Atuação</a>
       <a href="#contato">Contato</a>
       <a href="https://www.instagram.com/swa.gestaointeligente/" target="_blank">Instagram</a>
+      <a href="#" class="btn-login">Área do Cliente</a>
     </nav>
   </div>
 </header>
@@ -220,62 +275,62 @@ footer a{
 <section class="hero">
   <div class="hero-content">
     <div>
-      <h1>Gestão inteligente para condomínios e empresas</h1>
+      <h1>Plataforma de Gestão Inteligente</h1>
       <p>
-        A SWA atua com administração condominial, gestão financeira, pessoas
-        e manutenção predial, unindo organização, transparência e inteligência
-        para gerar resultados reais.
+        A SWA integra administração, finanças, pessoas e manutenção predial
+        em uma plataforma moderna, segura e preparada para crescimento.
       </p>
-      <a href="#contato" class="btn">Solicitar proposta</a>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">Solicitar acesso</a>
+        <a href="#plataforma" class="btn-outline">Conhecer plataforma</a>
+      </div>
     </div>
-    <img src="swa1.jpeg" alt="SWA Gestão Inteligente">
+
+    <div class="hero-panel">
+      <h3>O que você controla</h3>
+      <ul>
+        <li>✔ Financeiro e relatórios</li>
+        <li>✔ Pessoas e processos</li>
+        <li>✔ Manutenção predial</li>
+        <li>✔ Indicadores de gestão</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<section id="sobre">
-  <h2>Quem é a SWA</h2>
-  <p>
-    A SWA – Gestão & Finanças Inteligentes nasce com o propósito de elevar
-    o padrão da administração condominial e empresarial, utilizando processos
-    claros, gestão estratégica e visão de longo prazo.
-  </p>
-</section>
-
 <section id="servicos">
-  <h2>Serviços</h2>
+  <h2>Módulos da Plataforma</h2>
   <div class="grid">
-    <div class="card"><strong>Administração Condominial</strong>Gestão completa e transparente.</div>
-    <div class="card"><strong>Gestão Financeira</strong>Controle, relatórios e planejamento.</div>
+    <div class="card"><strong>Administração Condominial</strong>Gestão completa e integrada.</div>
+    <div class="card"><strong>Gestão Financeira</strong>Controle, fluxo e relatórios.</div>
     <div class="card"><strong>Gestão de Pessoas</strong>Organização e desempenho.</div>
-    <div class="card"><strong>Manutenção Predial</strong>Preventiva e corretiva.</div>
+    <div class="card"><strong>Manutenção</strong>Preventiva e corretiva.</div>
   </div>
 </section>
 
 <section id="atuacao">
-  <h2>Áreas de Atuação</h2>
+  <h2>Onde Atuamos</h2>
   <div class="grid">
-    <div class="card">Condomínios Residenciais</div>
-    <div class="card">Condomínios Corporativos</div>
+    <div class="card">Condomínios residenciais</div>
+    <div class="card">Condomínios corporativos</div>
     <div class="card">Empresas</div>
     <div class="card">Empreendimentos</div>
   </div>
 </section>
 
-<section id="contato" class="contact">
+<section id="contato">
   <h2>Contato</h2>
   <div class="grid">
-    <div class="card">
-      <strong>WhatsApp</strong>
-      +55 27 98846-2445
-    </div>
-    <div class="card">
-      <strong>Instagram</strong>
-      @swa.gestaointeligente
-    </div>
-    <div class="card">
-      <strong>Localização</strong>
-      Vila Velha – ES
-    </div>
+    <div class="card"><strong>WhatsApp</strong>+55 27 98846-2445</div>
+    <div class="card"><strong>Instagram</strong>@swa.gestaointeligente</div>
+    <div class="card"><strong>Localização</strong>Vila Velha – ES</div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-content">
+    <h2>Pronto para elevar o nível da gestão?</h2>
+    <a href="https://wa.me/5527988462445" target="_blank">Falar no WhatsApp</a>
   </div>
 </section>
 
@@ -283,7 +338,7 @@ footer a{
   <div class="footer">
     <div>
       <strong>SWA – Gestão & Finanças Inteligentes</strong><br>
-      Organização, transparência e inteligência.
+      Plataforma moderna de administração e gestão.
     </div>
     <div>
       WhatsApp: +55 27 98846-2445<br>
