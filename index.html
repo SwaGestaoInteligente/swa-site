@@ -16,7 +16,7 @@
   --accent:#f2c94c;
   --bg:#f5f7fb;
   --white:#ffffff;
-  --text:#2b2b2b;
+  --text:#1f2937;
   --muted:#6b7280;
 }
 
@@ -24,7 +24,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
 }
 
 body{
@@ -32,7 +32,7 @@ body{
   color:var(--text);
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   position:fixed;
   top:0;
@@ -83,7 +83,7 @@ nav a:hover{
   font-weight:700;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
   padding:140px 24px 90px;
   background:linear-gradient(180deg,#ffffff 0%,#f5f7fb 100%);
@@ -131,6 +131,7 @@ nav a:hover{
   color:var(--primary);
 }
 
+/* PANEL */
 .hero-panel{
   background:var(--white);
   border-radius:16px;
@@ -152,7 +153,7 @@ nav a:hover{
   color:#374151;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 section{
   max-width:1200px;
   margin:90px auto;
@@ -165,7 +166,7 @@ section h2{
   margin-bottom:24px;
 }
 
-/* ===== GRID ===== */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -185,7 +186,7 @@ section h2{
   color:var(--primary);
 }
 
-/* ===== CTA ===== */
+/* CTA */
 .cta{
   background:var(--primary);
   color:#fff;
@@ -211,7 +212,7 @@ section h2{
   text-decoration:none;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
   background:#020617;
   color:#e5e7eb;
@@ -231,7 +232,7 @@ footer a{
   text-decoration:none;
 }
 
-/* ===== WHATSAPP ===== */
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
   right:20px;
@@ -245,7 +246,7 @@ footer a{
   box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:900px){
   nav{display:none;}
   .hero-content{grid-template-columns:1fr;}
@@ -266,13 +267,12 @@ footer a{
       <a href="#servicos">Serviços</a>
       <a href="#atuacao">Atuação</a>
       <a href="#contato">Contato</a>
-      <a href="https://www.instagram.com/swa.gestaointeligente/" target="_blank">Instagram</a>
-      <a href="#" class="btn-login">Área do Cliente</a>
+      <a href="login.html" class="btn-login">Área do Cliente</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="plataforma">
   <div class="hero-content">
     <div>
       <h1>Plataforma de Gestão Inteligente</h1>
@@ -282,7 +282,7 @@ footer a{
       </p>
       <div class="hero-actions">
         <a href="#contato" class="btn-primary">Solicitar acesso</a>
-        <a href="#plataforma" class="btn-outline">Conhecer plataforma</a>
+        <a href="#servicos" class="btn-outline">Conhecer recursos</a>
       </div>
     </div>
 
