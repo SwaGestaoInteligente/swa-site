@@ -34,10 +34,10 @@
       --ok:#16a34a;
       --wa:#25D366;
 
-      /* Imagens (claras e seguras) */
-      --img-hero: url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=85"); /* mãos apertando */
-      --img-work: url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2200&q=85"); /* equipe */
-      --img-condo: url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2200&q=85"); /* prédio */
+      /* Imagens */
+      --img-hero: url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=85");
+      --img-work: url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2200&q=85");
+      --img-condo: url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2200&q=85");
     }
 
     *{box-sizing:border-box}
@@ -51,57 +51,56 @@
       overflow-x:hidden;
     }
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:18px 16px 92px}
 
-    /* ====== HEADER (SÓ LOGO 1) FIXO ====== */
+    /* ===== HEADER FIXO BAIXO (não tampa a tela) ===== */
     header{
-      position:sticky;
-      top:10px;
-      z-index:60;
+      position: fixed;
+      top: 10px;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      pointer-events: none; /* evita “tampa” clique no conteúdo */
     }
 
     .topbar{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.88);
+      pointer-events: auto;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.90);
       backdrop-filter: blur(12px);
-      border-radius: 26px;
+      border-radius: 20px;
       box-shadow: 0 10px 22px rgba(15,23,42,.06);
-      padding: 14px;
+
       display:flex;
-      flex-direction:column;
       align-items:center;
-      gap: 12px;
-      overflow:hidden;
+      justify-content:space-between;
+      gap:12px;
     }
 
-    /* LOGO GRANDE (faixa) */
-    .logo-strip{
-      width: 100%;
+    /* LOGO GRANDE, mas com limite de altura */
+    .logo-wrap{
       display:flex;
-      justify-content:center;
       align-items:center;
-      padding: 10px 10px 12px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(11,42,90,.05), rgba(44,90,160,.04));
-      border: 1px solid rgba(15,23,42,.08);
+      gap:10px;
+      min-width: 180px;
     }
-
-    .logo-strip img{
-      width: min(820px, 96vw); /* largo, pega quase tudo */
-      height: auto;
-      border-radius: 18px;
-      background:#fff;
+    .logo-wrap img{
+      height: 54px;          /* ✅ grande sem virar muro */
+      width: auto;
+      border-radius: 14px;
       border: 1px solid rgba(15,23,42,.10);
-      padding: 10px;
-      box-shadow: 0 12px 28px rgba(15,23,42,.08);
+      background:#fff;
+      padding: 6px;
+      box-shadow: 0 10px 22px rgba(15,23,42,.06);
     }
 
-    /* Botões abaixo do logo */
     .actions{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      justify-content:center;
+      justify-content:flex-end;
     }
 
     .btn{
@@ -110,17 +109,23 @@
       border:1px solid var(--line);
       background:#fff;color:var(--primary);
       font-weight:900;font-size:13.5px;
-      transition: transform .15s ease, box-shadow .15s ease;
       white-space:nowrap;
       cursor:pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
     .btn:hover{transform:translateY(-1px);box-shadow:0 12px 20px rgba(15,23,42,.08)}
     .btn.primary{background:var(--primary);color:#fff;border-color: rgba(11,42,90,.30)}
     .btn.ghost{background:transparent}
 
-    /* ====== HERO ====== */
+    /* ===== CONTEÚDO: espaço pra header fixo ===== */
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 98px 16px 92px; /* ✅ empurra o site pra baixo */
+    }
+
+    /* ===== HERO ===== */
     .hero{
-      margin-top:16px;
       border:1px solid var(--line);
       border-radius: var(--radius);
       background:#fff;
@@ -137,7 +142,6 @@
       background-position:center;
     }
     .gridHero{
-      position:relative;
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap: 18px;
@@ -169,7 +173,6 @@
     .kpi b{display:block;font-size:16px;color:var(--primary)}
     .kpi span{display:block;margin-top:4px;color:var(--muted);font-size:12.8px}
 
-    /* imagem visível das mãos */
     .heroPhoto{
       margin-top:14px;
       border:1px solid rgba(15,23,42,.10);
@@ -396,6 +399,10 @@
     .waDot{width:10px;height:10px;border-radius:999px;background:var(--wa);box-shadow:0 0 0 6px rgba(37,211,102,.16)}
 
     @media (max-width: 900px){
+      header{top:8px}
+      .topbar{padding:10px}
+      .logo-wrap img{height:48px}
+      .wrap{padding-top:110px}
       .gridHero{grid-template-columns:1fr}
       .cards,.steps{grid-template-columns:1fr}
       .caseGrid{grid-template-columns:1fr}
@@ -407,21 +414,21 @@
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <div class="topbar">
-        <div class="logo-strip">
-          <img src="swa1.jpeg" alt="Logo SWA (oficial)">
-        </div>
-
-        <div class="actions">
-          <a class="btn ghost" id="btnInstaTop" href="#" target="_blank" rel="noopener">Instagram</a>
-          <a class="btn ghost" id="btnPhoneTop" href="#">Telefone</a>
-          <a class="btn primary" id="btnWhatsTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
+  <!-- HEADER FIXO (baixo e não tampa) -->
+  <header>
+    <div class="topbar">
+      <div class="logo-wrap">
+        <img src="swa1.jpeg" alt="Logo SWA (oficial)">
       </div>
-    </header>
+      <div class="actions">
+        <a class="btn ghost" id="btnInstaTop" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn ghost" id="btnPhoneTop" href="#">Telefone</a>
+        <a class="btn primary" id="btnWhatsTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </header>
 
+  <div class="wrap">
     <main>
       <section class="hero" id="inicio">
         <div class="heroBg">
@@ -711,7 +718,7 @@
       window.addEventListener("load", () => {
         navigator.serviceWorker.register("./service-worker.js").catch(() => {});
       });
-    }
+    });
   </script>
 </body>
 </html>
