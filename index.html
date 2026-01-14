@@ -1,236 +1,424 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel do Cliente | SWA</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SWA — Gestão Financeira, Administração e Inteligência</title>
+  <meta name="description" content="SWA oferece gestão financeira, administração e inteligência para empresas e condomínios. Diagnóstico, organização e rotina de resultados." />
+  <meta name="theme-color" content="#0b1220" />
 
-<style>
-:root{
-  --azul:#0b1c3d;
-  --azul2:#122a5c;
-  --dourado:#f2c94c;
-  --cinza:#f4f6f8;
-  --branco:#ffffff;
-}
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2e;
+      --text:#e9eefc;
+      --muted:#a9b4d0;
+      --line:rgba(255,255,255,.10);
+      --btn:#ffffff;
+      --btnText:#0b1220;
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0; padding:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(85,120,255,.35), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(0,220,180,.18), transparent 50%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:14px 16px; border:1px solid var(--line);
+      background: rgba(15,26,46,.55); backdrop-filter: blur(10px);
+      border-radius: 999px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; min-width: 200px}
+    .brand img{height:36px; width:auto; border-radius:10px}
+    .brand b{font-size:14.5px; letter-spacing:.2px}
 
-body{
-  background:var(--cinza);
-  display:flex;
-  min-height:100vh;
-}
+    .nav{display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
+    .nav a{font-size:13.5px; color:var(--muted)}
+    .nav a:hover{color:var(--text)}
 
-/* SIDEBAR */
-.sidebar{
-  width:240px;
-  background:var(--azul);
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  position:fixed;
-  height:100%;
-}
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius: 999px;
+      border:1px solid var(--line); font-weight:700; font-size:13.5px;
+      background: transparent; color: var(--text);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .btn.primary{
+      background: var(--btn); color: var(--btnText);
+      border-color: rgba(255,255,255,.25);
+    }
+    .btn:hover{transform: translateY(-1px)}
 
-.sidebar .logo{
-  padding:25px;
-  text-align:center;
-  border-bottom:1px solid rgba(255,255,255,0.1);
-}
+    .hero{
+      margin-top:18px;
+      padding:34px 18px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(15,26,46,.75), rgba(15,26,46,.35));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:380px; height:380px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 60%);
+      filter: blur(2px);
+      opacity:.8;
+      transform: rotate(12deg);
+    }
+    .gridHero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px; align-items:center; position:relative
+    }
+    h1{margin:0 0 10px; font-size: clamp(28px, 4vw, 44px); line-height:1.08}
+    .lead{margin:0 0 18px; color: var(--muted); font-size: 15.8px; line-height:1.5; max-width: 60ch}
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 18px}
+    .chip{
+      padding:8px 12px; border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted); font-size: 12.5px;
+    }
+    .heroCard{
+      border:1px solid var(--line);
+      background: rgba(11,18,32,.45);
+      border-radius: var(--radius);
+      padding:18px;
+    }
+    .heroCard h3{margin:0 0 10px; font-size: 14px; color: var(--muted); font-weight:600}
+    .kpis{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .kpi{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding:12px;
+      background: rgba(255,255,255,.03);
+    }
+    .kpi b{display:block; font-size: 18px}
+    .kpi span{color:var(--muted); font-size: 12.8px}
 
-.sidebar .logo img{
-  width:90px;
-}
+    section{margin-top:22px}
+    .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin: 0 0 10px}
+    .sectionTitle h2{margin:0; font-size: 18px}
+    .sectionTitle p{margin:0; color:var(--muted); font-size: 13.5px}
 
-.sidebar nav{
-  flex:1;
-  padding:20px 0;
-}
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+    .card{
+      border:1px solid var(--line);
+      background: rgba(15,26,46,.45);
+      border-radius: var(--radius);
+      padding:16px;
+      min-height: 150px;
+    }
+    .card b{display:block; font-size: 14.5px; margin-bottom:8px}
+    .card p{margin:0; color:var(--muted); font-size: 13.6px; line-height:1.45}
 
-.sidebar nav a{
-  display:block;
-  padding:14px 25px;
-  color:#fff;
-  text-decoration:none;
-  font-size:15px;
-  transition:.3s;
-}
+    .twoCol{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
 
-.sidebar nav a:hover{
-  background:rgba(255,255,255,0.08);
-  border-left:4px solid var(--dourado);
-}
+    .cta{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .cta b{font-size:16px}
+    .cta span{display:block; color:var(--muted); font-size:13.5px; margin-top:6px; line-height:1.4}
 
-.sidebar .sair{
-  padding:20px;
-  border-top:1px solid rgba(255,255,255,0.1);
-}
+    .contactGrid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .contactItem{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:14px;
+      background: rgba(15,26,46,.35);
+    }
+    .contactItem b{display:block; margin-bottom:6px}
+    .contactItem a{color: var(--text)}
+    .contactItem small{display:block; margin-top:6px; color: var(--muted)}
 
-.sidebar .sair a{
-  color:#f2c94c;
-  text-decoration:none;
-}
+    footer{
+      margin-top:22px; padding:18px 2px 0; color:var(--muted); font-size: 12.8px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      border-top:1px solid var(--line);
+    }
+    .small{font-size:12.5px}
 
-/* CONTEÚDO */
-.main{
-  margin-left:240px;
-  padding:30px;
-  width:100%;
-}
+    .waFloat{
+      position: fixed;
+      right: 18px; bottom: 18px;
+      z-index: 50;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+    .waFloat a{
+      display:flex; align-items:center; gap:10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: #ffffff;
+      color:#0b1220;
+      font-weight:800;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .waDot{
+      width:10px; height:10px; border-radius:999px; background: #25D366;
+      box-shadow: 0 0 0 6px rgba(37,211,102,.20);
+    }
 
-.topo{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:30px;
-}
-
-.topo h1{
-  color:var(--azul);
-  font-size:26px;
-}
-
-.topo span{
-  color:#666;
-}
-
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  margin-bottom:40px;
-}
-
-.card{
-  background:var(--branco);
-  padding:25px;
-  border-radius:12px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.05);
-}
-
-.card h3{
-  font-size:15px;
-  color:#666;
-}
-
-.card p{
-  font-size:26px;
-  margin-top:10px;
-  color:var(--azul2);
-  font-weight:600;
-}
-
-/* ÁREA PRINCIPAL */
-.area{
-  background:var(--branco);
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.05);
-}
-
-.area h2{
-  margin-bottom:15px;
-  color:var(--azul);
-}
-
-.area p{
-  color:#555;
-  line-height:1.6;
-}
-
-/* RESPONSIVO */
-@media(max-width:768px){
-  .sidebar{
-    width:200px;
-  }
-  .main{
-    margin-left:200px;
-  }
-}
-
-@media(max-width:600px){
-  .sidebar{
-    position:relative;
-    width:100%;
-    height:auto;
-  }
-  .main{
-    margin-left:0;
-  }
-}
-</style>
+    @media (max-width: 900px){
+      .gridHero{grid-template-columns: 1fr; }
+      .cards{grid-template-columns: 1fr}
+      .twoCol{grid-template-columns: 1fr}
+      .contactGrid{grid-template-columns: 1fr}
+      .nav{display:none}
+      .brand b{display:none}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <img src="swa1.jpeg" alt="Logo SWA" />
+        <b>SWA • Gestão & Inteligência</b>
+      </div>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-  <div class="logo">
-    <img src="swa1.jpeg" alt="SWA">
+      <nav class="nav" aria-label="Navegação">
+        <a href="#servicos">Serviços</a>
+        <a href="#metodo">Como trabalhamos</a>
+        <a href="#publico">Para quem é</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn" id="btnPhoneTop" href="#">Telefone</a>
+        <a class="btn" id="btnInstaTop" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn primary" id="btnWhatsTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="gridHero">
+          <div>
+            <h1>Organização financeira e gestão com clareza, rotina e resultado.</h1>
+            <p class="lead">
+              A <b>SWA</b> ajuda empresas e condomínios a saírem do “apaga incêndio” e entrarem numa gestão simples:
+              números em ordem, processos funcionando e decisões mais inteligentes.
+            </p>
+
+            <div class="chips">
+              <span class="chip">Gestão Financeira</span>
+              <span class="chip">Administração</span>
+              <span class="chip">Indicadores & Rotina</span>
+              <span class="chip">Inteligência para decisões</span>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" id="btnWhatsHero" href="#" target="_blank" rel="noopener">Quero um diagnóstico</a>
+              <a class="btn" href="#servicos">Ver serviços</a>
+            </div>
+
+            <p class="small" style="margin:12px 0 0; color: var(--muted);">
+              Atendimento objetivo • Plano claro • Execução com acompanhamento
+            </p>
+          </div>
+
+          <aside class="heroCard" aria-label="Resumo">
+            <h3>O que você ganha com a SWA</h3>
+            <div class="kpis">
+              <div class="kpi">
+                <b>Controle</b>
+                <span>entradas, saídas e previsibilidade</span>
+              </div>
+              <div class="kpi">
+                <b>Rotina</b>
+                <span>processos que se repetem e funcionam</span>
+              </div>
+              <div class="kpi">
+                <b>Decisão</b>
+                <span>indicadores claros e prioridades</span>
+              </div>
+              <div class="kpi">
+                <b>Entrega</b>
+                <span>acompanhamento e melhoria contínua</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="servicos">
+        <div class="sectionTitle">
+          <h2>Serviços</h2>
+          <p>O básico bem feito, com método.</p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <b>Diagnóstico & Plano de Ação</b>
+            <p>Levantamento do cenário, gargalos, prioridades e um plano simples para organizar e avançar com consistência.</p>
+          </div>
+
+          <div class="card">
+            <b>Gestão Financeira</b>
+            <p>Organização de fluxo de caixa, contas, calendário financeiro e padrões para reduzir falhas e atrasos.</p>
+          </div>
+
+          <div class="card">
+            <b>Rotina Administrativa</b>
+            <p>Processos, checklists, documentos e controles para dar estabilidade e reduzir “correria” no dia a dia.</p>
+          </div>
+
+          <div class="card">
+            <b>Indicadores & Relatórios</b>
+            <p>O essencial: o que acompanhar, como medir e como transformar números em decisões práticas.</p>
+          </div>
+
+          <div class="card">
+            <b>Padronização & Organização</b>
+            <p>Estrutura de pastas, nomes, documentos e gestão visual para facilitar a vida de quem opera.</p>
+          </div>
+
+          <div class="card">
+            <b>Suporte e Acompanhamento</b>
+            <p>Orientação contínua para manter o padrão, corrigir rota e fortalecer a gestão mês a mês.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="metodo" class="twoCol">
+        <div class="card">
+          <b>Como trabalhamos</b>
+          <p>
+            1) Diagnóstico rápido <br/>
+            2) Plano de ação enxuto <br/>
+            3) Implementação com rotina <br/>
+            4) Acompanhamento e melhoria <br/><br/>
+            Sem complicação. Sem “achismo”. Com consistência.
+          </p>
+        </div>
+
+        <div class="card" id="publico">
+          <b>Para quem é</b>
+          <p>
+            • Condomínios (síndico/adm) <br/>
+            • Pequenas e médias empresas <br/>
+            • Prestadores que precisam de organização <br/><br/>
+            Se hoje você sente que “tudo depende de você”, a SWA entra para colocar método e previsibilidade.
+          </p>
+        </div>
+      </section>
+
+      <section id="contato">
+        <div class="cta">
+          <div>
+            <b>Vamos organizar isso em 30 minutos?</b>
+            <span>Me chama no WhatsApp e eu te digo o próximo passo com clareza.</span>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn primary" id="btnWhatsCta" href="#" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+            <a class="btn" id="btnInstaCta" href="#" target="_blank" rel="noopener">Abrir Instagram</a>
+          </div>
+        </div>
+
+        <div class="contactGrid" aria-label="Contatos">
+          <div class="contactItem">
+            <b>WhatsApp</b>
+            <a id="linkWhatsText" href="#" target="_blank" rel="noopener">+55 27 98846-2445</a>
+            <small>Atendimento rápido</small>
+          </div>
+          <div class="contactItem">
+            <b>Telefone</b>
+            <a id="linkPhoneText" href="#">+55 27 98846-2445</a>
+            <small>Chamada direta</small>
+          </div>
+          <div class="contactItem">
+            <b>Instagram</b>
+            <a id="linkInstaText" href="#" target="_blank" rel="noopener">@swa.gestaointeligente</a>
+            <small>Portfólio e atualizações</small>
+          </div>
+        </div>
+
+        <div class="small" style="margin-top:12px; color:var(--muted);">
+          <b>Atuação:</b> Vila Velha/ES e online
+        </div>
+      </section>
+
+      <footer>
+        <div>© <span id="year"></span> SWA — Gestão Financeira, Administração e Inteligência</div>
+        <div class="small">
+          <a id="btnInstaFooter" href="#" target="_blank" rel="noopener">Instagram</a>
+          <span style="opacity:.5"> • </span>
+          <a id="btnWhatsFooter" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <span style="opacity:.5"> • </span>
+          <a id="btnPhoneFooter" href="#">Telefone</a>
+        </div>
+      </footer>
+    </main>
   </div>
 
-  <nav>
-    <a href="#">📊 Visão Geral</a>
-    <a href="#">💰 Financeiro</a>
-    <a href="#">👥 Gestão de Pessoas</a>
-    <a href="#">🛠 Manutenção</a>
-    <a href="#">📁 Documentos</a>
-    <a href="#">📞 Suporte</a>
-  </nav>
-
-  <div class="sair">
-    <a href="login.html">⏻ Sair</a>
-  </div>
-</aside>
-
-<!-- CONTEÚDO -->
-<main class="main">
-
-  <div class="topo">
-    <h1>Painel do Cliente</h1>
-    <span>SWA Gestão Inteligente</span>
+  <div class="waFloat" aria-label="WhatsApp flutuante">
+    <a id="btnWhatsFloat" href="#" target="_blank" rel="noopener">
+      <span class="waDot" aria-hidden="true"></span>
+      WhatsApp
+    </a>
   </div>
 
-  <section class="cards">
-    <div class="card">
-      <h3>Saldo Atual</h3>
-      <p>R$ 0,00</p>
-    </div>
-    <div class="card">
-      <h3>Boletos Pendentes</h3>
-      <p>0</p>
-    </div>
-    <div class="card">
-      <h3>Chamados Abertos</h3>
-      <p>0</p>
-    </div>
-    <div class="card">
-      <h3>Documentos</h3>
-      <p>0</p>
-    </div>
-  </section>
+  <script>
+    // === CONTATOS SWA ===
+    const WHATSAPP_NUMBER_E164 = "5527988462445"; // +55 27 98846-2445 (sem espaços)
+    const PHONE_E164 = "+5527988462445";
+    const INSTAGRAM_URL = "https://www.instagram.com/swa.gestaointeligente/";
 
-  <section class="area">
-    <h2>Bem-vindo à Área do Cliente</h2>
-    <p>
-      Aqui você terá acesso a todas as informações do seu condomínio ou empresa:
-      financeiro, gestão de pessoas, manutenção predial, documentos e suporte.
-    </p>
-    <br>
-    <p>
-      Esta plataforma está em expansão contínua, trazendo transparência,
-      organização e inteligência para sua gestão.
-    </p>
-  </section>
+    // Mensagem padrão do WhatsApp
+    const msg = encodeURIComponent("Olá! Vim pelo site da SWA e quero um diagnóstico rápido.");
 
-</main>
+    // Links
+    const waLink = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${msg}`;
+    const phoneLink = `tel:${PHONE_E164}`;
 
+    // Atribuir links WhatsApp
+    [
+      "btnWhatsTop","btnWhatsHero","btnWhatsCta","btnWhatsFloat","btnWhatsFooter","linkWhatsText"
+    ].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.href = waLink;
+    });
+
+    // Atribuir links telefone
+    ["btnPhoneTop","btnPhoneFooter","linkPhoneText"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.href = phoneLink;
+    });
+
+    // Atribuir links Instagram
+    ["btnInstaTop","btnInstaCta","btnInstaFooter","linkInstaText"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.href = INSTAGRAM_URL;
+    });
+
+    // Ano automático
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
