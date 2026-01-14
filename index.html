@@ -34,10 +34,10 @@
       --ok:#16a34a;
       --wa:#25D366;
 
-      /* Fundos */
-      --img-hero: url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=80"); /* mãos apertando */
-      --img-work: url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2200&q=80"); /* equipe */
-      --img-condo: url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2200&q=80"); /* prédio */
+      /* Imagens (claras e seguras) */
+      --img-hero: url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=85"); /* mãos apertando */
+      --img-work: url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2200&q=85"); /* equipe */
+      --img-condo: url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2200&q=85"); /* prédio */
     }
 
     *{box-sizing:border-box}
@@ -53,70 +53,51 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:18px 16px 92px}
 
-    /* ====== HEADER COM LOGO GIGANTE ====== */
-    header{position:sticky;top:10px;z-index:60}
+    /* ====== HEADER (SÓ LOGO 1) FIXO ====== */
+    header{
+      position:sticky;
+      top:10px;
+      z-index:60;
+    }
 
-    .headerBar{
+    .topbar{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.88);
       backdrop-filter: blur(12px);
       border-radius: 26px;
       box-shadow: 0 10px 22px rgba(15,23,42,.06);
+      padding: 14px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 12px;
       overflow:hidden;
     }
 
-    /* faixa do logo (larga, pega de um lado ao outro) */
-    .brandStrip{
+    /* LOGO GRANDE (faixa) */
+    .logo-strip{
+      width: 100%;
       display:flex;
-      align-items:center;
       justify-content:center;
-      padding:14px 14px 10px;
-      background:
-        linear-gradient(135deg, rgba(11,42,90,.05), rgba(44,90,160,.04));
-      border-bottom:1px solid rgba(15,23,42,.08);
+      align-items:center;
+      padding: 10px 10px 12px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(11,42,90,.05), rgba(44,90,160,.04));
+      border: 1px solid rgba(15,23,42,.08);
     }
 
-    .brandStrip img{
-      width:min(760px, 92vw);
-      height:auto;
+    .logo-strip img{
+      width: min(820px, 96vw); /* largo, pega quase tudo */
+      height: auto;
       border-radius: 18px;
-      border:1px solid rgba(15,23,42,.10);
       background:#fff;
-      padding:10px;
+      border: 1px solid rgba(15,23,42,.10);
+      padding: 10px;
       box-shadow: 0 12px 28px rgba(15,23,42,.08);
     }
 
-    /* banner opcional (logo 2 como apoio visual) */
-    .supportBanner{
-      position:relative;
-      padding:10px 14px 14px;
-      display:flex;
-      justify-content:center;
-    }
-    .supportBannerInner{
-      width:min(900px, 96vw);
-      border:1px solid rgba(15,23,42,.10);
-      border-radius: 22px;
-      overflow:hidden;
-      background:#fff;
-      position:relative;
-      box-shadow: 0 10px 24px rgba(15,23,42,.06);
-    }
-    .supportBannerInner img{
-      width:100%;
-      height:120px;
-      object-fit:contain;
-      display:block;
-      background:#0b2a5a;
-    }
-
-    /* botões na frente */
+    /* Botões abaixo do logo */
     .actions{
-      position:absolute;
-      left:50%;
-      bottom:12px;
-      transform:translateX(-50%);
-      width:calc(100% - 24px);
       display:flex;
       gap:10px;
       flex-wrap:wrap;
@@ -135,7 +116,7 @@
     }
     .btn:hover{transform:translateY(-1px);box-shadow:0 12px 20px rgba(15,23,42,.08)}
     .btn.primary{background:var(--primary);color:#fff;border-color: rgba(11,42,90,.30)}
-    .btn.ghost{background:rgba(255,255,255,.85)}
+    .btn.ghost{background:transparent}
 
     /* ====== HERO ====== */
     .hero{
@@ -421,7 +402,6 @@
       .contactGrid{grid-template-columns:1fr}
       .trust{grid-template-columns:1fr 1fr}
       .formGrid{grid-template-columns:1fr}
-      .supportBannerInner img{height:140px}
     }
   </style>
 </head>
@@ -429,22 +409,15 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="headerBar">
-        <!-- Logo oficial gigante -->
-        <div class="brandStrip">
-          <img src="swa1.jpeg" alt="Logo oficial SWA">
+      <div class="topbar">
+        <div class="logo-strip">
+          <img src="swa1.jpeg" alt="Logo SWA (oficial)">
         </div>
 
-        <!-- Banner de apoio com logo 2 + botões por cima -->
-        <div class="supportBanner">
-          <div class="supportBannerInner">
-            <img src="swa2.jpg" alt="SWA banner (apoio)">
-            <div class="actions">
-              <a class="btn ghost" id="btnInstaTop" href="#" target="_blank" rel="noopener">Instagram</a>
-              <a class="btn ghost" id="btnPhoneTop" href="#">Telefone</a>
-              <a class="btn primary" id="btnWhatsTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
-            </div>
-          </div>
+        <div class="actions">
+          <a class="btn ghost" id="btnInstaTop" href="#" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn ghost" id="btnPhoneTop" href="#">Telefone</a>
+          <a class="btn primary" id="btnWhatsTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
     </header>
