@@ -88,15 +88,26 @@
       overflow:hidden;
     }
     .heroBg{
-      position:relative;
+      position:relative; /* necessário para ::after */
       padding: 28px 16px;
+      /* Overlay mais “leve” (imagens aparecem mais) */
       background:
-        linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.86)),
+        linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,255,255,.72)),
         var(--img-hero);
       background-size:cover;
       background-position:center;
     }
+    /* toque premium discreto */
+    .heroBg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at center, rgba(0,0,0,.06), transparent 60%);
+      pointer-events:none;
+    }
     .gridHero{
+      position:relative; /* fica acima do overlay */
+      z-index:1;
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap: 18px;
@@ -116,14 +127,14 @@
     }
     .heroCard{
       border:1px solid var(--line);
-      background:#fff;
+      background: rgba(255,255,255,.92);
       border-radius: var(--radius);
       padding:16px;
       box-shadow: var(--shadow2);
     }
     .heroCard h3{margin:0 0 10px;font-size:13.5px;color:var(--muted);font-weight:900}
     .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .kpi{border:1px solid var(--line);border-radius:14px;padding:12px;background: rgba(245,247,251,.80)}
+    .kpi{border:1px solid var(--line);border-radius:14px;padding:12px;background: rgba(245,247,251,.86)}
     .kpi b{display:block;font-size:16px;color:var(--primary)}
     .kpi span{display:block;margin-top:4px;color:var(--muted);font-size:12.8px}
 
@@ -133,7 +144,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       padding: 14px;
-      background: rgba(245,247,251,.90);
+      background: rgba(245,247,251,.92);
       border-top: 1px solid var(--line);
     }
     .trustItem{
@@ -151,13 +162,13 @@
     .sectionTitle h2{margin:0;font-size:18px;color:var(--primary)}
     .sectionTitle p{margin:0;color:var(--muted);font-size:13.5px}
 
-    /* Serviços com imagem leve ao fundo */
+    /* Serviços com imagem mais presente */
     #servicos{
       border:1px solid var(--line);
       border-radius: var(--radius);
       overflow:hidden;
       background:
-        linear-gradient(135deg, rgba(245,247,251,.94), rgba(245,247,251,.82)),
+        linear-gradient(135deg, rgba(245,247,251,.85), rgba(245,247,251,.68)),
         var(--img-work);
       background-size:cover;
       background-position:center;
@@ -188,14 +199,14 @@
     .step b{display:block;color:var(--primary)}
     .step span{display:block;margin-top:6px;color:var(--muted);line-height:1.55}
 
-    /* Case com imagem de condomínio */
+    /* Case com imagem mais visível */
     .case{
       border:1px solid rgba(44,90,160,.18);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
       background:
-        linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,255,255,.82)),
+        linear-gradient(135deg, rgba(255,255,255,.86), rgba(255,255,255,.65)),
         var(--img-condo);
       background-size: cover;
       background-position: right center;
@@ -208,7 +219,7 @@
       gap:12px;
       flex-wrap:wrap;
       border-bottom:1px solid rgba(15,23,42,.08);
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.80);
     }
     .badge{
       display:inline-flex;align-items:center;gap:8px;
