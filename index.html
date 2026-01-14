@@ -7,6 +7,13 @@
   <meta name="description" content="SWA — Gestão administrativa e financeira com clareza, rotina e resultado. Condomínios e empresas. Vila Velha/ES e online." />
   <meta name="theme-color" content="#0b2a5a" />
 
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="swa1.jpeg">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SWA">
+
   <style>
     :root{
       --bg:#f5f7fb;
@@ -46,7 +53,6 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:18px 16px 92px}
 
-    /* Topbar */
     header{position:sticky;top:10px;z-index:50}
     .topbar{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
@@ -78,7 +84,6 @@
     .btn.primary{background:var(--primary);color:#fff;border-color: rgba(11,42,90,.30)}
     .btn.ghost{background:transparent}
 
-    /* Hero */
     .hero{
       margin-top:16px;
       border:1px solid var(--line);
@@ -88,16 +93,14 @@
       overflow:hidden;
     }
     .heroBg{
-      position:relative; /* necessário para ::after */
+      position:relative;
       padding: 28px 16px;
-      /* Overlay mais “leve” (imagens aparecem mais) */
       background:
         linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,255,255,.72)),
         var(--img-hero);
       background-size:cover;
       background-position:center;
     }
-    /* toque premium discreto */
     .heroBg::after{
       content:"";
       position:absolute;
@@ -106,7 +109,7 @@
       pointer-events:none;
     }
     .gridHero{
-      position:relative; /* fica acima do overlay */
+      position:relative;
       z-index:1;
       display:grid;
       grid-template-columns: 1.15fr .85fr;
@@ -138,7 +141,6 @@
     .kpi b{display:block;font-size:16px;color:var(--primary)}
     .kpi span{display:block;margin-top:4px;color:var(--muted);font-size:12.8px}
 
-    /* Trust bar */
     .trust{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
@@ -162,7 +164,6 @@
     .sectionTitle h2{margin:0;font-size:18px;color:var(--primary)}
     .sectionTitle p{margin:0;color:var(--muted);font-size:13.5px}
 
-    /* Serviços com imagem mais presente */
     #servicos{
       border:1px solid var(--line);
       border-radius: var(--radius);
@@ -187,7 +188,6 @@
     .card b{display:block;font-size:14.5px;color:var(--primary);margin-bottom:8px}
     .card p{margin:0;color:var(--muted);font-size:13.7px;line-height:1.5}
 
-    /* Steps */
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .step{
       border:1px solid rgba(44,90,160,.18);
@@ -199,7 +199,6 @@
     .step b{display:block;color:var(--primary)}
     .step span{display:block;margin-top:6px;color:var(--muted);line-height:1.55}
 
-    /* Case com imagem mais visível */
     .case{
       border:1px solid rgba(44,90,160,.18);
       border-radius: var(--radius);
@@ -232,7 +231,7 @@
       white-space:nowrap;
     }
     .dot{
-      width:9px;height:9px;border-radius:999px;background:var(--ok);
+      width:9px;height:9px;border-radius:999px;background:#16a34a;
       box-shadow: 0 0 0 6px rgba(22,163,74,.12);
     }
     .caseTitle b{display:block;color:var(--primary);font-size:16px}
@@ -254,7 +253,6 @@
       line-height:1.5;
     }
 
-    /* FAQ */
     .faq{display:grid;gap:10px}
     details{
       border:1px solid var(--line);
@@ -272,7 +270,6 @@
     summary::-webkit-details-marker{display:none}
     details p{margin:10px 0 0;color:var(--muted);line-height:1.6}
 
-    /* Contact + form */
     .cta{
       border:1px solid rgba(44,90,160,.18);
       border-radius: var(--radius);
@@ -319,7 +316,6 @@
       display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
     }
 
-    /* WhatsApp float */
     .waFloat{
       position:fixed;right:18px;bottom:18px;z-index:60;
       border-radius:999px;
@@ -485,164 +481,4 @@
               <b>Operacional</b>
               <ul>
                 <li>Rotina de manutenção e acompanhamento</li>
-                <li>Organização de demandas e prioridades</li>
-                <li>Acompanhamento de serviços/contratos</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="caseNote">
-            *Case apresentado de forma técnica e respeitosa, sem exposição de informações sensíveis.
-          </div>
-        </div>
-      </section>
-
-      <section id="faq">
-        <div class="sectionTitle">
-          <h2>Perguntas frequentes</h2>
-          <p>Pra você decidir com segurança.</p>
-        </div>
-
-        <div class="faq">
-          <details>
-            <summary>Vocês atendem só condomínios?</summary>
-            <p>Atendemos condomínios e empresas. A SWA entra onde precisa de rotina, clareza e gestão organizada.</p>
-          </details>
-          <details>
-            <summary>Como começa o atendimento?</summary>
-            <p>Começa com um diagnóstico rápido. Depois definimos um plano enxuto e partimos para a implementação.</p>
-          </details>
-          <details>
-            <summary>Presencial ou online?</summary>
-            <p>Os dois. Em Vila Velha/ES com presença quando necessário, e também online com acompanhamento contínuo.</p>
-          </details>
-          <details>
-            <summary>Em quanto tempo eu sinto diferença?</summary>
-            <p>O básico destrava rápido quando entra rotina e padrão. O ganho maior vem com consistência mês a mês.</p>
-          </details>
-        </div>
-      </section>
-
-      <section id="contato">
-        <div class="cta">
-          <div class="ctaHead">
-            <div>
-              <b>Quer uma proposta rápida?</b>
-              <div class="sub">Preenche 3 campos e eu recebo no WhatsApp já certinho. Sem burocracia.</div>
-            </div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn primary" id="btnWhatsCta" href="#" target="_blank" rel="noopener">Chamar no WhatsApp</a>
-              <a class="btn" id="btnInstaCta" href="#" target="_blank" rel="noopener">Abrir Instagram</a>
-            </div>
-          </div>
-
-          <form id="leadForm">
-            <div class="formGrid">
-              <div class="field">
-                <label for="nome">Seu nome</label>
-                <input id="nome" name="nome" placeholder="Ex.: Erineu" required />
-              </div>
-              <div class="field">
-                <label for="tipo">Você é…</label>
-                <select id="tipo" name="tipo" required>
-                  <option value="" selected disabled>Selecione</option>
-                  <option>Síndico / Condomínio</option>
-                  <option>Empresa</option>
-                  <option>Prestador / Outro</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="cidade">Cidade</label>
-                <input id="cidade" name="cidade" placeholder="Ex.: Vila Velha" required />
-              </div>
-            </div>
-
-            <div class="formActions">
-              <button class="btn primary" type="submit">Enviar para WhatsApp</button>
-              <a class="btn" href="#inicio">Voltar ao topo</a>
-            </div>
-          </form>
-        </div>
-
-        <div class="contactGrid" aria-label="Contatos">
-          <div class="contactItem">
-            <b>WhatsApp</b>
-            <a id="linkWhatsText" href="#" target="_blank" rel="noopener">+55 27 98846-2445</a>
-            <small>Atendimento rápido</small>
-          </div>
-          <div class="contactItem">
-            <b>Telefone</b>
-            <a id="linkPhoneText" href="#">+55 27 98846-2445</a>
-            <small>Chamada direta</small>
-          </div>
-          <div class="contactItem">
-            <b>Instagram</b>
-            <a id="linkInstaText" href="#" target="_blank" rel="noopener">@swa.gestaointeligente</a>
-            <small>Portfólio e atualizações</small>
-          </div>
-        </div>
-
-        <div style="margin-top:12px;color:var(--muted);font-size:12.8px;">
-          <b>Atuação:</b> Vila Velha/ES e online
-        </div>
-      </section>
-
-      <footer>
-        <div>© <span id="year"></span> SWA — Gestão & Inteligência</div>
-        <div>
-          <a id="btnInstaFooter" href="#" target="_blank" rel="noopener">Instagram</a>
-          <span style="opacity:.45"> • </span>
-          <a id="btnWhatsFooter" href="#" target="_blank" rel="noopener">WhatsApp</a>
-          <span style="opacity:.45"> • </span>
-          <a id="btnPhoneFooter" href="#">Telefone</a>
-        </div>
-      </footer>
-    </main>
-  </div>
-
-  <div class="waFloat" aria-label="WhatsApp flutuante">
-    <a id="btnWhatsFloat" href="#" target="_blank" rel="noopener">
-      <span class="waDot" aria-hidden="true"></span>
-      WhatsApp
-    </a>
-  </div>
-
-  <script>
-    // === CONTATOS SWA ===
-    const WHATSAPP_NUMBER_E164 = "5527988462445";
-    const PHONE_E164 = "+5527988462445";
-    const INSTAGRAM_URL = "https://www.instagram.com/swa.gestaointeligente/";
-
-    const baseMsg = "Olá! Vim pelo site da SWA e quero uma proposta/diagnóstico.";
-    const waBase = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(baseMsg)}`;
-    const phoneLink = `tel:${PHONE_E164}`;
-
-    // WhatsApp
-    ["btnWhatsTop","btnWhatsHero","btnWhatsCta","btnWhatsFloat","btnWhatsFooter","linkWhatsText"]
-      .forEach(id => { const el = document.getElementById(id); if (el) el.href = waBase; });
-
-    // Telefone
-    ["btnPhoneTop","btnPhoneFooter","linkPhoneText"]
-      .forEach(id => { const el = document.getElementById(id); if (el) el.href = phoneLink; });
-
-    // Instagram
-    ["btnInstaTop","btnInstaCta","btnInstaFooter","linkInstaText"]
-      .forEach(id => { const el = document.getElementById(id); if (el) el.href = INSTAGRAM_URL; });
-
-    // Ano
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Form -> WhatsApp (sem backend)
-    document.getElementById("leadForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const nome = document.getElementById("nome").value.trim();
-      const tipo = document.getElementById("tipo").value.trim();
-      const cidade = document.getElementById("cidade").value.trim();
-
-      const full = `Olá! Vim pelo site da SWA.\n\nNome: ${nome}\nPerfil: ${tipo}\nCidade: ${cidade}\n\nQuero uma proposta/diagnóstico.`;
-      const link = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(full)}`;
-      window.open(link, "_blank");
-    });
-  </script>
-</body>
-</html>
+                <li>Organização de demanda
