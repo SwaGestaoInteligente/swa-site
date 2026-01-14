@@ -2,6 +2,709 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b2a5a" />
+
+  <title>SWA — Gestão Inteligente</title>
+  <meta name="description" content="SWA — Gestão administrativa e financeira com clareza, rotina e resultado. Condomínios e empresas. Vila Velha/ES e online." />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="swa1.jpeg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="SWA" />
+
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#667085;
+      --line:rgba(15,23,42,.10);
+
+      --primary:#0b2a5a;
+      --primary2:#2c5aa0;
+
+      --shadow: 0 14px 36px rgba(15,23,42,.10);
+      --shadow2: 0 10px 24px rgba(15,23,42,.06);
+
+      --radius:18px;
+      --max:1120px;
+      --wa:#25D366;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial}
+    body{
+      background:
+        radial-gradient(980px 520px at 10% -10%, rgba(44,90,160,.12), transparent 55%),
+        radial-gradient(900px 480px at 100% 0%, rgba(11,42,90,.08), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    /* ===== TOPO (PEQUENO E DISCRETO) ===== */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background: rgba(245,247,251,.88);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 180px;
+    }
+    .brand img{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      object-fit:cover;
+      border:1px solid rgba(15,23,42,.10);
+      background:#fff;
+      padding:6px;
+      box-shadow: 0 10px 22px rgba(15,23,42,.06);
+    }
+    .brand .t{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand .t strong{font-size:14px;color:var(--primary);letter-spacing:.2px}
+    .brand .t span{font-size:12px;color:var(--muted)}
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--primary);
+      font-weight:900;
+      font-size:13.5px;
+      white-space:nowrap;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 8px 18px rgba(15,23,42,.06);
+      cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(15,23,42,.10)}
+    .btn.primary{background:var(--primary);color:#fff;border-color: rgba(11,42,90,.30)}
+    .btn.soft{background:rgba(255,255,255,.70)}
+
+    /* layout */
+    .wrap{max-width:var(--max);margin:0 auto;padding:16px 16px 92px}
+    section{margin-top:18px}
+
+    /* HERO (imagem clara, sem sombra pesada) */
+    .hero{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroBg{
+      padding: 26px 16px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.72)),
+        url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=90");
+      background-size:cover;
+      background-position:center;
+    }
+    .gridHero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      align-items:start;
+    }
+    h1{margin:0 0 10px;font-size:clamp(26px,3.6vw,44px);line-height:1.06;color:var(--primary)}
+    .lead{margin:0 0 16px;color:var(--muted);font-size:15.8px;line-height:1.55;max-width:64ch}
+
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}
+    .chip{
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(44,90,160,.18);
+      background: rgba(44,90,160,.06);
+      color: var(--primary2);
+      font-size:12.8px;font-weight:900;
+    }
+
+    .heroCard{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.92);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow2);
+    }
+    .heroCard h3{margin:0 0 10px;font-size:13.5px;color:var(--muted);font-weight:900}
+    .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .kpi{border:1px solid var(--line);border-radius:14px;padding:12px;background: rgba(245,247,251,.90)}
+    .kpi b{display:block;font-size:16px;color:var(--primary)}
+    .kpi span{display:block;margin-top:4px;color:var(--muted);font-size:12.8px}
+
+    .trust{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 14px;
+      background: rgba(245,247,251,.92);
+      border-top: 1px solid var(--line);
+    }
+    .trustItem{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background:#fff;
+      padding: 12px;
+      box-shadow: 0 6px 16px rgba(15,23,42,.04);
+    }
+    .trustItem b{display:block;color:var(--primary);font-size:13.5px}
+    .trustItem span{display:block;color:var(--muted);font-size:12.8px;margin-top:4px}
+
+    /* títulos */
+    .sectionTitle{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:0 0 10px}
+    .sectionTitle h2{margin:0;font-size:18px;color:var(--primary)}
+    .sectionTitle p{margin:0;color:var(--muted);font-size:13.5px}
+
+    /* imagens em bloco, claras */
+    .imageBlock{
+      border:1px solid rgba(15,23,42,.10);
+      border-radius: 18px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 14px 32px rgba(15,23,42,.10);
+      margin-bottom: 12px;
+    }
+    .imageBlock img{
+      width:100%;
+      height: 320px;
+      object-fit: cover;
+      object-position:center;
+    }
+    .imageBlock .cap{
+      padding:10px 12px;
+      font-size:12.8px;
+      color:var(--muted);
+      border-top:1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.92);
+    }
+
+    /* cards */
+    .panel{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.75);
+      padding:16px;
+      box-shadow: var(--shadow2);
+    }
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .card{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow2);
+      min-height: 140px;
+    }
+    .card b{display:block;font-size:14.5px;color:var(--primary);margin-bottom:8px}
+    .card p{margin:0;color:var(--muted);font-size:13.7px;line-height:1.5}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .step{
+      border:1px solid rgba(44,90,160,.18);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(44,90,160,.08), rgba(255,255,255,.92));
+      padding:16px;
+      box-shadow: var(--shadow2);
+    }
+    .step b{display:block;color:var(--primary)}
+    .step span{display:block;margin-top:6px;color:var(--muted);line-height:1.55}
+
+    /* Case */
+    .case{
+      border:1px solid rgba(44,90,160,.18);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      background:#fff;
+    }
+    .caseHead{
+      padding:18px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-bottom:1px solid rgba(15,23,42,.08);
+      background: rgba(245,247,251,.92);
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(22,163,74,.25);
+      background: rgba(22,163,74,.08);
+      color:#0f5f2d;
+      font-weight:900;
+      font-size:12.6px;
+      white-space:nowrap;
+    }
+    .dot{width:9px;height:9px;border-radius:999px;background:#16a34a;box-shadow:0 0 0 6px rgba(22,163,74,.12)}
+    .caseTitle b{display:block;color:var(--primary);font-size:16px}
+    .caseTitle span{display:block;color:var(--muted);font-size:13.2px;margin-top:4px;line-height:1.45}
+    .caseGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px}
+    .caseItem{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background:#fff;
+      padding:14px;
+      box-shadow: 0 10px 24px rgba(15,23,42,.05);
+    }
+    .caseItem b{display:block;color:var(--primary);margin-bottom:6px}
+    .caseItem ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.55}
+    .caseNote{padding:0 18px 18px;color:var(--muted);font-size:12.8px;line-height:1.5}
+
+    /* FAQ */
+    .faq{display:grid;gap:10px}
+    details{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background:#fff;
+      padding: 12px 14px;
+      box-shadow: 0 10px 20px rgba(15,23,42,.04);
+    }
+    summary{cursor:pointer;font-weight:950;color:var(--primary);list-style:none}
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0;color:var(--muted);line-height:1.6}
+
+    /* Contato */
+    .cta{
+      border:1px solid rgba(44,90,160,.18);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(44,90,160,.08), rgba(255,255,255,.92));
+      box-shadow: var(--shadow2);
+    }
+    .ctaHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .cta b{font-size:16px;color:var(--primary)}
+    .cta .sub{color:var(--muted);font-size:13.6px;margin-top:6px;line-height:1.45}
+
+    form{margin-top:12px}
+    .formGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    label{font-size:12.8px;color:var(--muted);font-weight:950}
+    input,select{
+      padding:12px 12px;border-radius:14px;border:1px solid var(--line);
+      background:#fff;font-size:14px;outline:none;
+    }
+    input:focus,select:focus{border-color: rgba(44,90,160,.35); box-shadow: 0 0 0 4px rgba(44,90,160,.10)}
+    .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+    .contactGrid{margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .contactItem{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:14px;
+      background:#fff;
+      box-shadow: var(--shadow2);
+    }
+    .contactItem b{display:block;margin-bottom:6px;color:var(--primary)}
+    .contactItem a{color:var(--text);font-weight:950}
+    .contactItem small{display:block;margin-top:6px;color:var(--muted)}
+
+    /* Footer */
+    footer{
+      margin-top:18px;
+      padding:16px 2px 0;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12.8px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* Whats flutuante */
+    .waFloat{
+      position:fixed;right:18px;bottom:18px;z-index:60;
+      border-radius:999px;
+      box-shadow: 0 14px 34px rgba(15,23,42,.14);
+    }
+    .waFloat a{
+      display:flex;align-items:center;gap:10px;
+      padding:12px 14px;border-radius:999px;background:#fff;color:var(--primary);
+      font-weight:950;border:1px solid var(--line);
+    }
+    .waDot{width:10px;height:10px;border-radius:999px;background:var(--wa);box-shadow:0 0 0 6px rgba(37,211,102,.16)}
+
+    /* Botão instalar */
+    .installWrap{
+      display:none;
+    }
+
+    @media (max-width: 900px){
+      .gridHero{grid-template-columns:1fr}
+      .cards,.steps{grid-template-columns:1fr}
+      .caseGrid{grid-template-columns:1fr}
+      .contactGrid{grid-template-columns:1fr}
+      .trust{grid-template-columns:1fr 1fr}
+      .formGrid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <img src="swa1.jpeg" alt="SWA (logo oficial)">
+        <div class="t">
+          <strong>SWA — Gestão Inteligente</strong>
+          <span>Vila Velha/ES • Presencial & Online</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn soft installWrap" id="btnInstall" type="button">Instalar app</button>
+        <a class="btn soft" id="btnInstaTop" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn soft" id="btnPhoneTop" href="#">Telefone</a>
+        <a class="btn primary" id="btnWhatsTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <main>
+      <section class="hero" id="inicio">
+        <div class="heroBg">
+          <div class="gridHero">
+            <div>
+              <h1>Gestão com clareza, rotina e presença.</h1>
+              <p class="lead">
+                A <b>SWA</b> organiza o financeiro e a administração para você respirar.
+                Atendimento humano, processo simples e acompanhamento — do início ao resultado.
+              </p>
+
+              <div class="chips">
+                <span class="chip">Condomínios</span>
+                <span class="chip">Empresas</span>
+                <span class="chip">Financeiro</span>
+                <span class="chip">Rotina & Processos</span>
+              </div>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <a class="btn primary" id="btnWhatsHero" href="#" target="_blank" rel="noopener">Quero uma proposta</a>
+                <a class="btn" href="#trabalhos">Ver trabalho real</a>
+              </div>
+            </div>
+
+            <aside class="heroCard" aria-label="Resumo">
+              <h3>Você ganha:</h3>
+              <div class="kpis">
+                <div class="kpi"><b>Controle</b><span>fluxo de caixa e previsibilidade</span></div>
+                <div class="kpi"><b>Rotina</b><span>processos que funcionam</span></div>
+                <div class="kpi"><b>Decisão</b><span>indicadores claros</span></div>
+                <div class="kpi"><b>Confiança</b><span>acompanhamento contínuo</span></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="trust">
+          <div class="trustItem"><b>Atendimento rápido</b><span>WhatsApp com retorno objetivo</span></div>
+          <div class="trustItem"><b>Transparência</b><span>rotina e relatórios claros</span></div>
+          <div class="trustItem"><b>Organização</b><span>padrões, pastas e controle</span></div>
+          <div class="trustItem"><b>Vila Velha/ES</b><span>presencial e online</span></div>
+        </div>
+      </section>
+
+      <section class="panel" id="servicos">
+        <div class="sectionTitle">
+          <h2>Serviços</h2>
+          <p>O essencial bem feito — sem promessa vazia.</p>
+        </div>
+
+        <div class="imageBlock">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=90" alt="Parceria e confiança — mãos apertando">
+          <div class="cap">Imagem clara e elegante — parceria e confiança.</div>
+        </div>
+
+        <div class="cards">
+          <div class="card"><b>Diagnóstico & Plano</b><p>Levantamento do cenário e plano simples para organizar e avançar com consistência.</p></div>
+          <div class="card"><b>Gestão Financeira</b><p>Fluxo de caixa, contas, calendário e padrões para reduzir falhas, atrasos e retrabalho.</p></div>
+          <div class="card"><b>Rotina Administrativa</b><p>Checklists, documentos e controles para dar estabilidade e reduzir “correria”.</p></div>
+          <div class="card"><b>Indicadores</b><p>O que acompanhar e como decidir com números simples, úteis e constantes.</p></div>
+          <div class="card"><b>Padronização</b><p>Organização de pastas, nomes e documentos para facilitar operação e prestação de contas.</p></div>
+          <div class="card"><b>Acompanhamento</b><p>Suporte contínuo para manter o padrão, ajustar rota e evoluir mês a mês.</p></div>
+        </div>
+      </section>
+
+      <section id="metodo">
+        <div class="sectionTitle">
+          <h2>Método SWA</h2>
+          <p>Simples, claro e executável.</p>
+        </div>
+
+        <div class="imageBlock">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2200&q=90" alt="Equipe e organização">
+          <div class="cap">Rotina, organização e acompanhamento na prática.</div>
+        </div>
+
+        <div class="steps">
+          <div class="step"><b>1) Diagnóstico</b><span>Entendemos a realidade e definimos prioridades com clareza.</span></div>
+          <div class="step"><b>2) Implementação</b><span>Colocamos rotina, controles e padrão funcionando na prática.</span></div>
+          <div class="step"><b>3) Acompanhamento</b><span>Seguimos junto, medindo, corrigindo e melhorando continuamente.</span></div>
+        </div>
+      </section>
+
+      <section id="trabalhos">
+        <div class="sectionTitle">
+          <h2>Trabalho real</h2>
+          <p>Gestão em andamento, sem exposição desnecessária.</p>
+        </div>
+
+        <div class="imageBlock">
+          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2200&q=90" alt="Condomínios e gestão">
+          <div class="cap">Imagem ilustrativa e neutra — sem dados sensíveis.</div>
+        </div>
+
+        <div class="case">
+          <div class="caseHead">
+            <div class="caseTitle">
+              <b>Condomínio Mar Azul — 2ª Etapa</b>
+              <span>Praia da Costa • Vila Velha/ES — atuação administrativa, financeira e operacional em andamento.</span>
+            </div>
+            <div class="badge"><span class="dot" aria-hidden="true"></span>Em andamento</div>
+          </div>
+
+          <div class="caseGrid">
+            <div class="caseItem">
+              <b>Financeiro & Transparência</b>
+              <ul>
+                <li>Rotina de prestação de contas</li>
+                <li>Padronização de relatórios</li>
+                <li>Acompanhamento e previsibilidade</li>
+              </ul>
+            </div>
+            <div class="caseItem">
+              <b>Administrativo & Governança</b>
+              <ul>
+                <li>Documentos e comunicados com padrão</li>
+                <li>Organização de rotinas e processos</li>
+                <li>Apoio ao síndico e conselho</li>
+              </ul>
+            </div>
+            <div class="caseItem">
+              <b>Operacional</b>
+              <ul>
+                <li>Demandas e prioridades organizadas</li>
+                <li>Acompanhamento de serviços/contratos</li>
+                <li>Rotina de manutenção</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="caseNote">
+            *Case apresentado de forma técnica e respeitosa, sem exposição de informações sensíveis.
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="sectionTitle">
+          <h2>Perguntas frequentes</h2>
+          <p>Pra você decidir com segurança.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Vocês atendem só condomínios?</summary>
+            <p>Atendemos condomínios e empresas. A SWA entra onde precisa de rotina, clareza e gestão organizada.</p>
+          </details>
+          <details>
+            <summary>Como começa o atendimento?</summary>
+            <p>Começa com um diagnóstico rápido. Depois definimos um plano enxuto e partimos para a implementação.</p>
+          </details>
+          <details>
+            <summary>Presencial ou online?</summary>
+            <p>Os dois. Em Vila Velha/ES com presença quando necessário, e também online com acompanhamento contínuo.</p>
+          </details>
+          <details>
+            <summary>Em quanto tempo eu sinto diferença?</summary>
+            <p>O básico destrava rápido quando entra rotina e padrão. O ganho maior vem com consistência mês a mês.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contato">
+        <div class="cta">
+          <div class="ctaHead">
+            <div>
+              <b>Quer uma proposta rápida?</b>
+              <div class="sub">Preenche 3 campos e eu recebo no WhatsApp já certinho. Sem burocracia.</div>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" id="btnWhatsCta" href="#" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+              <a class="btn" id="btnInstaCta" href="#" target="_blank" rel="noopener">Abrir Instagram</a>
+            </div>
+          </div>
+
+          <form id="leadForm">
+            <div class="formGrid">
+              <div class="field">
+                <label for="nome">Seu nome</label>
+                <input id="nome" name="nome" placeholder="Ex.: Erineu" required />
+              </div>
+              <div class="field">
+                <label for="tipo">Você é…</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="" selected disabled>Selecione</option>
+                  <option>Síndico / Condomínio</option>
+                  <option>Empresa</option>
+                  <option>Prestador / Outro</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="cidade">Cidade</label>
+                <input id="cidade" name="cidade" placeholder="Ex.: Vila Velha" required />
+              </div>
+            </div>
+
+            <div class="formActions">
+              <button class="btn primary" type="submit">Enviar para WhatsApp</button>
+              <a class="btn" href="#inicio">Voltar ao topo</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="contactGrid" aria-label="Contatos">
+          <div class="contactItem">
+            <b>WhatsApp</b>
+            <a id="linkWhatsText" href="#" target="_blank" rel="noopener">+55 27 98846-2445</a>
+            <small>Atendimento rápido</small>
+          </div>
+          <div class="contactItem">
+            <b>Telefone</b>
+            <a id="linkPhoneText" href="#">+55 27 98846-2445</a>
+            <small>Chamada direta</small>
+          </div>
+          <div class="contactItem">
+            <b>Instagram</b>
+            <a id="linkInstaText" href="#" target="_blank" rel="noopener">@swa.gestaointeligente</a>
+            <small>Portfólio e atualizações</small>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>© <span id="year"></span> SWA — Gestão Inteligente</div>
+        <div>
+          <a id="btnInstaFooter" href="#" target="_blank" rel="noopener">Instagram</a>
+          <span style="opacity:.45"> • </span>
+          <a id="btnWhatsFooter" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <span style="opacity:.45"> • </span>
+          <a id="btnPhoneFooter" href="#">Telefone</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="waFloat" aria-label="WhatsApp flutuante">
+    <a id="btnWhatsFloat" href="#" target="_blank" rel="noopener">
+      <span class="waDot" aria-hidden="true"></span>
+      WhatsApp
+    </a>
+  </div>
+
+  <script>
+    // CONTATOS
+    const WHATSAPP_NUMBER_E164 = "5527988462445";
+    const PHONE_E164 = "+5527988462445";
+    const INSTAGRAM_URL = "https://www.instagram.com/swa.gestaointeligente/";
+
+    // Links base
+    const baseMsg = "Olá! Vim pelo site da SWA e quero uma proposta/diagnóstico.";
+    const waBase = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(baseMsg)}`;
+    const phoneLink = `tel:${PHONE_E164}`;
+
+    // Aplicar links
+    ["btnWhatsTop","btnWhatsHero","btnWhatsCta","btnWhatsFloat","btnWhatsFooter","linkWhatsText"]
+      .forEach(id => { const el = document.getElementById(id); if (el) el.href = waBase; });
+
+    ["btnPhoneTop","btnPhoneFooter","linkPhoneText"]
+      .forEach(id => { const el = document.getElementById(id); if (el) el.href = phoneLink; });
+
+    ["btnInstaTop","btnInstaCta","btnInstaFooter","linkInstaText"]
+      .forEach(id => { const el = document.getElementById(id); if (el) el.href = INSTAGRAM_URL; });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Form -> WhatsApp
+    document.getElementById("leadForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value.trim();
+      const tipo = document.getElementById("tipo").value.trim();
+      const cidade = document.getElementById("cidade").value.trim();
+
+      const full = `Olá! Vim pelo site da SWA.\n\nNome: ${nome}\nPerfil: ${tipo}\nCidade: ${cidade}\n\nQuero uma proposta/diagnóstico.`;
+      const link = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(full)}`;
+      window.open(link, "_blank");
+    });
+
+    // PWA (service worker)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+      });
+    }
+
+    // Botão instalar (beforeinstallprompt)
+    let deferredPrompt = null;
+    const installBtn = document.getElementById("btnInstall");
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = "inline-flex";
+    });
+
+    installBtn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      installBtn.style.display = "none";
+    });
+  </script>
+</body>
+</html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SWA — Gestão & Inteligência</title>
   <meta name="description" content="SWA — Gestão administrativa e financeira com clareza, rotina e resultado. Condomínios e empresas. Vila Velha/ES e online." />
