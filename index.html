@@ -4,34 +4,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SWA — Gestão & Inteligência</title>
-  <meta name="description" content="SWA — Gestão financeira e administrativa com clareza, rotina e resultado. Vila Velha/ES e online." />
+  <meta name="description" content="SWA — Gestão administrativa e financeira com clareza, rotina e resultado. Condomínios e empresas. Vila Velha/ES e online." />
   <meta name="theme-color" content="#0b2a5a" />
 
   <style>
     :root{
       --bg:#f5f7fb;
       --surface:#ffffff;
-      --text:#111827;
+      --text:#0f172a;
       --muted:#6b7280;
-      --line:rgba(17,24,39,.10);
+      --line:rgba(15,23,42,.10);
+
       --primary:#0b2a5a;
       --primary2:#2c5aa0;
-      --shadow: 0 14px 34px rgba(17,24,39,.08);
+
+      --shadow: 0 14px 36px rgba(15,23,42,.10);
+      --shadow2: 0 10px 24px rgba(15,23,42,.06);
+
       --radius:18px;
       --max:1120px;
+
+      --ok:#16a34a;
+      --wa:#25D366;
     }
+
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;}
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial}
     body{
       background:
-        radial-gradient(1000px 520px at 10% -10%, rgba(44,90,160,.12), transparent 55%),
+        radial-gradient(980px 520px at 10% -10%, rgba(44,90,160,.12), transparent 55%),
         radial-gradient(900px 480px at 100% 0%, rgba(11,42,90,.08), transparent 55%),
         var(--bg);
       color:var(--text);
       overflow-x:hidden;
     }
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:18px 16px 90px}
+    .wrap{max-width:var(--max);margin:0 auto;padding:18px 16px 92px}
 
     /* Topbar */
     header{position:sticky;top:10px;z-index:50}
@@ -41,7 +49,7 @@
       background: rgba(255,255,255,.78);
       backdrop-filter: blur(12px);
       border-radius:999px;
-      box-shadow: 0 10px 22px rgba(17,24,39,.06);
+      box-shadow: 0 10px 22px rgba(15,23,42,.06);
     }
     .brand{display:flex;align-items:center;gap:10px;min-width:200px}
     .brand img{height:34px;width:auto;border-radius:12px;border:1px solid var(--line);background:#fff}
@@ -59,53 +67,54 @@
       font-weight:900;font-size:13.5px;
       transition: transform .15s ease, box-shadow .15s ease;
       white-space:nowrap;
+      cursor:pointer;
     }
-    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 20px rgba(17,24,39,.08)}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 20px rgba(15,23,42,.08)}
     .btn.primary{background:var(--primary);color:#fff;border-color: rgba(11,42,90,.30)}
     .btn.ghost{background:transparent}
 
-    /* Hero com vida (imagem + overlay claro) */
+    /* Hero */
     .hero{
       margin-top:16px;
       border:1px solid var(--line);
       border-radius: var(--radius);
+      background:#fff;
       box-shadow: var(--shadow);
       overflow:hidden;
-      background:#fff;
     }
     .heroBg{
       position:relative;
       padding: 28px 16px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.78)),
-        url("https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=70");
-      background-size: cover;
-      background-position: center;
+        linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,255,255,.82)),
+        url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=70");
+      background-size:cover;
+      background-position:center;
     }
     .gridHero{
       display:grid;
-      grid-template-columns: 1.25fr .75fr;
+      grid-template-columns: 1.15fr .85fr;
       gap: 18px;
       align-items:center;
       max-width: var(--max);
       margin: 0 auto;
     }
-    h1{margin:0 0 10px;font-size:clamp(26px,3.6vw,42px);line-height:1.1;color:var(--primary)}
-    .lead{margin:0 0 16px;color:var(--muted);font-size:15.8px;line-height:1.55;max-width:62ch}
+    h1{margin:0 0 10px;font-size:clamp(26px,3.6vw,44px);line-height:1.06;color:var(--primary)}
+    .lead{margin:0 0 16px;color:var(--muted);font-size:15.8px;line-height:1.55;max-width:64ch}
     .chips{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}
     .chip{
       padding:8px 12px;border-radius:999px;
       border:1px solid rgba(44,90,160,.18);
       background: rgba(44,90,160,.06);
       color: var(--primary2);
-      font-size:12.8px;font-weight:800;
+      font-size:12.8px;font-weight:900;
     }
     .heroCard{
       border:1px solid var(--line);
       background:#fff;
       border-radius: var(--radius);
       padding:16px;
-      box-shadow: 0 10px 26px rgba(17,24,39,.06);
+      box-shadow: var(--shadow2);
     }
     .heroCard h3{margin:0 0 10px;font-size:13.5px;color:var(--muted);font-weight:900}
     .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -113,7 +122,7 @@
     .kpi b{display:block;font-size:16px;color:var(--primary)}
     .kpi span{display:block;margin-top:4px;color:var(--muted);font-size:12.8px}
 
-    /* Trust bar (esquenta e dá segurança) */
+    /* Trust bar */
     .trust{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
@@ -127,6 +136,7 @@
       border-radius: 14px;
       background:#fff;
       padding: 12px;
+      box-shadow: 0 6px 16px rgba(15,23,42,.04);
     }
     .trustItem b{display:block;color:var(--primary);font-size:13.5px}
     .trustItem span{display:block;color:var(--muted);font-size:12.8px;margin-top:4px}
@@ -142,60 +152,103 @@
       background:#fff;
       border-radius: var(--radius);
       padding:16px;
-      box-shadow: 0 10px 26px rgba(17,24,39,.05);
+      box-shadow: var(--shadow2);
       min-height: 150px;
     }
     .card b{display:block;font-size:14.5px;color:var(--primary);margin-bottom:8px}
     .card p{margin:0;color:var(--muted);font-size:13.7px;line-height:1.5}
 
-    .twoCol{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
-    /* Seção humana */
-    .human{
-      border:1px solid var(--line);
-      background: linear-gradient(135deg, rgba(44,90,160,.06), rgba(255,255,255,.92));
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .step{
+      border:1px solid rgba(44,90,160,.18);
       border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 10px 24px rgba(17,24,39,.05);
+      background: linear-gradient(135deg, rgba(44,90,160,.08), rgba(255,255,255,.92));
+      padding:16px;
+      box-shadow: var(--shadow2);
     }
-    .humanGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center}
-    .humanPhoto{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(135deg, rgba(11,42,90,.10), rgba(255,255,255,.88)),
-        url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=70");
-      background-size: cover;
-      background-position: center;
-      min-height: 220px;
-      box-shadow: 0 10px 26px rgba(17,24,39,.06);
-    }
-    .human b{color:var(--primary);font-size:16px}
-    .human p{color:var(--muted);margin:8px 0 0;line-height:1.6}
+    .step b{display:block;color:var(--primary)}
+    .step span{display:block;margin-top:6px;color:var(--muted);line-height:1.55}
 
-    /* Depoimentos (calor imediato) */
-    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .tcard{
+    /* Case */
+    .case{
+      border:1px solid rgba(44,90,160,.18);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(11,42,90,.06), rgba(255,255,255,.92));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .caseHead{
+      padding:18px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-bottom:1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.70);
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(22,163,74,.25);
+      background: rgba(22,163,74,.08);
+      color: #0f5f2d;
+      font-weight:900;
+      font-size:12.6px;
+      white-space:nowrap;
+    }
+    .dot{
+      width:9px;height:9px;border-radius:999px;background:var(--ok);
+      box-shadow: 0 0 0 6px rgba(22,163,74,.12);
+    }
+    .caseTitle b{display:block;color:var(--primary);font-size:16px}
+    .caseTitle span{display:block;color:var(--muted);font-size:13.2px;margin-top:4px;line-height:1.45}
+    .caseGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px}
+    .caseItem{
       border:1px solid var(--line);
       border-radius: var(--radius);
       background:#fff;
-      padding:16px;
-      box-shadow: 0 10px 26px rgba(17,24,39,.05);
+      padding:14px;
+      box-shadow: 0 10px 24px rgba(15,23,42,.05);
     }
-    .tcard p{margin:0;color:var(--muted);line-height:1.6}
-    .tcard b{display:block;margin-top:10px;color:var(--primary)}
-    .tcard span{display:block;color:var(--muted);font-size:12.8px;margin-top:2px}
+    .caseItem b{display:block;color:var(--primary);margin-bottom:6px}
+    .caseItem ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.55}
+    .caseNote{
+      padding:0 18px 18px;
+      color:var(--muted);
+      font-size:12.8px;
+      line-height:1.5;
+    }
 
-    /* CTA + formulário (manda pro WhatsApp) */
+    /* FAQ */
+    .faq{display:grid;gap:10px}
+    details{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background:#fff;
+      padding: 12px 14px;
+      box-shadow: 0 10px 20px rgba(15,23,42,.04);
+    }
+    summary{
+      cursor:pointer;
+      font-weight:950;
+      color: var(--primary);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0;color:var(--muted);line-height:1.6}
+
+    /* Contact + form */
     .cta{
       border:1px solid rgba(44,90,160,.18);
       border-radius: var(--radius);
       padding: 18px;
       background: linear-gradient(135deg, rgba(44,90,160,.08), rgba(255,255,255,.92));
-      box-shadow: 0 10px 24px rgba(17,24,39,.05);
+      box-shadow: var(--shadow2);
     }
     .ctaHead{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;
     }
     .cta b{font-size:16px;color:var(--primary)}
     .cta .sub{color:var(--muted);font-size:13.6px;margin-top:6px;line-height:1.45}
@@ -203,11 +256,10 @@
     form{margin-top:12px}
     .formGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .field{display:flex;flex-direction:column;gap:6px}
-    label{font-size:12.8px;color:var(--muted);font-weight:800}
+    label{font-size:12.8px;color:var(--muted);font-weight:950}
     input,select{
       padding:12px 12px;border-radius:14px;border:1px solid var(--line);
-      background:#fff;font-size:14px;
-      outline:none;
+      background:#fff;font-size:14px;outline:none;
     }
     input:focus,select:focus{border-color: rgba(44,90,160,.35); box-shadow: 0 0 0 4px rgba(44,90,160,.10)}
     .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
@@ -221,10 +273,10 @@
       border-radius: var(--radius);
       padding:14px;
       background:#fff;
-      box-shadow: 0 10px 26px rgba(17,24,39,.05);
+      box-shadow: var(--shadow2);
     }
     .contactItem b{display:block;margin-bottom:6px;color:var(--primary)}
-    .contactItem a{color:var(--text);font-weight:900}
+    .contactItem a{color:var(--text);font-weight:950}
     .contactItem small{display:block;margin-top:6px;color:var(--muted)}
 
     footer{
@@ -234,21 +286,23 @@
       display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
     }
 
+    /* WhatsApp float */
     .waFloat{
       position:fixed;right:18px;bottom:18px;z-index:60;
-      border-radius:999px;box-shadow: 0 14px 34px rgba(17,24,39,.14);
+      border-radius:999px;
+      box-shadow: 0 14px 34px rgba(15,23,42,.14);
     }
     .waFloat a{
       display:flex;align-items:center;gap:10px;
       padding:12px 14px;border-radius:999px;background:#fff;color:var(--primary);
       font-weight:950;border:1px solid var(--line);
     }
-    .waDot{width:10px;height:10px;border-radius:999px;background:#25D366;box-shadow:0 0 0 6px rgba(37,211,102,.16)}
+    .waDot{width:10px;height:10px;border-radius:999px;background:var(--wa);box-shadow:0 0 0 6px rgba(37,211,102,.16)}
 
     @media (max-width: 900px){
       .gridHero{grid-template-columns:1fr}
-      .cards,.testimonials{grid-template-columns:1fr}
-      .twoCol,.humanGrid{grid-template-columns:1fr}
+      .cards,.steps{grid-template-columns:1fr}
+      .caseGrid{grid-template-columns:1fr}
       .contactGrid{grid-template-columns:1fr}
       .trust{grid-template-columns:1fr 1fr}
       .formGrid{grid-template-columns:1fr}
@@ -269,8 +323,9 @@
 
         <nav class="nav" aria-label="Navegação">
           <a href="#servicos">Serviços</a>
-          <a href="#metodo">Como trabalhamos</a>
-          <a href="#provas">Confiança</a>
+          <a href="#metodo">Método</a>
+          <a href="#trabalhos">Trabalhos</a>
+          <a href="#faq">FAQ</a>
           <a href="#contato">Contato</a>
         </nav>
 
@@ -287,45 +342,45 @@
         <div class="heroBg">
           <div class="gridHero">
             <div>
-              <h1>Gestão que organiza e aproxima.</h1>
+              <h1>Gestão com clareza, rotina e presença.</h1>
               <p class="lead">
-                A <b>SWA</b> entra para colocar ordem, previsibilidade e paz no dia a dia:
-                finanças claras, rotina funcionando e atendimento direto — sem enrolação.
+                A <b>SWA</b> organiza o financeiro e a administração para você respirar.
+                Atendimento humano, processo simples e acompanhamento — do início ao resultado.
               </p>
 
               <div class="chips">
                 <span class="chip">Condomínios</span>
                 <span class="chip">Empresas</span>
-                <span class="chip">Gestão Financeira</span>
+                <span class="chip">Financeiro</span>
                 <span class="chip">Rotina & Processos</span>
               </div>
 
               <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <a class="btn primary" id="btnWhatsHero" href="#" target="_blank" rel="noopener">Quero uma proposta</a>
-                <a class="btn" href="#servicos">Ver serviços</a>
+                <a class="btn" href="#trabalhos">Ver trabalho real</a>
               </div>
 
-              <p style="margin:12px 0 0; color: var(--muted); font-size: 12.8px;">
-                Vila Velha/ES • Atendimento humano • Transparência • Rotina
+              <p style="margin:12px 0 0;color:var(--muted);font-size:12.8px;">
+                Vila Velha/ES • Transparência • Organização • Acompanhamento
               </p>
             </div>
 
             <aside class="heroCard" aria-label="Resumo">
               <h3>Você ganha:</h3>
               <div class="kpis">
-                <div class="kpi"><b>Controle</b><span>sem sustos no caixa</span></div>
-                <div class="kpi"><b>Rotina</b><span>processos simples</span></div>
-                <div class="kpi"><b>Decisão</b><span>prioridade clara</span></div>
-                <div class="kpi"><b>Confiança</b><span>acompanhamento</span></div>
+                <div class="kpi"><b>Controle</b><span>fluxo de caixa e previsibilidade</span></div>
+                <div class="kpi"><b>Rotina</b><span>processos que funcionam</span></div>
+                <div class="kpi"><b>Decisão</b><span>indicadores claros</span></div>
+                <div class="kpi"><b>Confiança</b><span>acompanhamento contínuo</span></div>
               </div>
             </aside>
           </div>
         </div>
 
-        <div class="trust" id="provas">
-          <div class="trustItem"><b>Atendimento rápido</b><span>WhatsApp com resposta objetiva</span></div>
-          <div class="trustItem"><b>Transparência</b><span>relatórios e rotina sem mistério</span></div>
-          <div class="trustItem"><b>Organização</b><span>processos, pastas e padrões</span></div>
+        <div class="trust">
+          <div class="trustItem"><b>Atendimento rápido</b><span>WhatsApp com retorno objetivo</span></div>
+          <div class="trustItem"><b>Transparência</b><span>rotina e relatórios claros</span></div>
+          <div class="trustItem"><b>Organização</b><span>padrões, pastas e controle</span></div>
           <div class="trustItem"><b>Vila Velha/ES</b><span>presencial e online</span></div>
         </div>
       </section>
@@ -333,74 +388,105 @@
       <section id="servicos">
         <div class="sectionTitle">
           <h2>Serviços</h2>
-          <p>Objetivo, claro e sem “gambiarras”.</p>
+          <p>O essencial bem feito — sem promessa vazia.</p>
         </div>
 
         <div class="cards">
           <div class="card"><b>Diagnóstico & Plano</b><p>Levantamento do cenário e um plano simples para organizar e avançar com consistência.</p></div>
-          <div class="card"><b>Gestão Financeira</b><p>Fluxo de caixa, contas, calendário financeiro e padrão para reduzir falhas e atrasos.</p></div>
-          <div class="card"><b>Rotina Administrativa</b><p>Checklists, documentos e controles para dar estabilidade e reduzir a “correria”.</p></div>
-          <div class="card"><b>Indicadores</b><p>O essencial para acompanhar e decidir: simples, prático e útil.</p></div>
-          <div class="card"><b>Padronização</b><p>Organização de pastas, nomes, arquivos e gestão visual para facilitar a operação.</p></div>
-          <div class="card"><b>Acompanhamento</b><p>Suporte contínuo para manter o padrão e melhorar mês a mês.</p></div>
+          <div class="card"><b>Gestão Financeira</b><p>Fluxo de caixa, contas, calendário e padrões para reduzir falhas, atrasos e retrabalho.</p></div>
+          <div class="card"><b>Rotina Administrativa</b><p>Checklists, documentos e controles para dar estabilidade e reduzir “correria”.</p></div>
+          <div class="card"><b>Indicadores</b><p>O que acompanhar e como decidir com números simples, úteis e constantes.</p></div>
+          <div class="card"><b>Padronização</b><p>Organização de pastas, nomes e documentos para facilitar a operação e a prestação de contas.</p></div>
+          <div class="card"><b>Acompanhamento</b><p>Suporte contínuo para manter o padrão, ajustar rota e evoluir mês a mês.</p></div>
         </div>
       </section>
 
-      <section class="twoCol" id="metodo">
-        <div class="card">
-          <b>Como trabalhamos</b>
-          <p style="margin:0;color:var(--muted);line-height:1.6;">
-            1) Diagnóstico rápido<br/>
-            2) Plano enxuto<br/>
-            3) Implementação com rotina<br/>
-            4) Acompanhamento e melhoria<br/><br/>
-            Você entende o que está sendo feito — e por quê.
-          </p>
-        </div>
-
-        <div class="card">
-          <b>Para quem é</b>
-          <p style="margin:0;color:var(--muted);line-height:1.6;">
-            • Condomínios (síndico/adm)<br/>
-            • Pequenas e médias empresas<br/>
-            • Prestadores que precisam de organização<br/><br/>
-            Se hoje você sente que “tudo depende de você”, a SWA coloca método e previsibilidade.
-          </p>
-        </div>
-      </section>
-
-      <section class="human" id="humano">
-        <div class="humanGrid">
-          <div>
-            <b>Atendimento humano (de verdade)</b>
-            <p>
-              Aqui não é “site bonito e sumiço”. Você fala direto, recebe orientação clara,
-              e a gestão entra em rotina. Menos ansiedade, mais ordem — do jeito certo.
-            </p>
-          </div>
-          <div class="humanPhoto" aria-label="Imagem ilustrativa"></div>
-        </div>
-      </section>
-
-      <section id="depoimentos">
+      <section id="metodo">
         <div class="sectionTitle">
-          <h2>Depoimentos</h2>
-          <p>É isso que dá “calor” e confiança.</p>
+          <h2>Método SWA</h2>
+          <p>Simples, claro e executável.</p>
         </div>
 
-        <div class="testimonials">
-          <div class="tcard">
-            <p>“A SWA trouxe rotina e clareza. O financeiro parou de virar urgência todo mês.”</p>
-            <b>Síndico</b><span>Vila Velha/ES</span>
+        <div class="steps">
+          <div class="step"><b>1) Diagnóstico</b><span>Entendemos a realidade e definimos prioridades com clareza.</span></div>
+          <div class="step"><b>2) Implementação</b><span>Colocamos rotina, controles e padrão funcionando na prática.</span></div>
+          <div class="step"><b>3) Acompanhamento</b><span>Seguimos junto, medindo, corrigindo e melhorando continuamente.</span></div>
+        </div>
+      </section>
+
+      <section id="trabalhos">
+        <div class="sectionTitle">
+          <h2>Trabalho em andamento</h2>
+          <p>Gestão real, com responsabilidade real.</p>
+        </div>
+
+        <div class="case">
+          <div class="caseHead">
+            <div class="caseTitle">
+              <b>Condomínio Mar Azul — 2ª Etapa</b>
+              <span>Praia da Costa • Vila Velha/ES — atuação administrativa, financeira e operacional em andamento.</span>
+            </div>
+            <div class="badge"><span class="dot" aria-hidden="true"></span>Em andamento</div>
           </div>
-          <div class="tcard">
-            <p>“O que eu mais gostei foi a resposta rápida e objetiva. Sem enrolação.”</p>
-            <b>Administração</b><span>Condomínio residencial</span>
+
+          <div class="caseGrid">
+            <div class="caseItem">
+              <b>Financeiro & Transparência</b>
+              <ul>
+                <li>Organização de fluxo e rotina de prestação de contas</li>
+                <li>Padronização de relatórios e acompanhamento</li>
+                <li>Suporte à previsibilidade e decisões</li>
+              </ul>
+            </div>
+
+            <div class="caseItem">
+              <b>Administrativo & Governança</b>
+              <ul>
+                <li>Documentos e comunicados com padrão</li>
+                <li>Organização de rotinas e processos</li>
+                <li>Apoio ao síndico e conselho</li>
+              </ul>
+            </div>
+
+            <div class="caseItem">
+              <b>Operacional</b>
+              <ul>
+                <li>Rotina de manutenção e acompanhamento</li>
+                <li>Organização de demandas e prioridades</li>
+                <li>Acompanhamento de serviços/contratos</li>
+              </ul>
+            </div>
           </div>
-          <div class="tcard">
-            <p>“Organização de processos e documentos: ficou tudo simples de operar.”</p>
-            <b>Gestão</b><span>Empresa</span>
+
+          <div class="caseNote">
+            *Observação: o case é apresentado de forma técnica e respeitosa, sem exposição de informações sensíveis.
           </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="sectionTitle">
+          <h2>Perguntas frequentes</h2>
+          <p>Pra você decidir com segurança.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Vocês atendem só condomínios?</summary>
+            <p>Atendemos condomínios e empresas. A SWA entra onde precisa de rotina, clareza e gestão organizada.</p>
+          </details>
+          <details>
+            <summary>Como começa o atendimento?</summary>
+            <p>Começa com um diagnóstico rápido. Depois definimos um plano enxuto e partimos para a implementação.</p>
+          </details>
+          <details>
+            <summary>Presencial ou online?</summary>
+            <p>Os dois. Em Vila Velha/ES com presença quando necessário, e também online com acompanhamento contínuo.</p>
+          </details>
+          <details>
+            <summary>Em quanto tempo eu sinto diferença?</summary>
+            <p>O básico destrava rápido quando entra rotina e padrão. O ganho maior vem com consistência mês a mês.</p>
+          </details>
         </div>
       </section>
 
@@ -409,7 +495,7 @@
           <div class="ctaHead">
             <div>
               <b>Quer uma proposta rápida?</b>
-              <div class="sub">Preenche 3 campos e eu já recebo no WhatsApp prontinho.</div>
+              <div class="sub">Preenche 3 campos e eu recebo no WhatsApp já certinho. Sem burocracia.</div>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
               <a class="btn primary" id="btnWhatsCta" href="#" target="_blank" rel="noopener">Chamar no WhatsApp</a>
@@ -494,20 +580,24 @@
     const PHONE_E164 = "+5527988462445";
     const INSTAGRAM_URL = "https://www.instagram.com/swa.gestaointeligente/";
 
-    const baseMsg = "Olá! Vim pelo site da SWA e quero uma proposta.";
-    const msg = encodeURIComponent(baseMsg);
-    const waLink = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${msg}`;
+    // Links base
+    const baseMsg = "Olá! Vim pelo site da SWA e quero uma proposta/diagnóstico.";
+    const waBase = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(baseMsg)}`;
     const phoneLink = `tel:${PHONE_E164}`;
 
+    // Aplicar links WhatsApp
     ["btnWhatsTop","btnWhatsHero","btnWhatsCta","btnWhatsFloat","btnWhatsFooter","linkWhatsText"]
-      .forEach(id => { const el = document.getElementById(id); if (el) el.href = waLink; });
+      .forEach(id => { const el = document.getElementById(id); if (el) el.href = waBase; });
 
+    // Telefone
     ["btnPhoneTop","btnPhoneFooter","linkPhoneText"]
       .forEach(id => { const el = document.getElementById(id); if (el) el.href = phoneLink; });
 
+    // Instagram
     ["btnInstaTop","btnInstaCta","btnInstaFooter","linkInstaText"]
       .forEach(id => { const el = document.getElementById(id); if (el) el.href = INSTAGRAM_URL; });
 
+    // Ano
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Form -> WhatsApp (sem backend)
