@@ -1,248 +1,176 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<title>Painel do Cliente | SWA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SWA | Área do Cliente</title>
 
 <style>
-:root{
-  --primary:#0b1a3a;
-  --secondary:#1f3b73;
-  --accent:#f2c94c;
-  --bg:#f5f7fb;
-  --white:#ffffff;
-  --text:#1f2937;
-  --muted:#6b7280;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f6f8;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Inter, Arial, sans-serif;
+.layout {
+  display: flex;
+  height: 100vh;
 }
 
-body{
-  background:var(--bg);
-  color:var(--text);
-  display:flex;
-  min-height:100vh;
+/* MENU */
+aside {
+  width: 240px;
+  background: #0b1d3a;
+  color: #fff;
+  padding: 20px;
 }
 
-/* SIDEBAR */
-.sidebar{
-  width:260px;
-  background:var(--primary);
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  padding:24px 16px;
+aside img {
+  width: 120px;
+  margin-bottom: 30px;
 }
 
-.sidebar .logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:40px;
+aside button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: none;
+  border: none;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
 }
 
-.sidebar img{
-  height:42px;
+aside button:hover {
+  background: #132f5c;
 }
 
-.sidebar strong{
-  font-size:16px;
+/* CONTEÚDO */
+main {
+  flex: 1;
+  padding: 30px;
 }
 
-.menu a{
-  display:block;
-  padding:12px 16px;
-  margin-bottom:6px;
-  text-decoration:none;
-  color:#e5e7eb;
-  border-radius:8px;
-  font-weight:600;
+.section {
+  display: none;
 }
 
-.menu a:hover{
-  background:var(--secondary);
+.section.active {
+  display: block;
 }
 
-.menu a.active{
-  background:var(--accent);
-  color:#000;
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
 }
 
-/* MAIN */
-.main{
-  flex:1;
-  padding:32px;
-}
-
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:32px;
-}
-
-.topbar h1{
-  font-size:24px;
-  color:var(--primary);
-}
-
-.user{
-  font-weight:600;
-  color:var(--muted);
-}
-
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:24px;
-  margin-bottom:40px;
-}
-
-.card{
-  background:var(--white);
-  padding:24px;
-  border-radius:14px;
-  border:1px solid #e5e7eb;
-}
-
-.card strong{
-  display:block;
-  color:var(--primary);
-  margin-bottom:8px;
-}
-
-.card span{
-  font-size:28px;
-  font-weight:700;
-}
-
-/* TABLE */
-.table{
-  background:var(--white);
-  border-radius:14px;
-  padding:24px;
-  border:1px solid #e5e7eb;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-th, td{
-  text-align:left;
-  padding:12px 8px;
-}
-
-th{
-  color:var(--muted);
-  font-weight:600;
-  border-bottom:1px solid #e5e7eb;
-}
-
-td{
-  border-bottom:1px solid #f1f5f9;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .sidebar{
-    display:none;
-  }
-  body{
-    flex-direction:column;
-  }
+h2 {
+  margin-top: 0;
 }
 </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-  <div class="logo">
-    <img src="swa1.jpeg" alt="SWA">
-    <strong>SWA</strong>
-  </div>
+<div class="layout">
 
-  <nav class="menu">
-    <a href="#" class="active">Dashboard</a>
-    <a href="#">Financeiro</a>
-    <a href="#">Pessoas</a>
-    <a href="#">Manutenção</a>
-    <a href="#">Relatórios</a>
-    <a href="index.html">Voltar ao site</a>
-  </nav>
+<!-- MENU -->
+<aside>
+  <img src="swa1.jpeg" alt="SWA Logo">
+
+  <button onclick="showSection('geral')">📊 Visão Geral</button>
+  <button onclick="showSection('financeiro')">💰 Financeiro</button>
+  <button onclick="showSection('pessoas')">👥 Gestão de Pessoas</button>
+  <button onclick="showSection('manutencao')">🛠️ Manutenção</button>
+  <button onclick="showSection('documentos')">📁 Documentos</button>
+  <button onclick="showSection('suporte')">☎️ Suporte</button>
 </aside>
 
-<!-- MAIN -->
-<main class="main">
+<!-- CONTEÚDO -->
+<main>
 
-  <div class="topbar">
-    <h1>Dashboard</h1>
-    <div class="user">Cliente SWA</div>
+<!-- VISÃO GERAL -->
+<div id="geral" class="section active">
+  <div class="card">
+    <h2>Bem-vindo à Área do Cliente</h2>
+    <p>Aqui você acompanha financeiro, documentos, manutenção e suporte.</p>
+  </div>
+</div>
+
+<!-- FINANCEIRO -->
+<div id="financeiro" class="section">
+  <div class="card">
+    <h2>Financeiro</h2>
+    <p><strong>Saldo Atual:</strong> R$ 0,00</p>
+    <p><strong>Boletos Pendentes:</strong> 0</p>
   </div>
 
-  <!-- KPIs -->
-  <section class="cards">
-    <div class="card">
-      <strong>Saldo Atual</strong>
-      <span>R$ 125.430</span>
-    </div>
-    <div class="card">
-      <strong>Despesas do Mês</strong>
-      <span>R$ 32.800</span>
-    </div>
-    <div class="card">
-      <strong>Manutenções</strong>
-      <span>5 abertas</span>
-    </div>
-    <div class="card">
-      <strong>Funcionários</strong>
-      <span>12 ativos</span>
-    </div>
-  </section>
-
-  <!-- TABLE -->
-  <section class="table">
-    <h3 style="margin-bottom:16px;color:#0b1a3a;">Últimas movimentações</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Data</th>
-          <th>Descrição</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>10/01/2026</td>
-          <td>Manutenção elétrica</td>
-          <td>R$ 4.500</td>
-        </tr>
-        <tr>
-          <td>08/01/2026</td>
-          <td>Folha de pagamento</td>
-          <td>R$ 18.200</td>
-        </tr>
-        <tr>
-          <td>05/01/2026</td>
-          <td>Material de limpeza</td>
-          <td>R$ 1.350</td>
-        </tr>
-      </tbody>
+  <div class="card">
+    <h3>Histórico Financeiro</h3>
+    <table width="100%" border="0" cellspacing="0">
+      <tr>
+        <th>Data</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
     </table>
-  </section>
+  </div>
+</div>
+
+<!-- GESTÃO DE PESSOAS -->
+<div id="pessoas" class="section">
+  <div class="card">
+    <h2>Gestão de Pessoas</h2>
+    <p>Módulo em desenvolvimento.</p>
+  </div>
+</div>
+
+<!-- MANUTENÇÃO -->
+<div id="manutencao" class="section">
+  <div class="card">
+    <h2>Manutenção</h2>
+    <p>Chamados e ordens de serviço.</p>
+  </div>
+</div>
+
+<!-- DOCUMENTOS -->
+<div id="documentos" class="section">
+  <div class="card">
+    <h2>Documentos</h2>
+    <p>Atas, contratos e arquivos.</p>
+  </div>
+</div>
+
+<!-- SUPORTE -->
+<div id="suporte" class="section">
+  <div class="card">
+    <h2>Suporte</h2>
+    <p>WhatsApp: <strong>+55 27 98846-2445</strong></p>
+  </div>
+</div>
 
 </main>
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+}
+</script>
 
 </body>
 </html>
