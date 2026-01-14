@@ -1,1 +1,25 @@
 
+{
+  "name": "SWA — Gestão & Inteligência",
+  "short_name": "SWA",
+  "description": "Gestão administrativa e financeira com clareza, rotina e resultado.",
+  "start_url": "/swa-site/?source=pwa",
+  "scope": "/swa-site/",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#0b2a5a",
+  "icons": [
+    {
+      "src": "swa1.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "swa1.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
