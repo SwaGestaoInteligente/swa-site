@@ -3,69 +3,132 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SWA — Gestão Financeira, Administração e Inteligência</title>
-  <meta name="description" content="SWA oferece gestão financeira, administração e inteligência para empresas e condomínios. Diagnóstico, organização e rotina de resultados." />
-  <meta name="theme-color" content="#0b1220" />
+  <title>SWA — Gestão Inteligente</title>
+  <meta name="description" content="SWA — Gestão financeira e administrativa com clareza, rotina e resultado. Atendimento em Vila Velha/ES e online." />
+
+  <!-- PWA-friendly (mesmo sem manifest por enquanto) -->
+  <meta name="theme-color" content="#0b2a5a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#0f1a2e;
-      --text:#e9eefc;
-      --muted:#a9b4d0;
-      --line:rgba(255,255,255,.10);
-      --btn:#ffffff;
-      --btnText:#0b1220;
-      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      /* Clean corporativo */
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: rgba(17,24,39,.10);
+
+      --primary: #0b2a5a;  /* Azul SWA (mais suave e corporativo) */
+      --primary2: #2c5aa0; /* Azul de apoio */
+      --shadow: 0 12px 34px rgba(17,24,39,.08);
+
       --radius: 18px;
       --max: 1120px;
     }
+
     *{box-sizing:border-box}
-    html,body{
-      margin:0; padding:0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;
+    html,body{margin:0; padding:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;}
+    body{
       background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(85,120,255,.35), transparent 55%),
-        radial-gradient(900px 500px at 100% 0%, rgba(0,220,180,.18), transparent 50%),
+        radial-gradient(1000px 500px at 10% -10%, rgba(44,90,160,.12), transparent 55%),
+        radial-gradient(900px 480px at 100% 0%, rgba(11,42,90,.10), transparent 50%),
         var(--bg);
-      color:var(--text);
+      color: var(--text);
+      overflow-x:hidden;
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
+    .wrap{max-width: var(--max); margin: 0 auto; padding: 18px 16px 80px;}
 
+    /* Splash Screen (logo ao abrir) */
+    .splash{
+      position: fixed; inset: 0;
+      background: var(--bg);
+      display:flex; align-items:center; justify-content:center;
+      z-index: 9999;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+    .splash.hide{opacity:0; visibility:hidden;}
+    .splashCard{
+      width: min(520px, calc(100% - 32px));
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+      display:flex; align-items:center; gap:14px;
+    }
+    .splashCard img{
+      width: 52px; height: 52px; object-fit:cover;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background:#fff;
+    }
+    .splashCard b{display:block; font-size: 16px; letter-spacing:.2px}
+    .splashCard span{display:block; font-size: 13px; color: var(--muted); margin-top:4px}
+    .loader{
+      margin-left:auto;
+      width: 22px; height: 22px;
+      border: 2px solid rgba(11,42,90,.18);
+      border-top-color: rgba(11,42,90,.70);
+      border-radius: 999px;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Topbar */
+    header{
+      position: sticky;
+      top: 10px;
+      z-index: 50;
+    }
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:14px 16px; border:1px solid var(--line);
-      background: rgba(15,26,46,.55); backdrop-filter: blur(10px);
+      gap:12px;
+      padding: 12px 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      backdrop-filter: blur(12px);
       border-radius: 999px;
+      box-shadow: 0 8px 22px rgba(17,24,39,.06);
     }
-    .brand{display:flex; align-items:center; gap:10px; min-width: 200px}
-    .brand img{height:36px; width:auto; border-radius:10px}
-    .brand b{font-size:14.5px; letter-spacing:.2px}
+    .brand{display:flex; align-items:center; gap:10px; min-width: 200px;}
+    .brand img{height:34px; width:auto; border-radius: 12px; border:1px solid var(--line); background:#fff}
+    .brand b{font-size: 14px; letter-spacing:.2px}
+    .nav{display:flex; gap:14px; flex-wrap:wrap; justify-content:center;}
+    .nav a{font-size: 13.5px; color: var(--muted);}
+    .nav a:hover{color: var(--primary);}
 
-    .nav{display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
-    .nav a{font-size:13.5px; color:var(--muted)}
-    .nav a:hover{color:var(--text)}
-
-    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius: 999px;
-      border:1px solid var(--line); font-weight:700; font-size:13.5px;
-      background: transparent; color: var(--text);
-      transition: transform .15s ease, background .15s ease;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 13.5px;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 10px 20px rgba(17,24,39,.08);}
     .btn.primary{
-      background: var(--btn); color: var(--btnText);
-      border-color: rgba(255,255,255,.25);
+      background: var(--primary);
+      color:#fff;
+      border-color: rgba(11,42,90,.35);
     }
-    .btn:hover{transform: translateY(-1px)}
+    .btn.ghost{
+      background: transparent;
+      color: var(--primary);
+    }
 
+    /* Hero */
     .hero{
-      margin-top:18px;
-      padding:34px 18px;
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(15,26,46,.75), rgba(15,26,46,.35));
+      margin-top: 16px;
+      padding: 28px 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.85);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -73,146 +136,171 @@
     }
     .hero:before{
       content:"";
-      position:absolute; inset:-120px -120px auto auto;
-      width:380px; height:380px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 60%);
-      filter: blur(2px);
-      opacity:.8;
+      position:absolute; inset:-140px -140px auto auto;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle at 30% 30%, rgba(44,90,160,.18), transparent 60%);
       transform: rotate(12deg);
     }
     .gridHero{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
-      gap:22px; align-items:center; position:relative
+      gap: 18px;
+      align-items:center;
+      position:relative;
     }
-    h1{margin:0 0 10px; font-size: clamp(28px, 4vw, 44px); line-height:1.08}
-    .lead{margin:0 0 18px; color: var(--muted); font-size: 15.8px; line-height:1.5; max-width: 60ch}
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 18px}
+    h1{margin:0 0 10px; font-size: clamp(26px, 3.6vw, 42px); line-height:1.1; color: var(--primary);}
+    .lead{margin:0 0 16px; color: var(--muted); font-size: 15.8px; line-height:1.55; max-width: 62ch;}
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 16px}
     .chip{
-      padding:8px 12px; border-radius: 999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--muted); font-size: 12.5px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(44,90,160,.18);
+      background: rgba(44,90,160,.06);
+      color: var(--primary2);
+      font-size: 12.8px;
+      font-weight: 700;
     }
     .heroCard{
-      border:1px solid var(--line);
-      background: rgba(11,18,32,.45);
+      border: 1px solid var(--line);
+      background: #fff;
       border-radius: var(--radius);
-      padding:18px;
+      padding: 16px;
+      box-shadow: 0 10px 26px rgba(17,24,39,.06);
     }
-    .heroCard h3{margin:0 0 10px; font-size: 14px; color: var(--muted); font-weight:600}
-    .kpis{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .heroCard h3{margin:0 0 10px; font-size: 13.5px; color: var(--muted); font-weight: 800;}
+    .kpis{display:grid; grid-template-columns: 1fr 1fr; gap:10px;}
     .kpi{
-      border:1px solid var(--line);
+      border: 1px solid var(--line);
       border-radius: 14px;
-      padding:12px;
-      background: rgba(255,255,255,.03);
+      padding: 12px;
+      background: rgba(245,247,251,.75);
     }
-    .kpi b{display:block; font-size: 18px}
-    .kpi span{color:var(--muted); font-size: 12.8px}
+    .kpi b{display:block; font-size: 16px; color: var(--primary);}
+    .kpi span{display:block; margin-top:4px; color: var(--muted); font-size: 12.8px;}
 
-    section{margin-top:22px}
-    .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin: 0 0 10px}
-    .sectionTitle h2{margin:0; font-size: 18px}
-    .sectionTitle p{margin:0; color:var(--muted); font-size: 13.5px}
+    section{margin-top: 18px;}
+    .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin: 0 0 10px;}
+    .sectionTitle h2{margin:0; font-size: 18px; color: var(--primary);}
+    .sectionTitle p{margin:0; color: var(--muted); font-size: 13.5px;}
 
-    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;}
     .card{
       border:1px solid var(--line);
-      background: rgba(15,26,46,.45);
+      background:#fff;
       border-radius: var(--radius);
-      padding:16px;
+      padding: 16px;
+      box-shadow: 0 10px 26px rgba(17,24,39,.05);
       min-height: 150px;
     }
-    .card b{display:block; font-size: 14.5px; margin-bottom:8px}
-    .card p{margin:0; color:var(--muted); font-size: 13.6px; line-height:1.45}
+    .card b{display:block; font-size: 14.5px; color: var(--primary); margin-bottom:8px;}
+    .card p{margin:0; color: var(--muted); font-size: 13.7px; line-height:1.5;}
 
-    .twoCol{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .twoCol{display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
 
     .cta{
-      border:1px solid var(--line);
+      border:1px solid rgba(44,90,160,.18);
       border-radius: var(--radius);
-      padding:18px;
-      background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(44,90,160,.08), rgba(255,255,255,.92));
       display:flex; align-items:center; justify-content:space-between; gap:12px;
+      box-shadow: 0 10px 24px rgba(17,24,39,.05);
     }
-    .cta b{font-size:16px}
-    .cta span{display:block; color:var(--muted); font-size:13.5px; margin-top:6px; line-height:1.4}
+    .cta b{font-size: 16px; color: var(--primary);}
+    .cta span{display:block; color: var(--muted); font-size: 13.6px; margin-top:6px; line-height:1.45;}
 
     .contactGrid{
-      margin-top:12px;
+      margin-top: 12px;
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:12px;
+      gap: 12px;
     }
     .contactItem{
       border:1px solid var(--line);
       border-radius: var(--radius);
-      padding:14px;
-      background: rgba(15,26,46,.35);
+      padding: 14px;
+      background:#fff;
+      box-shadow: 0 10px 26px rgba(17,24,39,.05);
     }
-    .contactItem b{display:block; margin-bottom:6px}
-    .contactItem a{color: var(--text)}
-    .contactItem small{display:block; margin-top:6px; color: var(--muted)}
+    .contactItem b{display:block; margin-bottom:6px; color: var(--primary);}
+    .contactItem a{color: var(--text); font-weight: 800;}
+    .contactItem small{display:block; margin-top:6px; color: var(--muted);}
 
     footer{
-      margin-top:22px; padding:18px 2px 0; color:var(--muted); font-size: 12.8px;
+      margin-top: 18px;
+      padding: 16px 2px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12.8px;
       display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      border-top:1px solid var(--line);
     }
-    .small{font-size:12.5px}
 
+    /* WhatsApp flutuante */
     .waFloat{
       position: fixed;
       right: 18px; bottom: 18px;
-      z-index: 50;
+      z-index: 60;
       border-radius: 999px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 14px 34px rgba(17,24,39,.14);
     }
     .waFloat a{
       display:flex; align-items:center; gap:10px;
       padding: 12px 14px;
       border-radius: 999px;
       background: #ffffff;
-      color:#0b1220;
-      font-weight:800;
-      border: 1px solid rgba(0,0,0,.08);
+      color: var(--primary);
+      font-weight: 900;
+      border: 1px solid var(--line);
     }
     .waDot{
-      width:10px; height:10px; border-radius:999px; background: #25D366;
-      box-shadow: 0 0 0 6px rgba(37,211,102,.20);
+      width:10px; height:10px; border-radius:999px;
+      background: #25D366;
+      box-shadow: 0 0 0 6px rgba(37,211,102,.16);
     }
 
     @media (max-width: 900px){
-      .gridHero{grid-template-columns: 1fr; }
-      .cards{grid-template-columns: 1fr}
-      .twoCol{grid-template-columns: 1fr}
-      .contactGrid{grid-template-columns: 1fr}
-      .nav{display:none}
-      .brand b{display:none}
+      .gridHero{grid-template-columns: 1fr;}
+      .cards{grid-template-columns: 1fr;}
+      .twoCol{grid-template-columns: 1fr;}
+      .contactGrid{grid-template-columns: 1fr;}
+      .nav{display:none;}
+      .brand b{display:none;}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <img src="swa1.jpeg" alt="Logo SWA" />
-        <b>SWA • Gestão & Inteligência</b>
+  <!-- Splash (logo na abertura) -->
+  <div class="splash" id="splash">
+    <div class="splashCard">
+      <img src="swa1.jpeg" alt="Logo SWA">
+      <div>
+        <b>SWA — Gestão Inteligente</b>
+        <span>Carregando…</span>
       </div>
+      <div class="loader" aria-hidden="true"></div>
+    </div>
+  </div>
 
-      <nav class="nav" aria-label="Navegação">
-        <a href="#servicos">Serviços</a>
-        <a href="#metodo">Como trabalhamos</a>
-        <a href="#publico">Para quem é</a>
-        <a href="#contato">Contato</a>
-      </nav>
+  <div class="wrap">
+    <header>
+      <div class="topbar">
+        <div class="brand">
+          <img src="swa1.jpeg" alt="Logo SWA" />
+          <b>SWA • Gestão & Inteligência</b>
+        </div>
 
-      <div class="actions">
-        <a class="btn" id="btnPhoneTop" href="#">Telefone</a>
-        <a class="btn" id="btnInstaTop" href="#" target="_blank" rel="noopener">Instagram</a>
-        <a class="btn primary" id="btnWhatsTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <nav class="nav" aria-label="Navegação">
+          <a href="#servicos">Serviços</a>
+          <a href="#metodo">Como trabalhamos</a>
+          <a href="#publico">Para quem é</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <div class="actions">
+          <a class="btn ghost" id="btnInstaTop" href="#" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn" id="btnPhoneTop" href="#">Telefone</a>
+          <a class="btn primary" id="btnWhatsTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </header>
 
@@ -220,17 +308,18 @@
       <section class="hero" id="inicio">
         <div class="gridHero">
           <div>
-            <h1>Organização financeira e gestão com clareza, rotina e resultado.</h1>
+            <h1>Gestão com clareza, rotina e resultado.</h1>
+
             <p class="lead">
-              A <b>SWA</b> ajuda empresas e condomínios a saírem do “apaga incêndio” e entrarem numa gestão simples:
+              A <b>SWA</b> ajuda empresas e condomínios a saírem do “apaga-incêndio” e entrarem numa gestão simples:
               números em ordem, processos funcionando e decisões mais inteligentes.
             </p>
 
             <div class="chips">
               <span class="chip">Gestão Financeira</span>
               <span class="chip">Administração</span>
-              <span class="chip">Indicadores & Rotina</span>
-              <span class="chip">Inteligência para decisões</span>
+              <span class="chip">Indicadores</span>
+              <span class="chip">Rotina & Processos</span>
             </div>
 
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -238,7 +327,7 @@
               <a class="btn" href="#servicos">Ver serviços</a>
             </div>
 
-            <p class="small" style="margin:12px 0 0; color: var(--muted);">
+            <p style="margin:12px 0 0; color: var(--muted); font-size: 12.8px;">
               Atendimento objetivo • Plano claro • Execução com acompanhamento
             </p>
           </div>
@@ -252,11 +341,11 @@
               </div>
               <div class="kpi">
                 <b>Rotina</b>
-                <span>processos que se repetem e funcionam</span>
+                <span>processos simples e repetíveis</span>
               </div>
               <div class="kpi">
                 <b>Decisão</b>
-                <span>indicadores claros e prioridades</span>
+                <span>indicadores e prioridades claras</span>
               </div>
               <div class="kpi">
                 <b>Entrega</b>
@@ -270,7 +359,7 @@
       <section id="servicos">
         <div class="sectionTitle">
           <h2>Serviços</h2>
-          <p>O básico bem feito, com método.</p>
+          <p>O básico bem-feito, com método.</p>
         </div>
 
         <div class="cards">
@@ -281,7 +370,7 @@
 
           <div class="card">
             <b>Gestão Financeira</b>
-            <p>Organização de fluxo de caixa, contas, calendário financeiro e padrões para reduzir falhas e atrasos.</p>
+            <p>Fluxo de caixa, contas, calendário financeiro e padrões para reduzir falhas, atrasos e retrabalho.</p>
           </div>
 
           <div class="card">
@@ -309,21 +398,21 @@
       <section id="metodo" class="twoCol">
         <div class="card">
           <b>Como trabalhamos</b>
-          <p>
-            1) Diagnóstico rápido <br/>
-            2) Plano de ação enxuto <br/>
-            3) Implementação com rotina <br/>
-            4) Acompanhamento e melhoria <br/><br/>
+          <p style="margin:0; color:var(--muted); line-height:1.6;">
+            1) Diagnóstico rápido<br/>
+            2) Plano enxuto<br/>
+            3) Implementação com rotina<br/>
+            4) Acompanhamento e melhoria<br/><br/>
             Sem complicação. Sem “achismo”. Com consistência.
           </p>
         </div>
 
         <div class="card" id="publico">
           <b>Para quem é</b>
-          <p>
-            • Condomínios (síndico/adm) <br/>
-            • Pequenas e médias empresas <br/>
-            • Prestadores que precisam de organização <br/><br/>
+          <p style="margin:0; color:var(--muted); line-height:1.6;">
+            • Condomínios (síndico/adm)<br/>
+            • Pequenas e médias empresas<br/>
+            • Prestadores que precisam de organização<br/><br/>
             Se hoje você sente que “tudo depende de você”, a SWA entra para colocar método e previsibilidade.
           </p>
         </div>
@@ -347,11 +436,13 @@
             <a id="linkWhatsText" href="#" target="_blank" rel="noopener">+55 27 98846-2445</a>
             <small>Atendimento rápido</small>
           </div>
+
           <div class="contactItem">
             <b>Telefone</b>
             <a id="linkPhoneText" href="#">+55 27 98846-2445</a>
             <small>Chamada direta</small>
           </div>
+
           <div class="contactItem">
             <b>Instagram</b>
             <a id="linkInstaText" href="#" target="_blank" rel="noopener">@swa.gestaointeligente</a>
@@ -359,18 +450,18 @@
           </div>
         </div>
 
-        <div class="small" style="margin-top:12px; color:var(--muted);">
+        <div style="margin-top:12px; color: var(--muted); font-size: 12.8px;">
           <b>Atuação:</b> Vila Velha/ES e online
         </div>
       </section>
 
       <footer>
-        <div>© <span id="year"></span> SWA — Gestão Financeira, Administração e Inteligência</div>
-        <div class="small">
+        <div>© <span id="year"></span> SWA — Gestão Inteligente</div>
+        <div>
           <a id="btnInstaFooter" href="#" target="_blank" rel="noopener">Instagram</a>
-          <span style="opacity:.5"> • </span>
+          <span style="opacity:.45"> • </span>
           <a id="btnWhatsFooter" href="#" target="_blank" rel="noopener">WhatsApp</a>
-          <span style="opacity:.5"> • </span>
+          <span style="opacity:.45"> • </span>
           <a id="btnPhoneFooter" href="#">Telefone</a>
         </div>
       </footer>
@@ -392,33 +483,32 @@
 
     // Mensagem padrão do WhatsApp
     const msg = encodeURIComponent("Olá! Vim pelo site da SWA e quero um diagnóstico rápido.");
-
-    // Links
     const waLink = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${msg}`;
     const phoneLink = `tel:${PHONE_E164}`;
 
-    // Atribuir links WhatsApp
-    [
-      "btnWhatsTop","btnWhatsHero","btnWhatsCta","btnWhatsFloat","btnWhatsFooter","linkWhatsText"
-    ].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.href = waLink;
-    });
+    // Links WhatsApp
+    ["btnWhatsTop","btnWhatsHero","btnWhatsCta","btnWhatsFloat","btnWhatsFooter","linkWhatsText"]
+      .forEach(id => { const el = document.getElementById(id); if (el) el.href = waLink; });
 
-    // Atribuir links telefone
-    ["btnPhoneTop","btnPhoneFooter","linkPhoneText"].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.href = phoneLink;
-    });
+    // Links telefone
+    ["btnPhoneTop","btnPhoneFooter","linkPhoneText"]
+      .forEach(id => { const el = document.getElementById(id); if (el) el.href = phoneLink; });
 
-    // Atribuir links Instagram
-    ["btnInstaTop","btnInstaCta","btnInstaFooter","linkInstaText"].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.href = INSTAGRAM_URL;
-    });
+    // Links Instagram
+    ["btnInstaTop","btnInstaCta","btnInstaFooter","linkInstaText"]
+      .forEach(id => { const el = document.getElementById(id); if (el) el.href = INSTAGRAM_URL; });
 
     // Ano automático
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Splash: some sozinho (logo na abertura)
+    const splash = document.getElementById("splash");
+    const hideSplash = () => splash.classList.add("hide");
+
+    // garante que apareça pelo menos um pouquinho (efeito premium)
+    window.addEventListener("load", () => setTimeout(hideSplash, 450));
+    // fallback
+    setTimeout(hideSplash, 2200);
   </script>
 </body>
 </html>
