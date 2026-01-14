@@ -26,6 +26,11 @@
 
       --ok:#16a34a;
       --wa:#25D366;
+
+      /* 3 imagens (neutras, elegantes e seguras) */
+      --img-hero: url("https://images.unsplash.com/photo-1752159646124-27b7f6973be8?auto=format&fit=crop&w=2200&q=70");
+      --img-work: url("https://images.unsplash.com/photo-1651094856217-6f30970b1521?auto=format&fit=crop&w=2200&q=70");
+      --img-condo: url("https://images.unsplash.com/photo-1767556246380-5dfe3a448222?auto=format&fit=crop&w=2200&q=70");
     }
 
     *{box-sizing:border-box}
@@ -46,7 +51,7 @@
     .topbar{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
       padding:12px 14px;border:1px solid var(--line);
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.80);
       backdrop-filter: blur(12px);
       border-radius:999px;
       box-shadow: 0 10px 22px rgba(15,23,42,.06);
@@ -86,8 +91,8 @@
       position:relative;
       padding: 28px 16px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,255,255,.82)),
-        url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=70");
+        linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.86)),
+        var(--img-hero);
       background-size:cover;
       background-position:center;
     }
@@ -118,7 +123,7 @@
     }
     .heroCard h3{margin:0 0 10px;font-size:13.5px;color:var(--muted);font-weight:900}
     .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .kpi{border:1px solid var(--line);border-radius:14px;padding:12px;background: rgba(245,247,251,.75)}
+    .kpi{border:1px solid var(--line);border-radius:14px;padding:12px;background: rgba(245,247,251,.80)}
     .kpi b{display:block;font-size:16px;color:var(--primary)}
     .kpi span{display:block;margin-top:4px;color:var(--muted);font-size:12.8px}
 
@@ -128,7 +133,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       padding: 14px;
-      background: rgba(245,247,251,.85);
+      background: rgba(245,247,251,.90);
       border-top: 1px solid var(--line);
     }
     .trustItem{
@@ -146,10 +151,23 @@
     .sectionTitle h2{margin:0;font-size:18px;color:var(--primary)}
     .sectionTitle p{margin:0;color:var(--muted);font-size:13.5px}
 
+    /* Serviços com imagem leve ao fundo */
+    #servicos{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(245,247,251,.94), rgba(245,247,251,.82)),
+        var(--img-work);
+      background-size:cover;
+      background-position:center;
+      padding:16px;
+      box-shadow: var(--shadow2);
+    }
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .card{
       border:1px solid var(--line);
-      background:#fff;
+      background: rgba(255,255,255,.92);
       border-radius: var(--radius);
       padding:16px;
       box-shadow: var(--shadow2);
@@ -170,13 +188,17 @@
     .step b{display:block;color:var(--primary)}
     .step span{display:block;margin-top:6px;color:var(--muted);line-height:1.55}
 
-    /* Case */
+    /* Case com imagem de condomínio */
     .case{
       border:1px solid rgba(44,90,160,.18);
       border-radius: var(--radius);
-      background: linear-gradient(135deg, rgba(11,42,90,.06), rgba(255,255,255,.92));
       box-shadow: var(--shadow);
       overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,255,255,.82)),
+        var(--img-condo);
+      background-size: cover;
+      background-position: right center;
     }
     .caseHead{
       padding:18px;
@@ -186,7 +208,7 @@
       gap:12px;
       flex-wrap:wrap;
       border-bottom:1px solid rgba(15,23,42,.08);
-      background: rgba(255,255,255,.70);
+      background: rgba(255,255,255,.78);
     }
     .badge{
       display:inline-flex;align-items:center;gap:8px;
@@ -208,7 +230,7 @@
     .caseItem{
       border:1px solid var(--line);
       border-radius: var(--radius);
-      background:#fff;
+      background: rgba(255,255,255,.92);
       padding:14px;
       box-shadow: 0 10px 24px rgba(15,23,42,.05);
     }
@@ -396,7 +418,7 @@
           <div class="card"><b>Gestão Financeira</b><p>Fluxo de caixa, contas, calendário e padrões para reduzir falhas, atrasos e retrabalho.</p></div>
           <div class="card"><b>Rotina Administrativa</b><p>Checklists, documentos e controles para dar estabilidade e reduzir “correria”.</p></div>
           <div class="card"><b>Indicadores</b><p>O que acompanhar e como decidir com números simples, úteis e constantes.</p></div>
-          <div class="card"><b>Padronização</b><p>Organização de pastas, nomes e documentos para facilitar a operação e a prestação de contas.</p></div>
+          <div class="card"><b>Padronização</b><p>Organização de pastas, nomes e documentos para facilitar operação e prestação de contas.</p></div>
           <div class="card"><b>Acompanhamento</b><p>Suporte contínuo para manter o padrão, ajustar rota e evoluir mês a mês.</p></div>
         </div>
       </section>
@@ -459,7 +481,7 @@
           </div>
 
           <div class="caseNote">
-            *Observação: o case é apresentado de forma técnica e respeitosa, sem exposição de informações sensíveis.
+            *Case apresentado de forma técnica e respeitosa, sem exposição de informações sensíveis.
           </div>
         </div>
       </section>
@@ -580,12 +602,11 @@
     const PHONE_E164 = "+5527988462445";
     const INSTAGRAM_URL = "https://www.instagram.com/swa.gestaointeligente/";
 
-    // Links base
     const baseMsg = "Olá! Vim pelo site da SWA e quero uma proposta/diagnóstico.";
     const waBase = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(baseMsg)}`;
     const phoneLink = `tel:${PHONE_E164}`;
 
-    // Aplicar links WhatsApp
+    // WhatsApp
     ["btnWhatsTop","btnWhatsHero","btnWhatsCta","btnWhatsFloat","btnWhatsFooter","linkWhatsText"]
       .forEach(id => { const el = document.getElementById(id); if (el) el.href = waBase; });
 
