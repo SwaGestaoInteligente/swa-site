@@ -237,7 +237,6 @@
       gap:26px;
       align-items:center;
     }
-
     .badgeRow{
       display:flex;
       flex-wrap:wrap;
@@ -333,7 +332,6 @@
       background:radial-gradient(circle at 0 0,#bbf7d0,#22c55e);
       box-shadow:0 0 0 6px rgba(34,197,94,.18);
     }
-
     .heroMeta{
       display:flex;
       flex-wrap:wrap;
@@ -528,7 +526,7 @@
       background:radial-gradient(circle at 30% 0%, #eff6ff,#38bdf8);
     }
 
-    /* SECTIONS / DIAGNÓSTICO / CONTATOS / FOOTER (iguais ao que você já tem) */
+    /* SEÇÕES “Para quem é”, “Como funciona”, quote */
 
     .sectionHeader{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:14px}
     .sectionHeader h2{margin:0;font-size:18px;color:#0f172a}
@@ -555,6 +553,8 @@
     .quote small{display:block;margin-top:6px;font-size:11.5px;color:#1d4ed8}
     .quoteTag{font-size:11px;color:#4f46e5}
 
+    /* DIAGNÓSTICO E CONTATOS */
+
     .diagnostic{margin-top:26px;border-radius:var(--radius-xl);border:1px solid rgba(148,163,184,.6);background:radial-gradient(900px 520px at 0 0,rgba(191,219,254,.9),transparent 60%),radial-gradient(900px 520px at 100% 0,rgba(191,219,254,.8),transparent 60%),#fff;box-shadow:0 22px 54px rgba(148,163,184,.6);padding:16px 16px 15px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
     .diagnostic h3{margin:0 0 8px;font-size:16px;color:#0f172a}
     .diagnostic p{margin:0 0 10px;font-size:13px;color:var(--muted);max-width:52ch}
@@ -562,7 +562,6 @@
     .diagnosticPoints span{padding:4px 8px;border-radius:999px;border:1px solid rgba(148,163,184,.6);font-size:11.3px;color:#1f2937;background:#eff6ff}
     .contactRow{margin-top:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:12px;color:var(--muted)}
     .contactRow strong{color:#0f172a}
-    .btn.wa{border-color:rgba(34,197,94,.65);background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 18px 38px rgba(34,197,94,.4);color:#022c22}
 
     .formGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
     .field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:#0f172a}
@@ -582,34 +581,12 @@
     footer a{font-size:11.5px;color:#1d4ed8}
     footer .sep{opacity:.45;margin:0 4px}
 
-    /* WhatsApp Float */
-    .waFloat{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:30;
-    }
-    .waFloat a{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-      padding:9px 13px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#22c55e,#16a34a);
-      color:#022c22;
-      font-size:12.2px;
-      font-weight:600;
-      border:1px solid rgba(22,163,74,.75);
-      box-shadow:0 20px 45px rgba(22,163,74,.45);
-      text-decoration:none;
-    }
-    .waDot{
-      width:10px;height:10px;border-radius:999px;
-      background:radial-gradient(circle at 30% 0%, #bbf7d0,#22c55e);
-      box-shadow:0 0 0 6px rgba(34,197,94,.25);
-    }
+    /* WhatsApp float */
+    .waFloat{position:fixed;right:18px;bottom:18px;z-index:30}
+    .waFloat a{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border-radius:999px;background:linear-gradient(135deg,#22c55e,#16a34a);color:#022c22;font-size:12.2px;font-weight:600;border:1px solid rgba(22,163,74,.75);box-shadow:0 20px 45px rgba(22,163,74,.45);text-decoration:none}
+    .waDot{width:10px;height:10px;border-radius:999px;background:radial-gradient(circle at 30% 0%,#bbf7d0,#22c55e);box-shadow:0 0 0 6px rgba(34,197,94,.25)}
 
-    /* ASSISTENTE VIRTUAL */
+    /* Assistente virtual (mesmo que te mandei antes) */
     .assistant-toggle{
       position:fixed;
       right:20px;
@@ -706,9 +683,7 @@
       cursor:pointer;
       padding:0 2px;
     }
-    .assistantClose:hover{
-      color:#0f172a;
-    }
+    .assistantClose:hover{color:#0f172a}
 
     .assistantBody{
       padding:8px 9px 8px;
@@ -860,16 +835,361 @@
   </header>
 
   <main class="wrap">
-    <!-- HERO, PARA QUEM, COMO FUNCIONA, QUOTE, DIAGNÓSTICO, CONTATOS, FOOTER -->
-    <!-- (mesma estrutura que você já tinha; mantive o conteúdo anterior) -->
+    <!-- HERO -->
+    <section id="inicio" class="hero" aria-labelledby="hero-title">
+      <div class="heroGrid">
+        <div>
+          <div class="badgeRow">
+            <div class="badge">
+              <i></i>
+              <span>Condomínios & empresas • ES & online</span>
+            </div>
+            <div class="badge">
+              <span>+ rotina • + clareza • + resultado</span>
+            </div>
+          </div>
 
-    <!-- ... por brevidade não repito TODAS as seções de texto aqui;
-         você já está usando exatamente esse conteúdo com as cores novas ... -->
+          <h1 id="hero-title">
+            Gestão que une <span class="highlight">excelência</span> técnica<br />
+            com paz e previsibilidade no dia a dia.
+          </h1>
 
-    <!-- Para garantir, mantenha as seções atuais do seu arquivo entre <main> e </main>,
-         pois o problema que você relatou era só no topo e no assistente. -->
+          <p class="lead">
+            A SWA organiza o operacional, financeiro e estratégico do seu
+            <strong>condomínio</strong> ou <strong>empresa</strong> para que tudo
+            flua com clareza: indicadores claros, rotinas bem desenhadas e decisões
+            baseadas em dados – sem perder o cuidado humano.
+          </p>
 
-    <!-- WhatsApp flutuante -->
+          <div class="heroChips" aria-label="Diferenciais da SWA">
+            <div class="chip">
+              <span class="chip-dot"></span>
+              <b>Implantação guiada</b> passo a passo
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              <b>Rotinas financeiras</b> blindadas
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              <b>Painéis de controle</b> visuais
+            </div>
+          </div>
+
+          <div class="heroActions">
+            <a class="btn primary" href="#diagnostico">
+              Quero diagnóstico gratuito
+              <span>leva 1 minuto</span>
+            </a>
+            <a class="btn soft"
+               href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20entender%20melhor%20como%20funciona."
+               target="_blank" rel="noopener">
+              Tirar dúvidas no WhatsApp
+            </a>
+          </div>
+
+          <div class="heroHint">
+            <span class="dot"></span>
+            <span>
+              Em poucos dias você sente o efeito: menos correria, mais clareza sobre números
+              e uma rotina que funciona.
+            </span>
+          </div>
+
+          <div class="heroMeta">
+            <span><strong>Base em Vila Velha/ES</strong>, atendimento em todo o Brasil.</span>
+            <span><strong>Gestão administrativa e financeira</strong> com visão estratégica.</span>
+          </div>
+        </div>
+
+        <aside class="heroPanel" aria-label="Painel ilustrativo de resultados">
+          <div class="panelMain">
+            <div class="panelHeader">
+              <div class="panelHeaderL">
+                <span class="panelDot"></span>
+                <div>
+                  <strong>Painel de resultados SWA</strong>
+                  <span>Visão simples do que importa</span>
+                </div>
+              </div>
+              <div class="panelDate">
+                <span id="heroDate"></span>
+              </div>
+            </div>
+
+            <div class="panelGrid">
+              <div class="panelCard" aria-label="Saúde financeira">
+                <h3>Saúde financeira</h3>
+                <div class="panelValue">+18,3%</div>
+                <div class="panelTagRow">
+                  <span class="badgeMini">
+                    <i></i> inadimplência sob controle
+                  </span>
+                  <small>últimos 12 meses</small>
+                </div>
+                <div class="panelBars" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+
+              <div class="panelCard" aria-label="Rotinas e indicadores">
+                <h3>Rotinas & indicadores</h3>
+                <div class="panelList">
+                  <div class="panelListItem">
+                    <span>Fechamento mensal</span>
+                    <strong>Dia 3</strong>
+                  </div>
+                  <div class="panelListItem">
+                    <span>Pagamentos em atraso</span>
+                    <strong>0</strong>
+                  </div>
+                  <div class="panelListItem">
+                    <span>Chamados respondidos</span>
+                    <span>96% em até 24h</span>
+                  </div>
+                </div>
+                <div class="panelBadge">
+                  <i></i>
+                  Fluxo enxuto, com rotina clara e previsível.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panelFloat">
+            <b>Como você quer sentir sua gestão?</b>
+            <span>
+              <i></i>
+              Menos incêndio. Mais serenidade, dados claros e controle na mão.
+            </span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PARA QUEM É -->
+    <section id="para-quem" aria-labelledby="para-quem-title">
+      <div class="sectionHeader">
+        <h2 id="para-quem-title">Para quem é a SWA?</h2>
+        <p>
+          Atendemos condomínios e empresas que querem sair da gestão “no improviso” para uma
+          rotina profissional, com números confiáveis, processos claros e decisões mais seguras.
+        </p>
+      </div>
+
+      <div class="cardsGrid">
+        <article class="card">
+          <div class="cardTag">
+            <span class="icon"></span>
+            <span>Síndicos & condomínios</span>
+          </div>
+          <strong>Gestão transparente e organizada, que reduz conflitos e devolve tempo para o síndico.</strong>
+          <small>
+            Implantamos rotinas administrativas e financeiras que dão previsibilidade, tiram a
+            gestão da cabeça das pessoas e colocam em processos claros.
+          </small>
+          <div class="pillList">
+            <span>Controle de receitas e despesas</span>
+            <span>Prestação de contas clara</span>
+            <span>Rotina de cobrança saudável</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTag">
+            <span class="icon"></span>
+            <span>Empresas</span>
+          </div>
+          <strong>Do financeiro ao operacional: visão de fluxo e resultado que orienta decisões.</strong>
+          <small>
+            Organizamos rotinas de contas a pagar/receber, fluxo de caixa e indicadores para que
+            você saiba exatamente onde está e para onde está indo.
+          </small>
+          <div class="pillList">
+            <span>Fluxo de caixa previsível</span>
+            <span>Centros de custo claros</span>
+            <span>Indicadores para decisão</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTag">
+            <span class="icon"></span>
+            <span>Gestores que buscam excelência</span>
+          </div>
+          <strong>Para quem quer elevar o nível da gestão sem perder o cuidado com as pessoas.</strong>
+          <small>
+            Alinhamos o que é técnico com o que é humano: processos bem desenhados,
+            comunicação clara e acompanhamento próximo da rotina da sua equipe.
+          </small>
+          <div class="pillList">
+            <span>Rotinas com começo, meio e fim</span>
+            <span>Acompanhamento próximo</span>
+            <span>Decisões baseadas em dados</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section id="como-funciona" aria-labelledby="como-funciona-title">
+      <div class="sectionHeader">
+        <h2 id="como-funciona-title">Como funciona na prática</h2>
+        <p>
+          Nada de pacotes engessados. Entendemos seu contexto, desenhamos uma jornada de implantação
+          e caminhamos junto até que a nova rotina esteja encaixada e funcionando no dia a dia.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="stepHeader">
+            <div class="stepIndex">1</div>
+            <strong>Diagnóstico & mapa de prioridades</strong>
+          </div>
+          <p>
+            Começamos mapeando a situação atual: números, processos, riscos e oportunidades.
+            A partir disso, desenhamos um plano claro dos próximos movimentos.
+          </p>
+          <small>Chamamos isso de “organizar a mesa”: ver tudo que existe, decidir o que entra e o que sai.</small>
+        </article>
+
+        <article class="step">
+          <div class="stepHeader">
+            <div class="stepIndex">2</div>
+            <strong>Implantação guiada da nova rotina</strong>
+          </div>
+          <p>
+            Construímos e colocamos em prática rotinas administrativas e financeiras que fazem sentido
+            para o seu contexto, junto com sua equipe.
+          </p>
+          <small>Processos documentados, tarefas claras e indicadores visíveis. Nada escondido em planilhas paralelas.</small>
+        </article>
+
+        <article class="step">
+          <div class="stepHeader">
+            <div class="stepIndex">3</div>
+            <strong>Acompanhamento e ajuste fino</strong>
+          </div>
+          <p>
+            Após a implantação, seguimos medindo, revisando e ajustando para garantir que a rotina
+            se mantenha leve, eficiente e sustentável.
+          </p>
+          <small>O objetivo é que você tenha uma gestão robusta, que funcione bem mesmo nos dias mais corridos.</small>
+        </article>
+      </div>
+    </section>
+
+    <!-- CITAÇÃO -->
+    <section aria-label="Depoimento e visão de gestão">
+      <div class="quote">
+        <div class="quoteText">
+          “Gestão inteligente, para nós, é quando os números conversam com a rotina e com as pessoas.
+          Não é só sobre relatórios bonitos: é sobre decisões mais seguras, menos urgência e mais
+          paz na condução do dia a dia.”
+          <small>SWA – Gestão Inteligente</small>
+        </div>
+        <div class="quoteTag">
+          Excelência com clareza, rotina e resultado.
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAGNÓSTICO -->
+    <section id="diagnostico" aria-labelledby="diagnostico-title">
+      <div class="diagnostic">
+        <div>
+          <h3 id="diagnostico-title">Diagnóstico rápido e gratuito</h3>
+          <p>
+            Em menos de 1 minuto você envia algumas informações e recebe um primeiro olhar da SWA
+            sobre a situação atual da sua gestão. A partir daí, avaliamos juntos o melhor caminho.
+          </p>
+          <p>
+            Não é atendimento automático: um profissional da SWA responde pessoalmente com clareza
+            e respeito ao seu contexto.
+          </p>
+
+          <div class="diagnosticPoints">
+            <span>Sem custo e sem compromisso</span>
+            <span>Retorno pelo WhatsApp</span>
+            <span>Foco em clareza e próximos passos</span>
+          </div>
+
+          <div class="contactRow">
+            <strong>Prefere ir direto ao ponto?</strong>
+            <a class="btn wa"
+               href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20SWA%20sobre%20minha%20gest%C3%A3o."
+               target="_blank" rel="noopener">
+              Chamar no WhatsApp agora
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <form id="leadForm">
+            <div class="formGrid">
+              <div class="field">
+                <label for="nome">Seu nome</label>
+                <input id="nome" name="nome" placeholder="Ex.: Erineu" required />
+              </div>
+              <div class="field">
+                <label for="tipo">Você é</label>
+                <select id="tipo" name="tipo" required>
+                  <option value="" selected disabled>Selecione</option>
+                  <option>Síndico / Condomínio</option>
+                  <option>Empresa</option>
+                  <option>Prestador / Outro</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="cidade">Cidade</label>
+                <input id="cidade" name="cidade" placeholder="Ex.: Vila Velha" required />
+              </div>
+            </div>
+
+            <div class="formActions">
+              <button class="btn primary" type="submit">Enviar para WhatsApp</button>
+              <a class="btn soft" href="#inicio">Voltar ao topo</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="contactGrid" aria-label="Canais de contato">
+        <div class="contactItem">
+          <b>WhatsApp</b>
+          <a href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
+             target="_blank" rel="noopener">
+            +55 27 98846-2445
+          </a>
+          <small>Atendimento rápido e direto com a equipe.</small>
+        </div>
+        <div class="contactItem">
+          <b>Telefone</b>
+          <a href="tel:+5527988462445">+55 27 98846-2445</a>
+          <small>Se preferir, ligue e fale com a gente.</small>
+        </div>
+        <div class="contactItem">
+          <b>Instagram</b>
+          <a href="https://www.instagram.com/swa.gestaointeligente/" target="_blank" rel="noopener">
+            @swa.gestaointeligente
+          </a>
+          <small>Portfólio, bastidores e conteúdos sobre gestão.</small>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> SWA – Gestão Inteligente</div>
+      <div>
+        <a href="https://www.instagram.com/swa.gestaointeligente/" target="_blank" rel="noopener">Instagram</a>
+        <span class="sep">•</span>
+        <a href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
+           target="_blank" rel="noopener">WhatsApp</a>
+        <span class="sep">•</span>
+        <a href="tel:+5527988462445">Telefone</a>
+      </div>
+    </footer>
   </main>
 
   <div class="waFloat" aria-label="Atalho WhatsApp flutuante">
