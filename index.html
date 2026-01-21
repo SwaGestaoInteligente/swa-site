@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b2a5a" />
 
-  <title>SWA — Gestão Inteligente</title>
-  <meta name="description" content="SWA — Gestão administrativa e financeira com clareza, rotina e resultado. Condomínios e empresas. Vila Velha/ES e online." />
+  <title>SWA – Gestão Inteligente</title>
+  <meta name="description" content="Gestão administrativa e financeira com clareza, rotina e resultado. Para condomínios e empresas que querem excelência com paz e previsibilidade." />
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
@@ -17,29 +17,39 @@
 
   <style>
     :root{
-      --bg:#f5f7fb;
+      --bg:#f3f7ff;
+      --bg-soft:#e6f0ff;
       --card:#ffffff;
+      --card-soft:#f9fbff;
+      --card-strong:#e0ebff;
       --text:#0f172a;
-      --muted:#667085;
-      --line:rgba(15,23,42,.10);
-      --primary:#0b2a5a;
-      --primary2:#2c5aa0;
-      --shadow: 0 14px 36px rgba(15,23,42,.10);
-      --shadow2: 0 10px 24px rgba(15,23,42,.06);
-      --radius:18px;
+      --muted:#64748b;
+      --line:rgba(148,163,184,.45);
+      --primary:#38bdf8;
+      --primary-soft:#0ea5e9;
+      --primary-strong:#0369a1;
+      --accent:#4f46e5;
+      --accent-soft:rgba(79,70,229,.12);
+      --shadow:0 18px 40px rgba(15,23,42,.08);
+      --shadow-soft:0 14px 30px rgba(15,23,42,.06);
+      --radius-xl:22px;
+      --radius-lg:18px;
+      --radius-pill:999px;
       --max:1120px;
-      --wa:#25D366;
+      --wa:#22c55e;
     }
 
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial}
     body{
+      min-height:100vh;
       background:
-        radial-gradient(980px 520px at 10% -10%, rgba(44,90,160,.12), transparent 55%),
-        radial-gradient(900px 480px at 100% 0%, rgba(11,42,90,.08), transparent 55%),
-        var(--bg);
+        radial-gradient(1100px 760px at -6% -10%, rgba(191,219,254,.85), transparent 55%),
+        radial-gradient(1000px 720px at 110% 0%, rgba(186,230,253,.8), transparent 60%),
+        radial-gradient(900px 520px at 50% 120%, rgba(191,219,254,.9), #e0f2fe);
       color:var(--text);
       overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
     }
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
@@ -47,43 +57,74 @@
     header{
       position:sticky;
       top:0;
-      z-index:50;
-      background: rgba(245,247,251,.88);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid var(--line);
+      z-index:40;
+      background:linear-gradient(to bottom, rgba(248,250,252,.96), rgba(248,250,252,.92), transparent);
+      border-bottom:1px solid rgba(148,163,184,.25);
+      backdrop-filter:blur(18px);
     }
     .topbar{
       max-width:var(--max);
       margin:0 auto;
-      padding:10px 16px;
+      padding:12px 16px 10px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap:10px;
     }
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
-      min-width: 180px;
+      min-width:200px;
     }
     .brand img{
       width:46px;
       height:46px;
-      border-radius:14px;
+      border-radius:18px;
       object-fit:cover;
-      border:1px solid rgba(15,23,42,.10);
-      background:#fff;
-      padding:6px;
-      box-shadow: 0 10px 22px rgba(15,23,42,.06);
+      border:1px solid rgba(148,163,184,.65);
+      background:radial-gradient(circle at 0% 0%, rgba(191,219,254,.9), #eff6ff);
+      padding:5px;
+      box-shadow:0 12px 28px rgba(148,163,184,.55);
     }
     .brand .t{
       display:flex;
       flex-direction:column;
       line-height:1.1;
     }
-    .brand .t strong{font-size:14px;color:var(--primary);letter-spacing:.2px}
-    .brand .t span{font-size:12px;color:var(--muted)}
+    .brand .t strong{
+      font-size:14px;
+      color:#0f172a;
+      letter-spacing:.3px;
+    }
+    .brand .t span{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size:12.8px;
+      color:var(--muted);
+    }
+    nav a{
+      position:relative;
+      padding:4px 0;
+    }
+    nav a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-2px;
+      width:0;
+      height:1.5px;
+      border-radius:99px;
+      background:linear-gradient(to right,var(--primary),var(--accent));
+      transition:width .18s ease-out;
+    }
+    nav a:hover::after{width:100%}
 
     .actions{
       display:flex;
@@ -92,502 +133,1307 @@
       justify-content:flex-end;
       align-items:center;
     }
+    .pill{
+      font-size:11px;
+      padding:4px 9px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.5);
+      color:var(--muted);
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:rgba(255,255,255,.7);
+    }
+    .pill-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #bbf7d0, #22c55e);
+      box-shadow:0 0 0 6px rgba(34,197,94,.18);
+    }
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
-      color:var(--primary);
-      font-weight:900;
-      font-size:13.5px;
+      padding:9px 14px;
+      border-radius:var(--radius-pill);
+      border:1px solid rgba(148,163,184,.6);
+      background:radial-gradient(circle at 0% 0%, rgba(255,255,255,1), rgba(241,245,249,1));
+      color:#0f172a;
+      font-weight:600;
+      font-size:12.8px;
+      letter-spacing:.02em;
       white-space:nowrap;
-      transition: transform .15s ease, box-shadow .15s ease;
-      box-shadow: 0 8px 18px rgba(15,23,42,.06);
+      transition:transform .14s ease, box-shadow .14s ease, border-color .14s ease, background .16s ease;
+      box-shadow:0 10px 26px rgba(148,163,184,.55);
       cursor:pointer;
     }
-    .btn:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(15,23,42,.10)}
-    .btn.primary{background:var(--primary);color:#fff;border-color: rgba(11,42,90,.30)}
-    .btn.soft{background:rgba(255,255,255,.70)}
+    .btn span{font-size:11px;opacity:.78;margin-left:4px}
+    .btn:hover{
+      transform:translateY(-1px) scale(1.01);
+      box-shadow:0 16px 40px rgba(148,163,184,.7);
+      border-color:rgba(15,23,42,.2);
+    }
+    .btn.primary{
+      background:linear-gradient(135deg, var(--primary), var(--accent));
+      border-color:rgba(56,189,248,.7);
+      box-shadow:0 18px 45px rgba(56,189,248,.4);
+      color:#0b1120;
+    }
+    .btn.primary:hover{
+      background:linear-gradient(135deg, var(--primary-soft), var(--accent));
+    }
+    .btn.soft{
+      background:radial-gradient(circle at 0 0, rgba(255,255,255,1), rgba(226,232,240,1));
+      color:#0f172a;
+    }
 
-    .wrap{max-width:var(--max);margin:0 auto;padding:16px 16px 92px}
-    section{margin-top:18px}
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:18px 16px 120px;
+    }
+    section{margin-top:24px}
 
+    /* HERO */
     .hero{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .heroBg{
-      padding: 26px 16px;
+      border-radius:28px;
+      border:1px solid rgba(148,163,184,.5);
       background:
-        linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.72)),
-        url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=90");
-      background-size:cover;
-      background-position:center;
-    }
-    .gridHero{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      align-items:start;
-    }
-    h1{margin:0 0 10px;font-size:clamp(26px,3.6vw,44px);line-height:1.06;color:var(--primary)}
-    .lead{margin:0 0 16px;color:var(--muted);font-size:15.8px;line-height:1.55;max-width:64ch}
-
-    .chips{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}
-    .chip{
-      padding:8px 12px;border-radius:999px;
-      border:1px solid rgba(44,90,160,.18);
-      background: rgba(44,90,160,.06);
-      color: var(--primary2);
-      font-size:12.8px;font-weight:900;
-    }
-
-    .heroCard{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.92);
-      border-radius: var(--radius);
-      padding:16px;
-      box-shadow: var(--shadow2);
-    }
-    .heroCard h3{margin:0 0 10px;font-size:13.5px;color:var(--muted);font-weight:900}
-    .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .kpi{border:1px solid var(--line);border-radius:14px;padding:12px;background: rgba(245,247,251,.90)}
-    .kpi b{display:block;font-size:16px;color:var(--primary)}
-    .kpi span{display:block;margin-top:4px;color:var(--muted);font-size:12.8px}
-
-    .trust{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      padding: 14px;
-      background: rgba(245,247,251,.92);
-      border-top: 1px solid var(--line);
-    }
-    .trustItem{
-      border:1px solid var(--line);
-      border-radius: 14px;
-      background:#fff;
-      padding: 12px;
-      box-shadow: 0 6px 16px rgba(15,23,42,.04);
-    }
-    .trustItem b{display:block;color:var(--primary);font-size:13.5px}
-    .trustItem span{display:block;color:var(--muted);font-size:12.8px;margin-top:4px}
-
-    .sectionTitle{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:0 0 10px}
-    .sectionTitle h2{margin:0;font-size:18px;color:var(--primary)}
-    .sectionTitle p{margin:0;color:var(--muted);font-size:13.5px}
-
-    .imageBlock{
-      border:1px solid rgba(15,23,42,.10);
-      border-radius: 18px;
+        radial-gradient(1200px 520px at 0% 0%, rgba(191,219,254,1), transparent 58%),
+        radial-gradient(980px 480px at 100% 0%, rgba(191,219,254,.9), transparent 65%),
+        rgba(255,255,255,1);
+      box-shadow:0 22px 60px rgba(148,163,184,.6);
       overflow:hidden;
-      background:#fff;
-      box-shadow: 0 14px 32px rgba(15,23,42,.10);
-      margin-bottom: 12px;
-    }
-    .imageBlock img{
-      width:100%;
-      height: 320px;
-      object-fit: cover;
-      object-position:center;
-    }
-    .imageBlock .cap{
-      padding:10px 12px;
-      font-size:12.8px;
-      color:var(--muted);
-      border-top:1px solid rgba(15,23,42,.08);
-      background: rgba(255,255,255,.92);
+      position:relative;
+      padding:26px 26px 26px;
+      isolation:isolate;
     }
 
-    .panel{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.75);
-      padding:16px;
-      box-shadow: var(--shadow2);
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:999px;
+      filter:blur(32px);
+      opacity:.88;
+      pointer-events:none;
+      mix-blend-mode:screen;
     }
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .card{
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius: var(--radius);
-      padding:16px;
-      box-shadow: var(--shadow2);
-      min-height: 140px;
+    .hero::before{
+      width:260px;height:260px;
+      right:-50px;top:-80px;
+      background:radial-gradient(circle at 0 0, rgba(56,189,248,.5), transparent 60%);
     }
-    .card b{display:block;font-size:14.5px;color:var(--primary);margin-bottom:8px}
-    .card p{margin:0;color:var(--muted);font-size:13.7px;line-height:1.5}
+    .hero::after{
+      width:220px;height:220px;
+      left:-70px;bottom:-60px;
+      background:radial-gradient(circle at 100% 0, rgba(79,70,229,.5), transparent 60%);
+    }
 
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .step{
-      border:1px solid rgba(44,90,160,.18);
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, rgba(44,90,160,.08), rgba(255,255,255,.92));
-      padding:16px;
-      box-shadow: var(--shadow2);
+    .heroGrid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.15fr .9fr;
+      gap:26px;
+      align-items:center;
     }
-    .step b{display:block;color:var(--primary)}
-    .step span{display:block;margin-top:6px;color:var(--muted);line-height:1.55}
 
-    .case{
-      border:1px solid rgba(44,90,160,.18);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      background:#fff;
-    }
-    .caseHead{
-      padding:18px;
+    .badgeRow{
       display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
       flex-wrap:wrap;
-      border-bottom:1px solid rgba(15,23,42,.08);
-      background: rgba(245,247,251,.92);
+      gap:10px;
+      align-items:center;
+      margin-bottom:14px;
     }
     .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 12px;border-radius:999px;
-      border:1px solid rgba(22,163,74,.25);
-      background: rgba(22,163,74,.08);
-      color:#0f5f2d;
-      font-weight:900;
-      font-size:12.6px;
-      white-space:nowrap;
-    }
-    .dot{width:9px;height:9px;border-radius:999px;background:#16a34a;box-shadow:0 0 0 6px rgba(22,163,74,.12)}
-    .caseTitle b{display:block;color:var(--primary);font-size:16px}
-    .caseTitle span{display:block;color:var(--muted);font-size:13.2px;margin-top:4px;line-height:1.45}
-    .caseGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px}
-    .caseItem{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background:#fff;
-      padding:14px;
-      box-shadow: 0 10px 24px rgba(15,23,42,.05);
-    }
-    .caseItem b{display:block;color:var(--primary);margin-bottom:6px}
-    .caseItem ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.55}
-    .caseNote{padding:0 18px 18px;color:var(--muted);font-size:12.8px;line-height:1.5}
-
-    .faq{display:grid;gap:10px}
-    details{
-      border:1px solid var(--line);
-      border-radius: 14px;
-      background:#fff;
-      padding: 12px 14px;
-      box-shadow: 0 10px 20px rgba(15,23,42,.04);
-    }
-    summary{cursor:pointer;font-weight:950;color:var(--primary);list-style:none}
-    summary::-webkit-details-marker{display:none}
-    details p{margin:10px 0 0;color:var(--muted);line-height:1.6}
-
-    .cta{
-      border:1px solid rgba(44,90,160,.18);
-      border-radius: var(--radius);
-      padding: 18px;
-      background: linear-gradient(135deg, rgba(44,90,160,.08), rgba(255,255,255,.92));
-      box-shadow: var(--shadow2);
-    }
-    .ctaHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .cta b{font-size:16px;color:var(--primary)}
-    .cta .sub{color:var(--muted);font-size:13.6px;margin-top:6px;line-height:1.45}
-
-    form{margin-top:12px}
-    .formGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .field{display:flex;flex-direction:column;gap:6px}
-    label{font-size:12.8px;color:var(--muted);font-weight:950}
-    input,select{
-      padding:12px 12px;border-radius:14px;border:1px solid var(--line);
-      background:#fff;font-size:14px;outline:none;
-    }
-    input:focus,select:focus{border-color: rgba(44,90,160,.35); box-shadow: 0 0 0 4px rgba(44,90,160,.10)}
-    .formActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-
-    .contactGrid{margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .contactItem{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:14px;
-      background:#fff;
-      box-shadow: var(--shadow2);
-    }
-    .contactItem b{display:block;margin-bottom:6px;color:var(--primary)}
-    .contactItem a{color:var(--text);font-weight:950}
-    .contactItem small{display:block;margin-top:6px;color:var(--muted)}
-
-    footer{
-      margin-top:18px;
-      padding:16px 2px 0;
-      border-top:1px solid var(--line);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 9px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      background:rgba(248,250,252,.95);
       color:var(--muted);
-      font-size:12.8px;
+      font-size:11px;
+    }
+    .badge i{
+      display:inline-flex;
+      width:16px;height:16px;
+      border-radius:50%;
+      align-items:center;
+      justify-content:center;
+      font-size:11px;
+      background:radial-gradient(circle at 30% 0%, #eff6ff, #38bdf8);
+      color:#0b1120;
+      box-shadow:0 0 0 5px rgba(191,219,254,.8);
+    }
+    .badge strong{color:#0f172a;font-weight:600}
+
+    h1{
+      margin:0 0 10px;
+      font-size:clamp(30px,3.8vw,46px);
+      line-height:1.05;
+      letter-spacing:.01em;
+      color:#0f172a;
+    }
+    h1 span.highlight{
+      background:linear-gradient(135deg,#0284c7,#38bdf8,#4f46e5);
+      -webkit-background-clip:text;
+      color:transparent;
+      text-shadow:0 0 18px rgba(59,130,246,.4);
+    }
+    .lead{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:14.8px;
+      line-height:1.6;
+      max-width:54ch;
+    }
+    .lead strong{color:#0f172a;font-weight:600}
+
+    .heroChips{
       display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:0 0 18px;
+    }
+    .chip{
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      background:rgba(248,250,252,.96);
+      color:var(--muted);
+      font-size:11.5px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .chip b{color:#0f172a;font-weight:600}
+    .chip-dot{
+      width:8px;height:8px;border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #fed7aa, #f97316);
+    }
+
+    .heroActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .heroHint{
+      font-size:11.5px;
+      color:var(--muted);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .heroHint span.dot{
+      width:8px;height:8px;border-radius:999px;
+      background:radial-gradient(circle at 0 0,#bbf7d0,#22c55e);
+      box-shadow:0 0 0 6px rgba(34,197,94,.18);
+    }
+
+    .heroMeta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:10px;
+      font-size:11.5px;
+      color:var(--muted);
+    }
+    .heroMeta strong{color:#0f172a;font-weight:600}
+
+    .heroPanel{
+      position:relative;
+      height:100%;
+      min-height:260px;
+      display:flex;
+      align-items:center;
+    }
+    .panelMain{
+      flex:1;
+      border-radius:24px;
+      border:1px solid rgba(148,163,184,.7);
+      background:
+        radial-gradient(circle at 0 0, rgba(191,219,254,.9), transparent 60%),
+        rgba(255,255,255,1);
+      box-shadow:var(--shadow);
+      padding:14px 14px 12px;
+      font-size:11.8px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .panelHeader{
+      display:flex;
+      align-items:center;
       justify-content:space-between;
       gap:10px;
-      flex-wrap:wrap;
+    }
+    .panelHeaderL{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .panelDot{
+      width:8px;height:8px;border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #bbf7d0,#22c55e);
+    }
+    .panelHeaderL span{
+      font-size:11px;
+      color:var(--muted);
+    }
+    .panelHeaderL strong{
+      display:block;
+      color:#0f172a;
+      font-size:12px;
+    }
+    .panelDate{
+      font-size:11px;
+      color:var(--muted);
     }
 
-    .waFloat{
-      position:fixed;right:18px;bottom:18px;z-index:60;
+    .panelGrid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:10px;
+      align-items:stretch;
+    }
+    .panelCard{
+      border-radius:16px;
+      border:1px solid rgba(148,163,184,.55);
+      background:radial-gradient(circle at 0 0, #eff6ff, #e0ecff);
+      padding:10px 10px 10px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .panelCard h3{
+      margin:0;
+      font-size:11px;
+      font-weight:600;
+      color:var(--muted);
+    }
+    .panelValue{
+      font-size:17px;
+      font-weight:700;
+      color:#0f172a;
+    }
+    .panelTagRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:6px;
+      font-size:11px;
+    }
+    .panelTagRow span.badgeMini{
+      padding:3px 7px;
       border-radius:999px;
-      box-shadow: 0 14px 34px rgba(15,23,42,.14);
+      background:rgba(22,163,74,.1);
+      color:#15803d;
+      border:1px solid rgba(22,163,74,.4);
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+    }
+    .panelTagRow span.badgeMini i{
+      width:6px;height:6px;border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #bbf7d0,#22c55e);
+    }
+    .panelTagRow small{color:var(--muted)}
+
+    .panelBars{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:4px;
+      align-items:flex-end;
+    }
+    .panelBars span{
+      display:block;
+      border-radius:999px;
+      background:linear-gradient(to top,#bfdbfe,#0ea5e9);
+      box-shadow:0 6px 16px rgba(56,189,248,.4);
+      height:60px;
+    }
+    .panelBars span:nth-child(2){height:80px}
+    .panelBars span:nth-child(3){height:68px}
+    .panelBars span:nth-child(4){height:96px}
+    .panelBars span:nth-child(5){height:72px}
+    .panelBars span:nth-child(6){height:52px}
+
+    .panelList{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      margin-top:4px;
+    }
+    .panelListItem{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:11px;
+      color:var(--muted);
+    }
+    .panelListItem strong{color:#0f172a;font-weight:600}
+    .panelListItem span{
+      padding:3px 7px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.55);
+      background:#f9fafb;
+    }
+
+    .panelBadge{
+      margin-top:6px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:5px 9px;
+      border-radius:999px;
+      border:1px solid rgba(56,189,248,.6);
+      background:rgba(219,234,254,.9);
+      font-size:11px;
+      color:#0f172a;
+    }
+    .panelBadge i{
+      width:14px;height:14px;border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #eff6ff,#38bdf8);
+    }
+
+    .panelFloat{
+      position:absolute;
+      right:-12px;
+      bottom:-14px;
+      transform:translateY(-4px);
+      padding:10px 12px;
+      border-radius:18px;
+      border:1px solid rgba(148,163,184,.65);
+      background:radial-gradient(circle at 0 0, #bfdbfe, #eff6ff);
+      box-shadow:var(--shadow-soft);
+      font-size:11px;
+      color:#0f172a;
+      max-width:190px;
+    }
+    .panelFloat b{display:block;margin-bottom:3px;font-size:11.3px}
+    .panelFloat span{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin-top:5px;
+      font-size:10.8px;
+      color:#4f46e5;
+    }
+    .panelFloat span i{
+      width:8px;height:8px;border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #eff6ff,#38bdf8);
+    }
+
+    /* SECTIONS */
+    .sectionHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      margin-bottom:14px;
+    }
+    .sectionHeader h2{
+      margin:0;
+      font-size:18px;
+      color:#0f172a;
+    }
+    .sectionHeader p{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+      max-width:54ch;
+    }
+
+    .cardsGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .card{
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(148,163,184,.55);
+      background:radial-gradient(circle at 0 0, #ffffff, #eff6ff);
+      padding:13px 13px 12px;
+      box-shadow:var(--shadow);
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .cardTag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:11px;
+      color:#0f172a;
+    }
+    .cardTag span.icon{
+      width:20px;height:20px;border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      background:radial-gradient(circle at 30% 0%, #eff6ff,#38bdf8);
+      box-shadow:0 8px 18px rgba(148,163,184,.6);
+    }
+    .card strong{
+      color:#0f172a;
+      font-size:13px;
+    }
+    .card small{
+      font-size:11.5px;
+      color:var(--muted);
+    }
+
+    .pillList{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:4px;
+    }
+    .pillList span{
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.5);
+      font-size:11px;
+      color:var(--muted);
+      background:#f8fafc;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .step{
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(148,163,184,.55);
+      background:radial-gradient(circle at 0 0, #ffffff, #e5edff);
+      padding:13px 13px 12px;
+      box-shadow:var(--shadow);
+      font-size:13px;
+      color:var(--muted);
+    }
+    .stepHeader{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:4px;
+    }
+    .stepIndex{
+      width:20px;height:20px;border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:11px;
+      color:#0f172a;
+      background:#eff6ff;
+    }
+    .stepHeader strong{
+      font-size:13px;
+      color:#0f172a;
+    }
+    .step small{
+      display:block;
+      margin-top:6px;
+      font-size:11.5px;
+      color:var(--muted);
+    }
+
+    .quote{
+      border-radius:var(--radius-xl);
+      border:1px solid rgba(148,163,184,.6);
+      background:radial-gradient(circle at 0 0, #dbeafe, #eff6ff);
+      padding:16px 16px 14px;
+      box-shadow:0 18px 46px rgba(148,163,184,.55);
+      font-size:13.5px;
+      color:#0f172a;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .quoteText{
+      max-width:62ch;
+    }
+    .quote small{
+      display:block;
+      margin-top:6px;
+      font-size:11.5px;
+      color:#1d4ed8;
+    }
+    .quoteTag{
+      font-size:11px;
+      color:#4f46e5;
+    }
+
+    /* DIAGNÓSTICO */
+    .diagnostic{
+      margin-top:26px;
+      border-radius:var(--radius-xl);
+      border:1px solid rgba(148,163,184,.6);
+      background:
+        radial-gradient(900px 520px at 0 0, rgba(191,219,254,.9), transparent 60%),
+        radial-gradient(900px 520px at 100% 0, rgba(191,219,254,.8), transparent 60%),
+        #ffffff;
+      box-shadow:0 22px 54px rgba(148,163,184,.6);
+      padding:16px 16px 15px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:start;
+    }
+    .diagnostic h3{
+      margin:0 0 8px;
+      font-size:16px;
+      color:#0f172a;
+    }
+    .diagnostic p{
+      margin:0 0 10px;
+      font-size:13px;
+      color:var(--muted);
+      max-width:52ch;
+    }
+
+    .diagnosticPoints{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:6px;
+    }
+    .diagnosticPoints span{
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      font-size:11.3px;
+      color:#1f2937;
+      background:#eff6ff;
+    }
+
+    .contactRow{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .contactRow strong{color:#0f172a}
+    .btn.wa{
+      border-color:rgba(34,197,94,.65);
+      background:linear-gradient(135deg,#22c55e,#16a34a);
+      box-shadow:0 18px 38px rgba(34,197,94,.4);
+      color:#022c22;
+    }
+    .btn.wa:hover{
+      background:linear-gradient(135deg,#22c55e,#15803d);
+    }
+
+    form{
+      margin:0;
+    }
+    .formGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-bottom:12px;
+    }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      font-size:12px;
+      color:#0f172a;
+    }
+    .field label{
+      font-size:11.5px;
+      color:#0f172a;
+    }
+    input,select{
+      border-radius:12px;
+      border:1px solid rgba(148,163,184,.7);
+      background:#ffffff;
+      color:#0f172a;
+      padding:8px 9px;
+      font-size:12.5px;
+      outline:none;
+      box-shadow:0 0 0 1px transparent;
+      transition:border-color .14s ease, box-shadow .14s ease, background .14s ease;
+    }
+    input::placeholder{color:#9ca3af}
+    input:focus,select:focus{
+      border-color:rgba(56,189,248,.9);
+      box-shadow:0 0 0 1px rgba(56,189,248,.7);
+      background:#f9fafb;
+    }
+
+    .formActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+
+    .contactGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      font-size:12.5px;
+    }
+    .contactItem{
+      border-radius:14px;
+      border:1px solid rgba(148,163,184,.6);
+      background:radial-gradient(circle at 0 0, #ffffff, #eff6ff);
+      padding:10px 11px 9px;
+      color:var(--muted);
+      box-shadow:var(--shadow);
+    }
+    .contactItem b{
+      display:block;
+      margin-bottom:3px;
+      font-size:12.5px;
+      color:#0f172a;
+    }
+    .contactItem a{
+      display:inline-flex;
+      margin-top:1px;
+      font-size:12.3px;
+      color:#1d4ed8;
+    }
+    .contactItem small{
+      display:block;
+      margin-top:6px;
+      font-size:11px;
+      color:var(--muted);
+    }
+
+    footer{
+      margin-top:24px;
+      padding-top:12px;
+      border-top:1px solid rgba(148,163,184,.5);
+      font-size:11.5px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+    }
+    footer a{
+      font-size:11.5px;
+      color:#1d4ed8;
+    }
+    footer .sep{
+      opacity:.45;
+      margin:0 4px;
+    }
+
+    /* WhatsApp Float */
+    .waFloat{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:30;
     }
     .waFloat a{
-      display:flex;align-items:center;gap:10px;
-      padding:12px 14px;border-radius:999px;background:#fff;color:var(--primary);
-      font-weight:950;border:1px solid var(--line);
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:9px 13px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#22c55e,#16a34a);
+      color:#022c22;
+      font-size:12.2px;
+      font-weight:600;
+      border:1px solid rgba(22,163,74,.75);
+      box-shadow:0 20px 45px rgba(22,163,74,.45);
+      text-decoration:none;
     }
-    .waDot{width:10px;height:10px;border-radius:999px;background:var(--wa);box-shadow:0 0 0 6px rgba(37,211,102,.16)}
+    .waDot{
+      width:10px;height:10px;border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #bbf7d0,#22c55e);
+      box-shadow:0 0 0 6px rgba(34,197,94,.25);
+    }
 
-    .installWrap{display:none}
+    /* ASSISTENTE VIRTUAL */
+    .assistant-toggle{
+      position:fixed;
+      right:20px;
+      bottom:82px;
+      z-index:32;
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      border:none;
+      padding:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:radial-gradient(circle at 0 0, rgba(79,70,229,.18), rgba(59,130,246,.9));
+      box-shadow:0 14px 34px rgba(59,130,246,.6);
+      cursor:pointer;
+      transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+    .assistant-toggle span.bubbleIcon{
+      width:18px;height:18px;border-radius:999px;
+      background:conic-gradient(from 200deg,#38bdf8,#4f46e5,#38bdf8);
+      position:relative;
+    }
+    .assistant-toggle span.bubbleIcon::after{
+      content:"";
+      position:absolute;
+      left:4px;bottom:-4px;
+      width:8px;height:8px;
+      border-radius:30px;
+      background:conic-gradient(from 200deg,#38bdf8,#4f46e5,#38bdf8);
+    }
+    .assistant-toggle:hover{
+      transform:translateY(-1px) scale(1.03);
+      box-shadow:0 20px 46px rgba(59,130,246,.7);
+    }
 
-    @media (max-width: 900px){
-      .gridHero{grid-template-columns:1fr}
-      .cards,.steps{grid-template-columns:1fr}
-      .caseGrid{grid-template-columns:1fr}
-      .contactGrid{grid-template-columns:1fr}
-      .trust{grid-template-columns:1fr 1fr}
-      .formGrid{grid-template-columns:1fr}
+    .assistant{
+      position:fixed;
+      right:18px;
+      bottom:82px;
+      width:310px;
+      max-height:430px;
+      border-radius:18px;
+      border:1px solid rgba(148,163,184,.7);
+      background:radial-gradient(900px 520px at 0 0, #eff6ff, #ffffff);
+      box-shadow:0 24px 60px rgba(148,163,184,.7);
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+      transform:translateY(14px) scale(.96);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease, transform .18s ease;
+      z-index:31;
+    }
+    .assistant.open{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateY(0) scale(1);
+    }
+    .assistantHeader{
+      padding:9px 11px 7px;
+      border-bottom:1px solid rgba(148,163,184,.6);
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background:#eff6ff;
+    }
+    .assistantAvatar{
+      width:24px;height:24px;border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #eff6ff,#38bdf8);
+      box-shadow:0 10px 22px rgba(148,163,184,.7);
+    }
+    .assistantHeaderText{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:1px;
+    }
+    .assistantHeaderText strong{
+      font-size:12px;
+      color:#0f172a;
+    }
+    .assistantHeaderText span{
+      font-size:11px;
+      color:#4f46e5;
+    }
+    .assistantStatusDot{
+      width:8px;height:8px;border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #bbf7d0,#22c55e);
+      box-shadow:0 0 0 6px rgba(34,197,94,.2);
+    }
+
+    .assistantBody{
+      padding:8px 9px 8px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      font-size:12px;
+      color:var(--muted);
+      background:#ffffff;
+      flex:1;
+    }
+    .assistantMessages{
+      flex:1;
+      overflow-y:auto;
+      padding-right:4px;
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+    }
+    .assistantMsg{
+      max-width:85%;
+      padding:7px 9px;
+      border-radius:12px;
+      font-size:11.8px;
+      line-height:1.45;
+    }
+    .assistantMsg.bot{
+      background:#eff6ff;
+      border:1px solid rgba(148,163,184,.6);
+      color:#0f172a;
+      border-bottom-left-radius:4px;
+    }
+    .assistantMsg.user{
+      background:linear-gradient(135deg,#22c55e,#16a34a);
+      color:#022c22;
+      margin-left:auto;
+      border-bottom-right-radius:4px;
+    }
+
+    .assistantQuick{
+      margin-top:4px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+    .assistantQuick button{
+      padding:4px 7px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      background:#f1f5f9;
+      color:#1d4ed8;
+      font-size:11px;
+      cursor:pointer;
+    }
+
+    .assistantFooter{
+      padding:7px 9px 8px;
+      border-top:1px solid rgba(148,163,184,.6);
+      background:#f9fafb;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .assistantFooter input{
+      flex:1;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      background:#ffffff;
+      color:#0f172a;
+      font-size:11.8px;
+      padding:7px 9px;
+    }
+    .assistantFooter button{
+      border-radius:999px;
+      border:1px solid rgba(56,189,248,.7);
+      background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+      color:#0b1120;
+      font-size:11px;
+      padding:5px 8px;
+      cursor:pointer;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width:900px){
+      .hero{
+        padding:22px 18px 20px;
+        border-radius:24px;
+      }
+      .heroGrid{
+        grid-template-columns:1fr;
+        gap:18px;
+      }
+      .heroPanel{min-height:220px}
+      .panelFloat{
+        position:static;
+        margin-top:10px;
+        max-width:none;
+      }
+      .cardsGrid,
+      .steps,
+      .contactGrid{
+        grid-template-columns:1fr 1fr;
+      }
+      .diagnostic{
+        grid-template-columns:1fr;
+      }
+      .formGrid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+    @media (max-width:680px){
+      header{
+        background:rgba(248,250,252,.98);
+      }
+      .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+      }
+      nav{
+        order:3;
+        width:100%;
+        justify-content:flex-start;
+      }
+      .actions{
+        width:100%;
+        justify-content:flex-start;
+      }
+      .wrap{
+        padding:16px 13px 120px;
+      }
+      .hero{
+        border-radius:20px;
+        padding:18px 14px 16px;
+      }
+      .heroActions{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .cardsGrid,
+      .steps,
+      .contactGrid{
+        grid-template-columns:1fr;
+      }
+      .formGrid{
+        grid-template-columns:1fr;
+      }
+      .assistant,
+      .assistant-toggle,
+      .waFloat{
+        right:14px;
+      }
+      .assistant{
+        width:92vw;
+      }
     }
   </style>
 </head>
-
 <body>
-  <!-- LINKS DIRETOS (não dependem do JS) -->
-  <!-- WhatsApp: -->
-  <!-- https://wa.me/5527988462445?text=... -->
-  <!-- Instagram: -->
-  <!-- https://www.instagram.com/swa.gestaointeligente/ -->
-
   <header>
     <div class="topbar">
       <div class="brand">
-        <img src="swa1.jpeg" alt="SWA (logo oficial)">
+        <img src="swa1.jpeg" alt="Logo SWA – Gestão Inteligente" />
         <div class="t">
-          <strong>SWA — Gestão Inteligente</strong>
-          <span>Vila Velha/ES • Presencial & Online</span>
+          <strong>SWA – Gestão Inteligente</strong>
+          <span>Gestão administrativa e financeira com clareza</span>
         </div>
       </div>
 
+      <nav aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#para-quem">Para quem é</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#diagnostico">Diagnóstico gratuito</a>
+      </nav>
+
       <div class="actions">
-        <button class="btn soft installWrap" id="btnInstall" type="button">Instalar app</button>
-
-        <a class="btn soft" id="btnInstaTop"
-           href="https://www.instagram.com/swa.gestaointeligente/"
-           target="_blank" rel="noopener">
-          Instagram
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Agenda com vagas limitadas</span>
+        </div>
+        <a class="btn soft" href="https://www.instagram.com/swa.gestaointeligente/" target="_blank" rel="noopener">
+          Ver cases no Instagram
         </a>
-
-        <a class="btn soft" id="btnPhoneTop"
-           href="tel:+5527988462445">
-          Telefone
-        </a>
-
-        <a class="btn primary" id="btnWhatsTop"
-           href="https://wa.me/5527988462445?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
+        <a class="btn primary"
+           href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
            target="_blank" rel="noopener">
-          WhatsApp
+          Falar com especialista
         </a>
       </div>
     </div>
   </header>
 
-  <div class="wrap">
-    <main>
-      <section class="hero" id="inicio">
-        <div class="heroBg">
-          <div class="gridHero">
-            <div>
-              <h1>Gestão com clareza, rotina e presença.</h1>
-              <p class="lead">
-                A <b>SWA</b> organiza o financeiro e a administração para você respirar.
-                Atendimento humano, processo simples e acompanhamento — do início ao resultado.
-              </p>
+  <main class="wrap">
+    <section id="inicio" class="hero" aria-labelledby="hero-title">
+      <div class="heroGrid">
+        <div>
+          <div class="badgeRow">
+            <div class="badge">
+              <i></i>
+              <span>Condomínios & empresas • ES & online</span>
+            </div>
+            <div class="badge">
+              <span>+ rotina • + clareza • + resultado</span>
+            </div>
+          </div>
 
-              <div class="chips">
-                <span class="chip">Condomínios</span>
-                <span class="chip">Empresas</span>
-                <span class="chip">Financeiro</span>
-                <span class="chip">Rotina & Processos</span>
+          <h1 id="hero-title">
+            Gestão que une <span class="highlight">excelência</span> técnica<br />
+            com paz e previsibilidade no dia a dia.
+          </h1>
+
+          <p class="lead">
+            A SWA organiza o operacional, financeiro e estratégico do seu
+            <strong>condomínio</strong> ou <strong>empresa</strong> para que tudo
+            flua com clareza: indicadores claros, rotinas bem desenhadas e decisões
+            baseadas em dados – sem perder o cuidado humano.
+          </p>
+
+          <div class="heroChips" aria-label="Diferenciais da SWA">
+            <div class="chip">
+              <span class="chip-dot"></span>
+              <b>Implantação guiada</b> passo a passo
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              <b>Rotinas financeiras</b> blindadas
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              <b>Painéis de controle</b> visuais
+            </div>
+          </div>
+
+          <div class="heroActions">
+            <a class="btn primary"
+               href="#diagnostico">
+              Quero diagnóstico gratuito
+              <span>leva 1 minuto</span>
+            </a>
+            <a class="btn soft"
+               href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20entender%20melhor%20como%20funciona."
+               target="_blank" rel="noopener">
+              Tirar dúvidas no WhatsApp
+            </a>
+          </div>
+
+          <div class="heroHint">
+            <span class="dot"></span>
+            <span>
+              Em poucos dias você sente o efeito: menos correria, mais clareza sobre números
+              e uma rotina que funciona.
+            </span>
+          </div>
+
+          <div class="heroMeta">
+            <span><strong>Base em Vila Velha/ES</strong>, atendimento em todo o Brasil.</span>
+            <span><strong>Gestão administrativa e financeira</strong> com visão estratégica.</span>
+          </div>
+        </div>
+
+        <aside class="heroPanel" aria-label="Painel ilustrativo de resultados">
+          <div class="panelMain">
+            <div class="panelHeader">
+              <div class="panelHeaderL">
+                <span class="panelDot"></span>
+                <div>
+                  <strong>Painel de resultados SWA</strong>
+                  <span>Visão simples do que importa</span>
+                </div>
+              </div>
+              <div class="panelDate">
+                <span id="heroDate"></span>
+              </div>
+            </div>
+
+            <div class="panelGrid">
+              <div class="panelCard" aria-label="Saúde financeira">
+                <h3>Saúde financeira</h3>
+                <div class="panelValue">+18,3%</div>
+                <div class="panelTagRow">
+                  <span class="badgeMini">
+                    <i></i> inadimplência sob controle
+                  </span>
+                  <small>últimos 12 meses</small>
+                </div>
+                <div class="panelBars" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
               </div>
 
-              <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <a class="btn primary" id="btnWhatsHero"
-                   href="https://wa.me/5527988462445?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
-                   target="_blank" rel="noopener">
-                  Quero uma proposta
-                </a>
-                <a class="btn" href="#trabalhos">Ver trabalho real</a>
+              <div class="panelCard" aria-label="Rotinas e indicadores">
+                <h3>Rotinas & indicadores</h3>
+                <div class="panelList">
+                  <div class="panelListItem">
+                    <span>Fechamento mensal</span>
+                    <strong>Dia 3</strong>
+                  </div>
+                  <div class="panelListItem">
+                    <span>Pagamentos em atraso</span>
+                    <strong>0</strong>
+                  </div>
+                  <div class="panelListItem">
+                    <span>Chamados respondidos</span>
+                    <span>96% em até 24h</span>
+                  </div>
+                </div>
+                <div class="panelBadge">
+                  <i></i>
+                  Fluxo enxuto, com rotina clara e previsível.
+                </div>
               </div>
             </div>
+          </div>
 
-            <aside class="heroCard" aria-label="Resumo">
-              <h3>Você ganha:</h3>
-              <div class="kpis">
-                <div class="kpi"><b>Controle</b><span>fluxo de caixa e previsibilidade</span></div>
-                <div class="kpi"><b>Rotina</b><span>processos que funcionam</span></div>
-                <div class="kpi"><b>Decisão</b><span>indicadores claros</span></div>
-                <div class="kpi"><b>Confiança</b><span>acompanhamento contínuo</span></div>
-              </div>
-            </aside>
+          <div class="panelFloat">
+            <b>Como você quer sentir sua gestão?</b>
+            <span>
+              <i></i>
+              Menos incêndio. Mais serenidade, dados claros e controle na mão.
+            </span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="para-quem" aria-labelledby="para-quem-title">
+      <div class="sectionHeader">
+        <h2 id="para-quem-title">Para quem é a SWA?</h2>
+        <p>
+          Atendemos condomínios e empresas que querem sair da gestão “no improviso” para uma
+          rotina profissional, com números confiáveis, processos claros e decisões mais seguras.
+        </p>
+      </div>
+
+      <div class="cardsGrid">
+        <article class="card">
+          <div class="cardTag">
+            <span class="icon"></span>
+            <span>Síndicos & condomínios</span>
+          </div>
+          <strong>Gestão transparente e organizada, que reduz conflitos e devolve tempo para o síndico.</strong>
+          <small>
+            Implantamos rotinas administrativas e financeiras que dão previsibilidade, tiram a
+            gestão da cabeça das pessoas e colocam em processos claros.
+          </small>
+          <div class="pillList">
+            <span>Controle de receitas e despesas</span>
+            <span>Prestação de contas clara</span>
+            <span>Rotina de cobrança saudável</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTag">
+            <span class="icon"></span>
+            <span>Empresas</span>
+          </div>
+          <strong>Do financeiro ao operacional: visão de fluxo e resultado que orienta decisões.</strong>
+          <small>
+            Organizamos rotinas de contas a pagar/receber, fluxo de caixa e indicadores para que
+            você saiba exatamente onde está e para onde está indo.
+          </small>
+          <div class="pillList">
+            <span>Fluxo de caixa previsível</span>
+            <span>Centros de custo claros</span>
+            <span>Indicadores para decisão</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="cardTag">
+            <span class="icon"></span>
+            <span>Gestores que buscam excelência</span>
+          </div>
+          <strong>Para quem quer elevar o nível da gestão sem perder o cuidado com as pessoas.</strong>
+          <small>
+            Alinhamos o que é técnico com o que é humano: processos bem desenhados,
+            comunicação clara e acompanhamento próximo da rotina da sua equipe.
+          </small>
+          <div class="pillList">
+            <span>Rotinas com começo, meio e fim</span>
+            <span>Acompanhamento próximo</span>
+            <span>Decisões baseadas em dados</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="como-funciona" aria-labelledby="como-funciona-title">
+      <div class="sectionHeader">
+        <h2 id="como-funciona-title">Como funciona na prática</h2>
+        <p>
+          Nada de pacotes engessados. Entendemos seu contexto, desenhamos uma jornada de implantação
+          e caminhamos junto até que a nova rotina esteja encaixada e funcionando no dia a dia.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="stepHeader">
+            <div class="stepIndex">1</div>
+            <strong>Diagnóstico & mapa de prioridades</strong>
+          </div>
+          <p>
+            Começamos mapeando a situação atual: números, processos, riscos e oportunidades.
+            A partir disso, desenhamos um plano claro dos próximos movimentos.
+          </p>
+          <small>Chamamos isso de “organizar a mesa”: ver tudo que existe, decidir o que entra e o que sai.</small>
+        </article>
+
+        <article class="step">
+          <div class="stepHeader">
+            <div class="stepIndex">2</div>
+            <strong>Implantação guiada da nova rotina</strong>
+          </div>
+          <p>
+            Construímos e colocamos em prática rotinas administrativas e financeiras que fazem sentido
+            para o seu contexto, junto com sua equipe.
+          </p>
+          <small>Processos documentados, tarefas claras e indicadores visíveis. Nada escondido em planilhas paralelas.</small>
+        </article>
+
+        <article class="step">
+          <div class="stepHeader">
+            <div class="stepIndex">3</div>
+            <strong>Acompanhamento e ajuste fino</strong>
+          </div>
+          <p>
+            Após a implantação, seguimos medindo, revisando e ajustando para garantir que a rotina
+            se mantenha leve, eficiente e sustentável.
+          </p>
+          <small>O objetivo é que você tenha uma gestão robusta, que funcione bem mesmo nos dias mais corridos.</small>
+        </article>
+      </div>
+    </section>
+
+    <section aria-label="Depoimento e visão de gestão">
+      <div class="quote">
+        <div class="quoteText">
+          “Gestão inteligente, para nós, é quando os números conversam com a rotina e com as pessoas.
+          Não é só sobre relatórios bonitos: é sobre decisões mais seguras, menos urgência e mais
+          paz na condução do dia a dia.”
+          <small>SWA – Gestão Inteligente</small>
+        </div>
+        <div class="quoteTag">
+          Excelência com clareza, rotina e resultado.
+        </div>
+      </div>
+    </section>
+
+    <section id="diagnostico" aria-labelledby="diagnostico-title">
+      <div class="diagnostic">
+        <div>
+          <h3 id="diagnostico-title">Diagnóstico rápido e gratuito</h3>
+          <p>
+            Em menos de 1 minuto você envia algumas informações e recebe um primeiro olhar da SWA
+            sobre a situação atual da sua gestão. A partir daí, avaliamos juntos o melhor caminho.
+          </p>
+          <p>
+            Não é atendimento automático: um profissional da SWA responde pessoalmente com clareza
+            e respeito ao seu contexto.
+          </p>
+
+          <div class="diagnosticPoints">
+            <span>Sem custo e sem compromisso</span>
+            <span>Retorno pelo WhatsApp</span>
+            <span>Foco em clareza e próximos passos</span>
+          </div>
+
+          <div class="contactRow">
+            <strong>Prefere ir direto ao ponto?</strong>
+            <a class="btn wa"
+               href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20SWA%20sobre%20minha%20gest%C3%A3o."
+               target="_blank" rel="noopener">
+              Chamar no WhatsApp agora
+            </a>
           </div>
         </div>
 
-        <div class="trust">
-          <div class="trustItem"><b>Atendimento rápido</b><span>WhatsApp com retorno objetivo</span></div>
-          <div class="trustItem"><b>Transparência</b><span>rotina e relatórios claros</span></div>
-          <div class="trustItem"><b>Organização</b><span>padrões, pastas e controle</span></div>
-          <div class="trustItem"><b>Vila Velha/ES</b><span>presencial e online</span></div>
-        </div>
-      </section>
-
-      <section class="panel" id="servicos">
-        <div class="sectionTitle">
-          <h2>Serviços</h2>
-          <p>O essencial bem feito — sem promessa vazia.</p>
-        </div>
-
-        <div class="imageBlock">
-          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=90" alt="Parceria e confiança — mãos apertando">
-          <div class="cap">Imagem clara e elegante — parceria e confiança.</div>
-        </div>
-
-        <div class="cards">
-          <div class="card"><b>Diagnóstico & Plano</b><p>Levantamento do cenário e plano simples para organizar e avançar com consistência.</p></div>
-          <div class="card"><b>Gestão Financeira</b><p>Fluxo de caixa, contas, calendário e padrões para reduzir falhas, atrasos e retrabalho.</p></div>
-          <div class="card"><b>Rotina Administrativa</b><p>Checklists, documentos e controles para dar estabilidade e reduzir “correria”.</p></div>
-          <div class="card"><b>Indicadores</b><p>O que acompanhar e como decidir com números simples, úteis e constantes.</p></div>
-          <div class="card"><b>Padronização</b><p>Organização de pastas, nomes e documentos para facilitar operação e prestação de contas.</p></div>
-          <div class="card"><b>Acompanhamento</b><p>Suporte contínuo para manter o padrão, ajustar rota e evoluir mês a mês.</p></div>
-        </div>
-      </section>
-
-      <section id="metodo">
-        <div class="sectionTitle">
-          <h2>Método SWA</h2>
-          <p>Simples, claro e executável.</p>
-        </div>
-
-        <div class="imageBlock">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2200&q=90" alt="Equipe e organização">
-          <div class="cap">Rotina, organização e acompanhamento na prática.</div>
-        </div>
-
-        <div class="steps">
-          <div class="step"><b>1) Diagnóstico</b><span>Entendemos a realidade e definimos prioridades com clareza.</span></div>
-          <div class="step"><b>2) Implementação</b><span>Colocamos rotina, controles e padrão funcionando na prática.</span></div>
-          <div class="step"><b>3) Acompanhamento</b><span>Seguimos junto, medindo, corrigindo e melhorando continuamente.</span></div>
-        </div>
-      </section>
-
-      <section id="trabalhos">
-        <div class="sectionTitle">
-          <h2>Trabalho real</h2>
-          <p>Gestão em andamento, sem exposição desnecessária.</p>
-        </div>
-
-        <div class="imageBlock">
-          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2200&q=90" alt="Condomínios e gestão">
-          <div class="cap">Imagem ilustrativa e neutra — sem dados sensíveis.</div>
-        </div>
-
-        <div class="case">
-          <div class="caseHead">
-            <div class="caseTitle">
-              <b>Condomínio Mar Azul — 2ª Etapa</b>
-              <span>Praia da Costa • Vila Velha/ES — atuação administrativa, financeira e operacional em andamento.</span>
-            </div>
-            <div class="badge"><span class="dot" aria-hidden="true"></span>Em andamento</div>
-          </div>
-
-          <div class="caseGrid">
-            <div class="caseItem">
-              <b>Financeiro & Transparência</b>
-              <ul>
-                <li>Rotina de prestação de contas</li>
-                <li>Padronização de relatórios</li>
-                <li>Acompanhamento e previsibilidade</li>
-              </ul>
-            </div>
-            <div class="caseItem">
-              <b>Administrativo & Governança</b>
-              <ul>
-                <li>Documentos e comunicados com padrão</li>
-                <li>Organização de rotinas e processos</li>
-                <li>Apoio ao síndico e conselho</li>
-              </ul>
-            </div>
-            <div class="caseItem">
-              <b>Operacional</b>
-              <ul>
-                <li>Demandas e prioridades organizadas</li>
-                <li>Acompanhamento de serviços/contratos</li>
-                <li>Rotina de manutenção</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="caseNote">
-            *Case apresentado de forma técnica e respeitosa, sem exposição de informações sensíveis.
-          </div>
-        </div>
-      </section>
-
-      <section id="faq">
-        <div class="sectionTitle">
-          <h2>Perguntas frequentes</h2>
-          <p>Pra você decidir com segurança.</p>
-        </div>
-
-        <div class="faq">
-          <details>
-            <summary>Vocês atendem só condomínios?</summary>
-            <p>Atendemos condomínios e empresas. A SWA entra onde precisa de rotina, clareza e gestão organizada.</p>
-          </details>
-          <details>
-            <summary>Como começa o atendimento?</summary>
-            <p>Começa com um diagnóstico rápido. Depois definimos um plano enxuto e partimos para a implementação.</p>
-          </details>
-          <details>
-            <summary>Presencial ou online?</summary>
-            <p>Os dois. Em Vila Velha/ES com presença quando necessário, e também online com acompanhamento contínuo.</p>
-          </details>
-          <details>
-            <summary>Em quanto tempo eu sinto diferença?</summary>
-            <p>O básico destrava rápido quando entra rotina e padrão. O ganho maior vem com consistência mês a mês.</p>
-          </details>
-        </div>
-      </section>
-
-      <section id="contato">
-        <div class="cta">
-          <div class="ctaHead">
-            <div>
-              <b>Quer uma proposta rápida?</b>
-              <div class="sub">Preenche 3 campos e eu recebo no WhatsApp já certinho. Sem burocracia.</div>
-            </div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn primary" id="btnWhatsCta"
-                 href="https://wa.me/5527988462445?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
-                 target="_blank" rel="noopener">
-                Chamar no WhatsApp
-              </a>
-              <a class="btn" id="btnInstaCta"
-                 href="https://www.instagram.com/swa.gestaointeligente/"
-                 target="_blank" rel="noopener">
-                Abrir Instagram
-              </a>
-            </div>
-          </div>
-
+        <div>
           <form id="leadForm">
             <div class="formGrid">
               <div class="field">
@@ -595,7 +1441,7 @@
                 <input id="nome" name="nome" placeholder="Ex.: Erineu" required />
               </div>
               <div class="field">
-                <label for="tipo">Você é…</label>
+                <label for="tipo">Você é</label>
                 <select id="tipo" name="tipo" required>
                   <option value="" selected disabled>Selecione</option>
                   <option>Síndico / Condomínio</option>
@@ -611,71 +1457,118 @@
 
             <div class="formActions">
               <button class="btn primary" type="submit">Enviar para WhatsApp</button>
-              <a class="btn" href="#inicio">Voltar ao topo</a>
+              <a class="btn soft" href="#inicio">Voltar ao topo</a>
             </div>
           </form>
         </div>
+      </div>
 
-        <div class="contactGrid" aria-label="Contatos">
-          <div class="contactItem">
-            <b>WhatsApp</b>
-            <a href="https://wa.me/5527988462445?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
-               target="_blank" rel="noopener">
-              +55 27 98846-2445
-            </a>
-            <small>Atendimento rápido</small>
-          </div>
-          <div class="contactItem">
-            <b>Telefone</b>
-            <a href="tel:+5527988462445">+55 27 98846-2445</a>
-            <small>Chamada direta</small>
-          </div>
-          <div class="contactItem">
-            <b>Instagram</b>
-            <a href="https://www.instagram.com/swa.gestaointeligente/" target="_blank" rel="noopener">
-              @swa.gestaointeligente
-            </a>
-            <small>Portfólio e atualizações</small>
-          </div>
+      <div class="contactGrid" aria-label="Canais de contato">
+        <div class="contactItem">
+          <b>WhatsApp</b>
+          <a href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
+             target="_blank" rel="noopener">
+            +55 27 98846-2445
+          </a>
+          <small>Atendimento rápido e direto com a equipe.</small>
         </div>
-      </section>
-
-      <footer>
-        <div>© <span id="year"></span> SWA — Gestão Inteligente</div>
-        <div>
-          <a href="https://www.instagram.com/swa.gestaointeligente/" target="_blank" rel="noopener">Instagram</a>
-          <span style="opacity:.45"> • </span>
-          <a href="https://wa.me/5527988462445?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
-             target="_blank" rel="noopener">WhatsApp</a>
-          <span style="opacity:.45"> • </span>
-          <a href="tel:+5527988462445">Telefone</a>
+        <div class="contactItem">
+          <b>Telefone</b>
+          <a href="tel:+5527988462445">+55 27 98846-2445</a>
+          <small>Se preferir, ligue e fale com a gente.</small>
         </div>
-      </footer>
-    </main>
-  </div>
+        <div class="contactItem">
+          <b>Instagram</b>
+          <a href="https://www.instagram.com/swa.gestaointeligente/" target="_blank" rel="noopener">
+            @swa.gestaointeligente
+          </a>
+          <small>Portfólio, bastidores e conteúdos sobre gestão.</small>
+        </div>
+      </div>
+    </section>
 
-  <div class="waFloat" aria-label="WhatsApp flutuante">
-    <a href="https://wa.me/5527988462445?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
+    <footer>
+      <div>© <span id="year"></span> SWA – Gestão Inteligente</div>
+      <div>
+        <a href="https://www.instagram.com/swa.gestaointeligente/" target="_blank" rel="noopener">Instagram</a>
+        <span class="sep">•</span>
+        <a href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
+           target="_blank" rel="noopener">WhatsApp</a>
+        <span class="sep">•</span>
+        <a href="tel:+5527988462445">Telefone</a>
+      </div>
+    </footer>
+  </main>
+
+  <div class="waFloat" aria-label="Atalho WhatsApp flutuante">
+    <a href="https://wa.me/5527988462445?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SWA%20e%20quero%20uma%20proposta%2Fdiagn%C3%B3stico."
        target="_blank" rel="noopener">
       <span class="waDot" aria-hidden="true"></span>
       WhatsApp
     </a>
   </div>
 
+  <!-- Assistente virtual (front-end) -->
+  <button class="assistant-toggle" type="button" aria-label="Abrir assistente virtual" data-assistant-toggle>
+    <span class="bubbleIcon" aria-hidden="true"></span>
+  </button>
+
+  <section class="assistant" aria-label="Assistente virtual SWA" data-assistant>
+    <header class="assistantHeader">
+      <div class="assistantAvatar" aria-hidden="true"></div>
+      <div class="assistantHeaderText">
+        <strong>Assistente SWA</strong>
+        <span>Te ajudo a entender o próximo passo</span>
+      </div>
+      <div class="assistantStatusDot" aria-hidden="true"></div>
+    </header>
+    <div class="assistantBody">
+      <div class="assistantMessages" data-assistant-messages aria-live="polite"></div>
+      <div class="assistantQuick" aria-label="Sugestões rápidas de dúvidas">
+        <button type="button" data-assistant-question="Sou síndico e quero organizar o condomínio. Como vocês ajudam?">
+          Sou síndico
+        </button>
+        <button type="button" data-assistant-question="Tenho uma empresa e preciso blindar o financeiro. Como funciona?">
+          Tenho empresa
+        </button>
+        <button type="button" data-assistant-question="Quero entender valores e formatos de trabalho.">
+          Valores e formatos
+        </button>
+        <button type="button" data-assistant-question="Como é o passo a passo para começar com a SWA?">
+          Como começar
+        </button>
+      </div>
+    </div>
+    <form class="assistantFooter" aria-label="Envio de mensagem para assistente" data-assistant-form>
+      <input type="text" placeholder="Digite sua dúvida em poucas palavras..." />
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
   <script>
+    // Ano e data do painel
     document.getElementById("year").textContent = new Date().getFullYear();
+    const heroDateEl = document.getElementById("heroDate");
+    if (heroDateEl) {
+      const d = new Date();
+      const months = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+      heroDateEl.textContent = `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+    }
 
     // Form -> WhatsApp (abre em nova aba)
-    document.getElementById("leadForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const nome = document.getElementById("nome").value.trim();
-      const tipo = document.getElementById("tipo").value.trim();
-      const cidade = document.getElementById("cidade").value.trim();
+    const leadForm = document.getElementById("leadForm");
+    if (leadForm) {
+      leadForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nome = document.getElementById("nome").value.trim();
+        const tipo = document.getElementById("tipo").value.trim();
+        const cidade = document.getElementById("cidade").value.trim();
 
-      const msg = `Olá! Vim pelo site da SWA.\n\nNome: ${nome}\nPerfil: ${tipo}\nCidade: ${cidade}\n\nQuero uma proposta/diagnóstico.`;
-      const link = `https://wa.me/5527988462445?text=${encodeURIComponent(msg)}`;
-      window.open(link, "_blank", "noopener");
-    });
+        const msg = `Olá! Vim pelo site da SWA.\n\nNome: ${nome}\nPerfil: ${tipo}\nCidade: ${cidade}\n\nQuero uma proposta/diagnóstico para organizar minha gestão.`;
+        const link = `https://wa.me/5527988462445?text=${encodeURIComponent(msg)}`;
+        window.open(link, "_blank", "noopener");
+      });
+    }
 
     // PWA (service worker)
     if ("serviceWorker" in navigator) {
@@ -684,22 +1577,82 @@
       });
     }
 
-    // Botão instalar (quando disponível)
-    let deferredPrompt = null;
-    const installBtn = document.getElementById("btnInstall");
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = "inline-flex";
-    });
+    // Assistente virtual (simples, baseado em palavras-chave)
+    (function(){
+      const toggle = document.querySelector("[data-assistant-toggle]");
+      const assistant = document.querySelector("[data-assistant]");
+      const messagesEl = assistant?.querySelector("[data-assistant-messages]");
+      const form = assistant?.querySelector("[data-assistant-form]");
+      const input = form?.querySelector("input");
+      const quickButtons = assistant?.querySelectorAll("[data-assistant-question]");
 
-    installBtn.addEventListener("click", async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      installBtn.style.display = "none";
-    });
+      if (!toggle || !assistant || !messagesEl || !form || !input) return;
+
+      function addMessage(text, from){
+        const el = document.createElement("div");
+        el.className = "assistantMsg " + (from === "user" ? "user" : "bot");
+        el.textContent = text;
+        messagesEl.appendChild(el);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      function answer(raw){
+        const question = (raw || "").toLowerCase();
+        let reply;
+
+        if (question.includes("síndic") || question.includes("sind") || question.includes("condom")) {
+          reply = "Com condomínios, ajudamos a organizar a rotina administrativa e financeira: calendário de tarefas, fluxo de caixa, inadimplência, prestação de contas e indicadores simples para síndico e conselho. A ideia é reduzir conflitos e aumentar a transparência.";
+        } else if (question.includes("empresa") || question.includes("negócio") || question.includes("negocio")) {
+          reply = "Com empresas, começamos mapeando o financeiro (contas a pagar/receber, fluxo de caixa, centros de custo) e a rotina administrativa. A partir disso, desenhamos processos claros, implementamos controles e criamos painéis que mostram o que realmente importa para a decisão.";
+        } else if (question.includes("preço") || question.includes("preco") || question.includes("valor") || question.includes("valores") || question.includes("investimento") || question.includes("format")) {
+          reply = "Os valores variam conforme o tamanho e a complexidade da gestão. Por isso sempre começamos com um diagnóstico rápido. A partir dele, conseguimos sugerir formatos de trabalho e faixas de investimento. Se quiser, posso te levar direto para o WhatsApp para uma proposta sob medida.";
+        } else if (question.includes("começar") || question.includes("comecar") || question.includes("começo") || question.includes("inicio") || question.includes("iniciar") || question.includes("implant")) {
+          reply = "O passo a passo é simples: 1) fazemos um diagnóstico inicial; 2) definimos um plano de implantação; 3) colocamos as novas rotinas em prática junto com sua equipe; 4) seguimos acompanhando e ajustando. Tudo com linguagem simples e transparência total.";
+        } else if (question.includes("contato") || question.includes("whats") || question.includes("whatsapp") || question.includes("falar")) {
+          reply = "Posso te direcionar diretamente para nosso WhatsApp. Lá você fala com um profissional da SWA que vai entender seu contexto e sugerir próximos passos com clareza.";
+        } else {
+          reply = "Entendi. Algumas dúvidas exigem olhar para o seu contexto específico. O melhor próximo passo é fazermos um diagnóstico rápido pelo WhatsApp: você conta sua situação em poucas linhas e um profissional da SWA responde com orientações e possíveis caminhos.";
+        }
+
+        addMessage(reply, "bot");
+        if (!question.includes("whats")) {
+          addMessage("Se fizer sentido, clique no botão de WhatsApp aqui na tela para continuar essa conversa de forma mais personalizada.", "bot");
+        }
+      }
+
+      toggle.addEventListener("click", () => {
+        const isOpen = assistant.classList.contains("open");
+        assistant.classList.toggle("open");
+        if (!isOpen) {
+          input.focus();
+        }
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const value = input.value.trim();
+        if (!value) return;
+        addMessage(value, "user");
+        input.value = "";
+        setTimeout(() => answer(value), 250);
+      });
+
+      if (quickButtons && quickButtons.length) {
+        quickButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const q = btn.getAttribute("data-assistant-question");
+            if (!q) return;
+            addMessage(q, "user");
+            setTimeout(() => answer(q), 240);
+          });
+        });
+      }
+
+      // Mensagem inicial
+      setTimeout(() => {
+        addMessage("Olá! Sou a assistente virtual da SWA. Em poucas mensagens eu te ajudo a entender se nosso trabalho faz sentido para sua realidade e qual pode ser o próximo passo.", "bot");
+      }, 700);
+    })();
   </script>
 </body>
 </html>
