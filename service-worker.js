@@ -27,7 +27,7 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Fetch: tenta rede, se falhar usa cache
+// Fetch: tenta rede, se falhar usa cache (network-first)
 self.addEventListener("fetch", (event) => {
   const req = event.request;
 
@@ -41,7 +41,8 @@ self.addEventListener("fetch", (event) => {
         caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
         return res;
       })
-      .catch(() => caches.match(req).then((cached) => cached || caches.match("/swa-site/")))
+      .catch(() =>
+        caches.match(req).then((cached) => cached || caches.match("/swa-site/"))
+      )
   );
 });
-
