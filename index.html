@@ -824,13 +824,6 @@
           <span>Agenda com vagas limitadas</span>
         </div>
 
-        <!-- NOVO BOTÃO: ÁREA DO CLIENTE -->
-        <a class="btn primary"
-           href="https://mult-system.fly.dev/login"
-           target="_blank" rel="noopener">
-          Área do cliente
-        </a>
-
         <a class="btn soft" href="https://www.instagram.com/swa.gestaointeligente/" target="_blank" rel="noopener">
           Instagram
         </a>
@@ -1446,33 +1439,3 @@
   </script>
 </body>
 </html>
-
-function slugify(text){
-
-return text
-.toLowerCase()
-.normalize("NFD")
-.replace(/[\u0300-\u036f]/g,"")
-.replace(/[^a-z0-9\s-]/g,"")
-.trim()
-.replace(/\s+/g,"-");
-
-}
-
-function enterOrg(){
-
-const value=document.getElementById("orgName").value.trim();
-
-if(!value){
-
-alert("Digite o nome da organização");
-
-return;
-
-}
-
-const slug=slugify(value);
-
-window.open(`https://swa-sgi-br.fly.dev/${slug}`,"_blank");
-
-}
