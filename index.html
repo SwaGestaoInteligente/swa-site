@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>SWA – Gestão Inteligente</title>
 
-<meta name="description" content="Plataforma de gestão inteligente da SWA. Controle financeiro, administrativo e estratégico para organizações modernas.">
+<meta name="description" content="SWA - Plataforma inteligente de gestão para organizações modernas. Controle financeiro, governança e operação em um único ambiente.">
 
 <link rel="icon" href="swa1.jpeg">
 
@@ -59,17 +58,23 @@ font-size:18px;
 
 nav{
 display:flex;
-gap:20px;
+gap:25px;
 font-size:14px;
 color:#64748b;
 }
 
 nav a{
 text-decoration:none;
+color:#64748b;
+font-weight:500;
+}
+
+nav a:hover{
+color:#2563eb;
 }
 
 .btn{
-padding:10px 18px;
+padding:10px 20px;
 border-radius:30px;
 border:none;
 font-weight:600;
@@ -97,7 +102,7 @@ margin-bottom:10px;
 
 .hero p{
 color:#64748b;
-max-width:600px;
+max-width:650px;
 margin-bottom:30px;
 }
 
@@ -132,14 +137,14 @@ margin-top:8px;
 }
 
 .bars span{
-width:20px;
+width:18px;
 background:#3b82f6;
 border-radius:4px;
 }
 
-.bars span:nth-child(1){height:40px}
+.bars span:nth-child(1){height:35px}
 .bars span:nth-child(2){height:60px}
-.bars span:nth-child(3){height:50px}
+.bars span:nth-child(3){height:45px}
 .bars span:nth-child(4){height:70px}
 .bars span:nth-child(5){height:65px}
 
@@ -173,7 +178,7 @@ border:1px solid #cbd5e1;
 }
 
 .features{
-margin-top:50px;
+margin-top:60px;
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:20px;
@@ -227,6 +232,7 @@ background:#2563eb;
 color:white;
 border:none;
 cursor:pointer;
+font-weight:700;
 }
 
 .assistant{
@@ -317,9 +323,7 @@ grid-template-columns:1fr;
 
 <section class="hero">
 
-<h1>
-A base de gestão inteligente da marca SWA
-</h1>
+<h1>A base de gestão inteligente da marca SWA</h1>
 
 <p>
 Unifique operação, financeiro e governança em um único ambiente preparado para múltiplas organizações.
@@ -362,7 +366,7 @@ Unifique operação, financeiro e governança em um único ambiente preparado pa
 
 <h3>Acessar ambiente da organização</h3>
 
-<p>Digite o nome da sua organização para abrir o ambiente.</p>
+<p>Digite o nome da sua organização para abrir o ambiente do sistema.</p>
 
 <div class="org-form">
 
@@ -382,18 +386,18 @@ Abrir ambiente
 <section class="features">
 
 <div class="feature">
-<h3>Plataforma única</h3>
-<p>Gestão administrativa, financeira e operacional integrada.</p>
+<h3>Gestão completa</h3>
+<p>Controle administrativo, financeiro e estratégico em um único ambiente.</p>
 </div>
 
 <div class="feature">
 <h3>Multi-organização</h3>
-<p>Empresas, igrejas, clínicas e instituições no mesmo sistema.</p>
+<p>Empresas, igrejas, clínicas, associações e instituições no mesmo sistema.</p>
 </div>
 
 <div class="feature">
 <h3>Decisão com dados</h3>
-<p>Painéis e indicadores claros para gestão estratégica.</p>
+<p>Indicadores claros e relatórios inteligentes para gestão profissional.</p>
 </div>
 
 </section>
@@ -415,15 +419,11 @@ WhatsApp
 </a>
 
 
-<button class="assistant-toggle" onclick="toggleAssistant()">
-?
-</button>
+<button class="assistant-toggle" onclick="toggleAssistant()">?</button>
 
 <div class="assistant" id="assistant">
 
-<div class="assistant-header">
-Assistente SWA
-</div>
+<div class="assistant-header">Assistente SWA</div>
 
 <div class="assistant-messages" id="messages">
 Olá! Posso ajudar com dúvidas sobre a plataforma.
@@ -458,9 +458,7 @@ return text
 
 function enterOrg(){
 
-const input=document.getElementById("orgName");
-
-const value=input.value.trim();
+const value=document.getElementById("orgName").value.trim();
 
 if(!value){
 
